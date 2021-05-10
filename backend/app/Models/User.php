@@ -40,4 +40,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function favorites(){
+        $this->hasMany('\App\Models\Favorites')->get();
+    }
+
+    public function reviews(){
+        $this->hasMany('\App\Models\Reviews')->get();
+    }
+
+    public function favorites(){
+        $this->hasMany('\App\Models\Reviews')->get();
+    }
 }
