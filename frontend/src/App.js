@@ -17,6 +17,7 @@ import News from "./components/News";
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
+import Snus from "./components/Snus";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -49,9 +50,14 @@ const App = () => {
               Home
             </Link>
           </li>
-            <li className="nav-item">
+          <li className="nav-item">
             <Link to={"/snus-forum"} className="nav-link">
               Snus Forum
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/snus"} className="nav-link">
+              Snus 
             </Link>
           </li>
 
@@ -120,7 +126,7 @@ const App = () => {
           <Route exact path={["/", "/home"]} component={Home} />
 
           <Route exact path="/snus-forum" component={SnusForum} />
-
+          <Route exact path="/snus" component={Snus} />
           <Route exact path="/news" component={News} />
 
           <Route exact path="/login" component={Login} />
