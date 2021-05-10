@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Home from "./components/Home";
+import SnusForum from "./components/SnusForum";
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
@@ -42,6 +43,11 @@ const App = () => {
           <li className="nav-item">
             <Link to={"/home"} className="nav-link">
               Home
+            </Link>
+          </li>
+            <li className="nav-item">
+            <Link to={"/snus-forum"} className="nav-link">
+              Snus Forum
             </Link>
           </li>
 
@@ -103,6 +109,7 @@ const App = () => {
       <div className="container mt-3">
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
+          <Route exact path="/snus-forum" component={SnusForum} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
