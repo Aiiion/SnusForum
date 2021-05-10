@@ -10,7 +10,7 @@ class Snus extends Model
     use HasFactory;
 
     public function flavours(){
-        return $this->hasMany('\App\Models\Flavours')->get();
+        return $this->hasMany('\App\Models\Flavour')->get();
     }
 
     public function reviews(){

@@ -49,7 +49,4 @@ class User extends Authenticatable
         $this->hasMany('\App\Models\Reviews')->get();
     }
 
-    public function favorites(){
-        $this->hasMany('\App\Models\Reviews')->get();
-    }
 }
