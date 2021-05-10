@@ -19,6 +19,7 @@ class CreateSnusTable extends Migration
             $table->foreignId('flavour_id');
             $table->string('type');
             $table->integer('strength');
+            $table->string('img_url');
             $table->timestamps();
         });
     }
