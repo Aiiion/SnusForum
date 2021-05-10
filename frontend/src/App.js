@@ -9,7 +9,11 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Home from "./components/Home";
+
 import SnusForum from "./components/SnusForum";
+
+import News from "./components/News";
+
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
@@ -84,6 +88,11 @@ const App = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link to={"/news"} className="nav-link">
+                News
+              </Link>
+            </li>
+            <li className="nav-item">
               <a href="/login" className="nav-link" onClick={logOut}>
                 LogOut
               </a>
@@ -109,7 +118,11 @@ const App = () => {
       <div className="container mt-3">
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
+
           <Route exact path="/snus-forum" component={SnusForum} />
+
+          <Route exact path="/news" component={News} />
+
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
