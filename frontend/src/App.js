@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
+
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { ReactComponent as Logo } from "./logo.svg";
 
 import AuthService from "./services/auth.service";
 
@@ -40,91 +42,77 @@ const App = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to={"/"} className="navbar-brand">
-          u10
-        </Link>
-        <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"/home"} className="nav-link">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to={"/snus-forum"} className="nav-link">
-              Snus Forum
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to={"/snus"} className="nav-link">
-              Snus 
-            </Link>
-          </li>
+        <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
+        <Navbar.Brand href={"/"}>
+          <Logo
+            alt=""
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />
+          Snus
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href={"/"} className="navbar-brand">
+                u10
+              </Nav.Link>
 
-          {showModeratorBoard && (
-            <li className="nav-item">
-              <Link to={"/mod"} className="nav-link">
-                Moderator Board
-              </Link>
-            </li>
-          )}
+              {showModeratorBoard && (
+                  <Nav.Link href={"/mod"} className="nav-link">
+                    Moderator Board
+                  </Nav.Link>              
+              )}
 
-          {showAdminBoard && (
-            <li className="nav-item">
-              <Link to={"/admin"} className="nav-link">
-                Admin Board
-              </Link>
-            </li>
-          )}
+              {showAdminBoard && (
+                  <Nav.Link href={"/admin"} className="nav-link">
+                    Admin Board
+                  </Nav.Link>
+              )}
 
-          {currentUser && (
-            <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
-                User
-              </Link>
-            </li>
-          )}
-        </div>
+              {currentUser && (
+                  <Nav.Link href={"/user"} className="nav-link">
+                    User
+                  </Nav.Link>
+              )}
 
-        {currentUser ? (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/profile"} className="nav-link">
-                {currentUser.username}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/news"} className="nav-link">
-                News
-              </Link>
-            </li>
-            <li className="nav-item">
-              <a href="/login" className="nav-link" onClick={logOut}>
-                LogOut
-              </a>
-            </li>
-          </div>
-        ) : (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/login"} className="nav-link">
-                Login
-              </Link>
-            </li>
+              {currentUser ? (
+                <>
+                  <Nav.Link href={"/profile"} className="nav-link">
+                    {currentUser.username}
+                  </Nav.Link>
+                  <Nav.Link href={"/news"} className="nav-link">
+                    News
+                  </Nav.Link>
+                  <Nav.Link href={"/snus-forum"} className="nav-link">
+                    Snus Forum
+                  </Nav.Link>
+                  <Nav.Link href={"/snus"} className="nav-link">
+                    Snus 
+                  </Nav.Link>
+                  <Nav.Link href="/login" className="nav-link" onClick={logOut}>
+                    LogOut
+                  </Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link href={"/login"} className="nav-link">
+                    Login
+                  </Nav.Link>
 
-            <li className="nav-item">
-              <Link to={"/register"} className="nav-link">
-                Sign Up
-              </Link>
-            </li>
-          </div>
-        )}
-      </nav>
+                  <Nav.Link href={"/register"} className="nav-link">
+                    Sign Up
+                  </Nav.Link>
+                </>  
+              )}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
 
       <div className="container mt-3">
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
-
           <Route exact path="/snus-forum" component={SnusForum} />
           <Route exact path="/snus" component={Snus} />
           <Route exact path="/news" component={News} />
