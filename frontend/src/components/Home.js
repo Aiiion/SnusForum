@@ -10,21 +10,21 @@ const Home = () => {
       (response) => {
         setContent(response.data);
       },
-      (error) => {
-        const _content =
-          (error.response && error.response.data) ||
-          error.message ||
-          error.toString();
+      // (error) => {
+      //   const _content =
+      //     (error.response && error.response.data) ||
+      //     error.message ||
+      //     error.toString();
 
-        setContent(_content);
-      }
+      //   setContent(_content);
+      // }
     );
   }, []);
 
   return (
     <div className="container">
       <header className="jumbotron">
-        <h3>{content}</h3>
+        <h3>Hej</h3>
       </header>
     </div>
   );
