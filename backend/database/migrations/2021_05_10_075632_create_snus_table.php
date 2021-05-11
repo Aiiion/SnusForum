@@ -13,13 +13,13 @@ class CreateSnusTable extends Migration
      */
     public function up()
     {
-        Schema::create('snus', function (Blueprint $table) {
+        Schema::create('snuses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('flavour_id');
+            $table->foreignId('flavour_id')->nullable();
             $table->string('type');
             $table->integer('strength');
-            $table->string('img_url');
+            $table->string('img_url')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateSnusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('snus');
+        Schema::dropIfExists('snuses');
     }
 }
