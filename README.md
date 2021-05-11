@@ -3,6 +3,10 @@
 ### Skiss databas
 [draw.io](https://app.diagrams.net/#G1NGWY1s4TLEN6tDkRtfDoxssnLPw4PbVJ)
 
+install jwt in backend folder
+
+./vendor/bin/sail composer require tymon/jwt-auth --ignore-platform-reqs 
+
 ## Description
 This application was built with:
 - React
