@@ -22,7 +22,7 @@ class FlavourFactory extends Factory
     public function definition()
     {
         return [
-            'flavour' => $this->faker->colorName(),
+            'flavour_type' => $this->faker->colorName(),
         ];
     }
 }
