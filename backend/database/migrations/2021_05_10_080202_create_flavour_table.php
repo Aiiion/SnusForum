@@ -13,9 +13,9 @@ class CreateFlavourTable extends Migration
      */
     public function up()
     {
-        Schema::create('flavour', function (Blueprint $table) {
+        Schema::create('flavours', function (Blueprint $table) {
             $table->id();
-            $table->string('flavour');
+            $table->string('flavour_type');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateFlavourTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flavour');
+        Schema::dropIfExists('flavours');
     }
 }
