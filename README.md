@@ -3,6 +3,14 @@
 ### Skiss databas
 [draw.io](https://app.diagrams.net/#G1NGWY1s4TLEN6tDkRtfDoxssnLPw4PbVJ)
 
+##fix db
+ ./vendor/bin/sail exec mysql bash
+ mysql
+ show databases;
+ CREATE USER 'sail'@'172.25.0.7' IDENTIFIED BY 'password';
+GRANT ALL ON *.* TO 'sail'@'172.25.0.7';
+FLUSH PRIVILEGES;
+
 ## Description
 This application was built with:
 - React
