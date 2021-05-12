@@ -3,7 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import './App.css';
 
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Footer } from './components/footer';
+import { Footer } from "./components/Footer";
 import { ReactComponent as Logo } from "./logo.svg";
 
 import AuthService from "./services/auth.service";
@@ -110,8 +110,6 @@ const App = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
-      <Route path="/" component={Footer} />
 
       <div className="container mt-3">
         <Switch>
