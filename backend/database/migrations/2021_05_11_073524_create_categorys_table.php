@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSnusTable extends Migration
+class CreateCategorysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateSnusTable extends Migration
      */
     public function up()
     {
-        Schema::create('snuses', function (Blueprint $table) {
+        Schema::create('categorys', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('flavour_id')->nullable();
-            $table->string('type');
-            $table->integer('strength');
-            $table->string('img_url')->nullable();
+            $table->string('category');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateSnusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('snuses');
+        Schema::dropIfExists('categorys');
     }
 }

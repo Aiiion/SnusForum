@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSnusTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateSnusTable extends Migration
      */
     public function up()
     {
-        Schema::create('snuses', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('flavour_id')->nullable();
-            $table->string('type');
-            $table->integer('strength');
-            $table->string('img_url')->nullable();
+            $table->foreignId('posts_id');
+            $table->foreignId('users_id');
+            $table->longText('body');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateSnusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('snuses');
+        Schema::dropIfExists('comments');
     }
 }
