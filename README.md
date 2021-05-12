@@ -16,13 +16,13 @@ The aim with this app is to get all snus-enthusiasts a forum where we can share 
 - run:
     npm install
 #### Deploy to surge
-If you have access to deploy frontend to surge, follow these instructions:
+If you have access to deploy frontend to surge, accept the invite first and then follow these instructions:
 - cd into the frontend folder
-- run npm install --global surge
-- run npm run-script build
-- cd into build
-- run surge --domain snusare.snus.sh
-- enter your email and password
+- npm install --global surge
+- npm run-script build && cd build && cp index.html 200.html && surge --domain snusare.surge.sh
+Next time you will deploy to surge:
+- cd frontend/build/
+- surge --domain snusare.surge.sh
 ### Getting started with backend Laravel
 - If not already done; clone this repo
 - cd into the backend folder
@@ -34,7 +34,7 @@ If you have access to deploy frontend to surge, follow these instructions:
         laravelsail/php80-composer:latest \
         composer install --ignore-platform-reqs
 - Make the .env file
-- run .vendor/bin/sail up (eller artisan key:generate...)
+- .vendor/bin/sail up (or artisan key:generate)
 - Open the application at localhost:80
 - Follow the instructions to generate a key
 #### Setting up database connection
@@ -44,9 +44,9 @@ mysql
 
 show databases;
 
-CREATE USER 'sail'@'172.25.0.7' IDENTIFIED BY 'password';
+CREATE USER 'sail'@'172.**.0.7' IDENTIFIED BY 'password';
 
-GRANT ALL ON . TO 'sail'@'172.25.0.7';
+GRANT ALL ON *.* TO 'sail'@'172.**.0.7';
 
 FLUSH PRIVILEGES;
 #### Install jwt in backend folder
