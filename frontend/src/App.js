@@ -111,127 +111,76 @@ const App = () => {
         </Navbar.Collapse>
       </Navbar>
 
-          <MDBFooter color="stylish-color-dark" className="page-footer font-small pt-4 mt-4">
-      <MDBContainer fluid className="text-center text-md-left">
-        <MDBRow>
-          <MDBCol md="6">
-            <h5 className="text-uppercase mb-4 mt-3 font-weight-bold">
-              Footer Content
+    <MDBFooter color="mdb-color" className="font-small lighten-3 pt-4 mt-4">
+      <MDBContainer className="text-center text-md-left">
+        <MDBRow className="my-4">
+          <MDBCol md="4" lg="4">
+            <h5 className="text-uppercase mb-4 font-weight-bold">
+              About
             </h5>
             <p>
-              Here you can use rows and columns here to organize your footer
-              content. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+              Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum.
+            </p>
+            <p>
+              #
             </p>
           </MDBCol>
           <hr className="clearfix w-100 d-md-none" />
-          <MDBCol md="2">
-            <h5 className="text-uppercase mb-4 mt-3 font-weight-bold">
-              Links
-            </h5>
+          <MDBCol md="2" lg="2" className="ml-auto">
+            <h5 className="text-uppercase mb-4 font-weight-bold">Explore</h5>
             <ul className="list-unstyled">
-              <li>
-                <a href="#!">Link 1</a>
-              </li>
-              <li>
-                <a href="#!">Link 2</a>
-              </li>
-              <li>
-                <a href="#!">Link 3</a>
-              </li>
-              <li>
-                <a href="#!">Link 4</a>
-              </li>
+              <p>
+                <a href="#!">NYHETER</a>
+              </p>
+              <p>
+                <a href="#!">SNUS</a>
+              </p>
+              <p>
+                <a href="#!">SNUSFORUM</a>
+              </p>
+              <p>
+                <a href="#!">REVIEWS</a>
+              </p>
             </ul>
           </MDBCol>
           <hr className="clearfix w-100 d-md-none" />
-          <MDBCol md="2">
-            <h5 className="text-uppercase mb-4 mt-3 font-weight-bold">
-              Links
-            </h5>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#!">Link 1</a>
-              </li>
-              <li>
-                <a href="#!">Link 2</a>
-              </li>
-              <li>
-                <a href="#!">Link 3</a>
-              </li>
-              <li>
-                <a href="#!">Link 4</a>
-              </li>
-            </ul>
+          <MDBCol md="5" lg="3">
+            <h5 className="text-uppercase mb-4 font-weight-bold">Contact</h5>
+            <p>
+              <i className="fa fa-envelope mr-3" /> info@example.com
+            </p>
+            <p>
+              <i className="fa fa-phone mr-3" /> + 12 123 123 12
+            </p>
           </MDBCol>
           <hr className="clearfix w-100 d-md-none" />
-          <MDBCol md="2">
-            <h5 className="text-uppercase mb-4 mt-3 font-weight-bold">
-              Links
+          <MDBCol md="2" lg="2" className="text-center">
+            <h5 className="text-uppercase mb-4 font-weight-bold">
+              Follow us
             </h5>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#!">Link 1</a>
-              </li>
-              <li>
-                <a href="#!">Link 2</a>
-              </li>
-              <li>
-                <a href="#!">Link 3</a>
-              </li>
-              <li>
-                <a href="#!">Link 4</a>
-              </li>
-            </ul>
+            <div className="mt-2 ">
+              <a type="button" className="btn-floating btn-small btn-fb">
+                <i className="fab fa-facebook-f" />
+              </a>
+              <a type="button" className="btn-floating btn-small btn-tw">
+                <i className="fab fa-twitter" />
+              </a>
+              <a type="button" className="btn-floating btn-small btn-gplus">
+                <i className="fab fa-google-plus" />
+              </a>
+              <a type="button" className="btn-floating btn-small btn-dribbble">
+                <i className="fab fa-github" />
+              </a>
+            </div>
           </MDBCol>
+          <hr className="clearfix w-100 d-md-none" />
         </MDBRow>
       </MDBContainer>
-      <hr />
-      <div className="text-center py-3">
-        <ul className="list-unstyled list-inline mb-0">
-          <li className="list-inline-item">
-            <h5 className="mb-1">Register for free</h5>
-          </li>
-          <li className="list-inline-item">
-            <a href="#!" className="btn btn-danger btn-rounded">
-              Sign up!
-            </a>
-          </li>
-        </ul>
-      </div>
-      <hr />
-      <div className="text-center">
-        <ul className="list-unstyled list-inline">
-          <li className="list-inline-item">
-            <a className="btn-floating btn-sm btn-fb mx-1">
-              <i className="fab fa-facebook-f"> </i>
-            </a>
-          </li>
-          <li className="list-inline-item">
-            <a className="btn-floating btn-sm btn-tw mx-1">
-              <i className="fab fa-twitter"> </i>
-            </a>
-          </li>
-          <li className="list-inline-item">
-            <a className="btn-floating btn-sm btn-gplus mx-1">
-              <i className="fab fa-google-plus"> </i>
-            </a>
-          </li>
-          <li className="list-inline-item">
-            <a className="btn-floating btn-sm btn-li mx-1">
-              <i className="fab fa-linkedin-in"> </i>
-            </a>
-          </li>
-          <li className="list-inline-item">
-            <a className="btn-floating btn-sm btn-dribbble mx-1">
-              <i className="fab fa-dribbble"> </i>
-            </a>
-          </li>
-        </ul>
-      </div>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+          &copy; {new Date().getFullYear()} Copyright:{" "}
+         <p>Snus</p>
         </MDBContainer>
       </div>
     </MDBFooter>
