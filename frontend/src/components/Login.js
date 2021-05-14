@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react";
+import { Router, Route } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
+import Profile from "./Profile";
 
 const required = (value) => {
   if (!value) {
@@ -70,7 +72,7 @@ const Login = (props) => {
       <div className="card card-container">
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Email</label>
             <Input
               type="text"
               className="form-control"
