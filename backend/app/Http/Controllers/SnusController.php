@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Snus;
 
 class SnusController extends Controller
 {
@@ -17,7 +18,7 @@ class SnusController extends Controller
         foreach ($snuses as $snus){
             $snus->avgRating = $snus->avgRating();
         }
-        return ['snus' => $snus]);
+        return ['snuses' => $snuses];
     }
 
     /**
@@ -49,10 +50,10 @@ class SnusController extends Controller
      */
     public function show($id)
     {
-        $snus = Snus::where('id', $id)->get();
-        $snus->avgRating = $snus->avgRating();
-        $reviews = $snus->reviews()->orderBy('updated_at', 'desc');
-        return ['snus' => $snus, 'reviews' = $reviews]; 
+        $snus = Snus::where('id', $id)->first();
+        $avgRating = $snus->avgRating();
+        $reviews = $snus->reviews();
+        return ['snus' => $snus, 'reviews' => $reviews, 'avgRating' => $avgRating];
     }
 
     /**
