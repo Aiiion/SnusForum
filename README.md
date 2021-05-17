@@ -43,4 +43,5 @@ The aim with this app is to get all snus-enthusiasts a forum where we can share 
 - run .vendor/bin/sail up (eller artisan key:generate...)
 - Open the application at localhost:80
 - Follow the instructions to generate a key
+- for jwt tokken run: ./vendor/bin/sail composer require tymon/jwt-auth --ignore-platform-reqs
 ### Getting started with Bootstrap
