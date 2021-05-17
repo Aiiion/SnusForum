@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SnusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,9 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    Route::get('/snuses', [SnusController::class, 'index']);
+    Route::get('/snuses/{id}', [SnusController::class, 'show']);
 });
+
+Route::get('/snuses', [SnusController::class, 'index']);
+Route::get('/snuses/{id}', [SnusController::class, 'show']);

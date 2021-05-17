@@ -16,4 +16,7 @@ class Snus extends Model
     public function reviews(){
         return $this->hasMany('\App\Models\Reviews')->get();
     }
+    public function avgRating(){
+        return $this->hasMany('\App\Models\Reviews')->where('snus_id', $this->id)->avg('rating');
+    }
 }
