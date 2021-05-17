@@ -13,16 +13,16 @@ The aim with this app is to get all snus-enthusiasts a forum where we can share 
 ### Getting started with frontend React
 - Clone this repo
 - cd into the frontend folder
-- run:
-    npm install
+- npm install
 #### Deploy to surge
 If you have access to deploy frontend to surge, accept the invite first and then follow these instructions:
 - cd into the frontend folder
 - npm install --global surge
 - npm run-script build && cd build && cp index.html 200.html && surge --domain snusare.surge.sh
 Next time you will deploy to surge:
-- cd frontend/build/
-- surge --domain snusare.surge.sh
+- cd into the frontend folder
+- npm run-script deploy
+The page is deployed to snusare.surge.sh
 ### Getting started with backend Laravel
 - If not already done; clone this repo
 - cd into the backend folder
