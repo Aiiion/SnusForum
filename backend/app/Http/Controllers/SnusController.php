@@ -13,7 +13,11 @@ class SnusController extends Controller
      */
     public function index()
     {
-        //
+        $snuses = Snus::all();
+        foreach ($snuses as $snus){
+            $snus->avgRating = $snus->avgRating();
+        }
+        return ['snus' => $snus]);
     }
 
     /**
@@ -45,7 +49,10 @@ class SnusController extends Controller
      */
     public function show($id)
     {
-        //
+        $snus = Snus::where('id', $id)->get();
+        $snus->avgRating = $snus->avgRating();
+        $reviews = $snus->reviews()->orderBy('updated_at', 'desc');
+        return ['snus' => $snus, 'reviews' = $reviews]; 
     }
 
     /**
