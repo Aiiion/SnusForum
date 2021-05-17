@@ -27,7 +27,7 @@ const login = (email, password) => {
     data: bodyFormData,
     headers: { "Content-Type": "multipart/form-data" }})
     .then((response) => {
-      if (response.data.accessToken) {
+      if (response.data.access_token) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
       return response.data;
@@ -39,7 +39,8 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));  
+  return JSON.parse(localStorage.getItem("user")); 
+   
 };
 
 
