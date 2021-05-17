@@ -45,6 +45,14 @@ const vpassword = (value) => {
     );
   }
 };
+// Password confirmation fungerar ej vi återkommer till detta
+const vpasswordConfirmation = (event) => {
+  if(event.onPasswordConfirmation !== event.onChangePassword) {
+    return ( 
+      <p>Password does not match!</p>
+    );
+  }
+};
 
 const Register = (props) => {
   const form = useRef();
@@ -53,6 +61,7 @@ const Register = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm_password, setConfirmPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -71,12 +80,17 @@ const Register = (props) => {
     setPassword(password);
   };
 
+  const onPasswordConfirmation = (e) => {
+    const confirm_password = e.target.value;
+    setConfirmPassword(confirm_password);
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
 
     setMessage("");
     setSuccessful(false);
-
+// Object.values(bar)[0][0] ta errorresponsen o fiska upp meddelandet
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
@@ -139,6 +153,17 @@ const Register = (props) => {
                   value={password}
                   onChange={onChangePassword}
                   validations={[required, vpassword]}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Confirm Password</label>
+                <Input
+                  type="password"
+                  className="form-control"
+                  name="confirm_password"
+                  value={confirm_password}
+                  onChange={onPasswordConfirmation}
+                  validations={[required, vpasswordConfirmation]}
                 />
               </div>
 

@@ -1,27 +1,35 @@
 import axios from "axios";
 
-// Vilken port?? 
-const API_URL = "http://localhost:8080/api/auth/";
+const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 
 const register = (username, email, password) => {
-  return axios.post(API_URL + "signup", {
-    username,
-    email,
-    password,
-  });
+  var bodyFormData = new FormData();
+  bodyFormData.append('username', username);
+  bodyFormData.append('email', email);
+  bodyFormData.append('password', password);
+  bodyFormData.append('password_confirmation', password);
+ 
+    return axios({
+      method: "post",
+      url: `${API_URL}register`,
+      data: bodyFormData,
+      headers: { "Content-Type": "multipart/form-data" }})
 };
 
-const login = (username, password) => {
-  return axios
-    .post(API_URL + "signin", {
-      username,
-      password,
-    })
+const login = (email, password) => {
+  var bodyFormData = new FormData();
+  bodyFormData.append('email', email);
+  bodyFormData.append('password', password);
+  
+  return axios({
+    method: "post",
+    url: `${API_URL}login`,
+    data: bodyFormData,
+    headers: { "Content-Type": "multipart/form-data" }})
     .then((response) => {
       if (response.data.accessToken) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
-
       return response.data;
     });
 };
@@ -31,8 +39,9 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
+  return JSON.parse(localStorage.getItem("user"));  
 };
+
 
 export default {
   register,

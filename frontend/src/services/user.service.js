@@ -1,8 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-
-// Vilken port och url? 
-const API_URL = "http://localhost:8080/api/test/";
+ 
+const API_URL = "https://snusare-backend.herokuapp.com/api/auth/user-profile/";
 
 const getPublicContent = () => {
   return axios.get(API_URL + "all");
