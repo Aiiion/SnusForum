@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Flavours;
 
-class FlavourController extends Controller
+class FlavoursController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class FlavourController extends Controller
      */
     public function index()
     {
-        //
+        $flavours = Flavours::all();
+
+        return ['flavours' => $flavours];
     }
 
     /**
@@ -45,7 +48,7 @@ class FlavourController extends Controller
      */
     public function show($id)
     {
-        //
+        $flavours = Flavours::where('id', $id)->first();
     }
 
     /**

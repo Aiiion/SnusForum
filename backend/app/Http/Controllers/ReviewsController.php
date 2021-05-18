@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Reviews;
 
 class ReviewsController extends Controller
 {
@@ -13,7 +14,8 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        //
+        $Reviews = Reviews::all();
+        return ['Reviews' => $Reviews];
     }
 
     /**
@@ -45,7 +47,7 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-        //
+         $Reviews = Reviews::where('id', $id)->first();
     }
 
     /**

@@ -36,7 +36,12 @@ Route::group([
     Route::get('/categorys/{id}', [CategorysController::class, 'show']);
     Route::get('/posts', [PostsController::class, 'index']);
     Route::get('/posts/{id}', [PostsController::class, 'show']);
-
+    Route::get('/Comments', [CommentsController::class, 'index']);
+    Route::get('/Comments/{id}', [CommentsController::class, 'show']);  //id === user_id?
+    Route::get('/Reviews', [ReviewsController::class, 'index']);
+    Route::get('/Reviews/{id}', [ReviewsController::class, 'show']);
+    Route::get('/Flavours', [FlavourController::class, 'index']);
+    Route::get('/Flavours/{id}', [FlavourController::class, 'show']);
 });
 
 Route::get('/snuses', [SnusController::class, 'index']);
