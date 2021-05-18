@@ -9,7 +9,5 @@ class Favourites extends Model
 {
     use HasFactory;
 
-    public function posts(){
-        return $this->hasMany('\App\Models\Posts')->get();
-    }
+
 }
