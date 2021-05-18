@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SnusController;
+use App\Http\Controllers\PostsController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +31,9 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
     Route::get('/snuses', [SnusController::class, 'index']);
     Route::get('/snuses/{id}', [SnusController::class, 'show']);
+    Route::get('/posts', [PostsController::class, 'index']);
+    Route::get('/posts/{id}', [PostsController::class, 'show']);
+
 });
 
 Route::get('/snuses', [SnusController::class, 'index']);
