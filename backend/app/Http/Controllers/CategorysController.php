@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Categorys;
+use App\Models\Posts;
 
 class CategorysController extends Controller
 {
@@ -13,7 +15,9 @@ class CategorysController extends Controller
      */
     public function index()
     {
-        //
+        $categorys = Categorys::all();
+
+        return ['categorys' => $categorys];
     }
 
     /**
@@ -45,7 +49,9 @@ class CategorysController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Categorys::where('id', $id)->first();
+        $posts = Posts::where('category_id', $id)->get();
+        return ['category' => $category, 'posts' => $posts];
     }
 
     /**
