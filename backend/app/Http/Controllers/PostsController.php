@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Posts;
 
 class PostsController extends Controller
 {
@@ -13,7 +14,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Posts::all();
+
+        return ['posts' => $posts];
     }
 
     /**
@@ -45,7 +48,10 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Posts::where('id', $id)->first();
+        $categorys = $post->categorys();
+        $comments = $post->comments();
+        return ['post' => $post, 'categorys' => $categorys, 'comments' => $comments];
     }
 
     /**
