@@ -9,24 +9,24 @@ const Profile = () => {
     <div className="container">
       <header className="jumbotron">
         <h3>
-          <strong>{currentUser.username}</strong> Profile
+          <strong>Profile:</strong> {currentUser.user.username} 
         </h3>
       </header>
-      <p>
+      {/* <p>
         <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
         {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
       </p>
       <p>
         <strong>Id:</strong> {currentUser.id}
-      </p>
+      </p> */}
       <p>
-        <strong>Email:</strong> {currentUser.email}
+        <strong>Email:</strong> {currentUser.user.email}
       </p>
-      <strong>Authorities:</strong>
+      {/* <strong>Authorities:</strong>
       <ul>
         {currentUser.roles &&
           currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-      </ul>
+      </ul> */}
     </div>
   );
 };

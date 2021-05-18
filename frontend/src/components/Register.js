@@ -80,6 +80,7 @@ const Register = (props) => {
     setPassword(password);
   };
 
+  // FUNKAR EJ!! 
   const onPasswordConfirmation = (e) => {
     const confirm_password = e.target.value;
     setConfirmPassword(confirm_password);

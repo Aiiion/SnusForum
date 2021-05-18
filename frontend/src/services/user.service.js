@@ -1,14 +1,15 @@
 import axios from "axios";
 import authHeader from "./auth-header";
  
-const API_URL = "https://snusare-backend.herokuapp.com/api/auth/user-profile/";
+const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
+
 
 const getPublicContent = () => {
   return axios.get(API_URL + "all");
 };
 
 const getUserBoard = () => {
-  return axios.get(API_URL + "user", { headers: authHeader() });
+  return axios.get(API_URL + "user-profile", { headers: authHeader() });
 };
 
 const getModeratorBoard = () => {
