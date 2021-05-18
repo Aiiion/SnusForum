@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Snus;
+use App\Models\Flavour;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SnusFactory extends Factory
@@ -25,6 +26,7 @@ class SnusFactory extends Factory
             'name' => $this->faker->cityPrefix(),
             'type' => $this->faker->state(),
             'strength' => $this->faker->numberBetween($min = 0, $max = 5),
+            'flavour_id' => \App\Models\Flavour::inRandomOrder()->value('id'),
         ];
     }
 }

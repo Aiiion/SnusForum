@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Categorys extends Model
 {
     use HasFactory;
-    public function categotrys(){
-        return $this->hasMany('\App\Models\Category')->get();
+
+    public function posts(){
+        return $this->hasMany('\App\Models\Posts')->get();
     }
 }

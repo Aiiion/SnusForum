@@ -2,19 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\Reviews;
+use App\Models\Comments;
 use App\Models\User;
-use App\Models\Snus;
+use App\Models\Posts;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ReviewsFactory extends Factory
+class CommentsFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Reviews::class;
+    protected $model = Comments::class;
 
     /**
      * Define the model's default state.
@@ -24,11 +24,9 @@ class ReviewsFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name(),
-            'body' => $this->faker->text($maxNbChars = 200),
-            'rating' => $this->faker->numberBetween($min = 0, $max = 5),
+            'body' => $this->faker->text($maxNbChars = 50),
             'user_id' => \App\Models\User::inRandomOrder()->value('id'),
-            'snus_id' => \App\Models\Snus::inRandomOrder()->value('id'),
+            'post_id' => \App\Models\Posts::inRandomOrder()->value('id'),
         ];
     }
 }

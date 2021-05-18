@@ -14,7 +14,7 @@ class Posts extends Model
     }
 
 
-    public function category(){
+    public function categorys(){
         return $this->belongsTo('\App\Models\Categorys')->first();
     }
 
