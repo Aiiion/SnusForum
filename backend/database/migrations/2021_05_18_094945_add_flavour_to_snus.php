@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSnusTable extends Migration
+class AddFlavourToSnus extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateSnusTable extends Migration
      */
     public function up()
     {
-        Schema::create('snuses', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('type');
-            $table->integer('strength');
-            $table->string('img_url')->nullable();
-            $table->timestamps();
+        Schema::table('snuses', function (Blueprint $table) {
+            $table->foreignId('flavour_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -30,6 +25,8 @@ class CreateSnusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('snuses');
+        Schema::table('snuses', function (Blueprint $table) {
+            $table->dropColumn('flavour_id');
+        });
     }
 }

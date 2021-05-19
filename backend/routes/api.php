@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SnusController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\CategorysController;
 
 
 
@@ -31,8 +32,11 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
     Route::get('/snuses', [SnusController::class, 'index']);
     Route::get('/snuses/{id}', [SnusController::class, 'show']);
+    Route::get('/categorys', [CategorysController::class, 'index']);
+    Route::get('/categorys/{id}', [CategorysController::class, 'show']);
     Route::get('/posts', [PostsController::class, 'index']);
     Route::get('/posts/{id}', [PostsController::class, 'show']);
+    Route::post('/save-post', [PostsController::class, 'store']);
 
 });
 
