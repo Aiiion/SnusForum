@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SnusController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CategorysController;
-use App\Http\Controllers\FlavourController;
+use App\Http\Controllers\FlavoursController;
 
 
 /*
