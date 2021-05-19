@@ -15,7 +15,7 @@ use App\Http\Controllers\FlavourController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| routes are loaded by the RouteServiceProvider zwithin a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
@@ -42,4 +42,8 @@ Route::group([
     Route::get('/reviews/{id}', [ReviewsController::class, 'show']);
     Route::get('/flavours', [FlavourController::class, 'index']);
     Route::get('/flavours/{id}', [FlavourController::class, 'show']);
+
+    Route::post('/save-post', [PostsController::class, 'store']);
+
+
 });

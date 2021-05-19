@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <div>
-        <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
+      <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
         <Navbar.Brand href={"/"}>
           <Logo
             alt=""
@@ -56,56 +56,56 @@ const App = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href={"/"} className="navbar-brand">
-                u10
+              u10
               </Nav.Link>
 
-              {showModeratorBoard && (
-                  <Nav.Link href={"/mod"} className="nav-link">
-                    Moderator Board
-                  </Nav.Link>              
-              )}
+            {showModeratorBoard && (
+              <Nav.Link href={"/mod"} className="nav-link">
+                Moderator Board
+              </Nav.Link>
+            )}
 
-              {showAdminBoard && (
-                  <Nav.Link href={"/admin"} className="nav-link">
-                    Admin Board
-                  </Nav.Link>
-              )}
+            {showAdminBoard && (
+              <Nav.Link href={"/admin"} className="nav-link">
+                Admin Board
+              </Nav.Link>
+            )}
 
-              {currentUser && (
-                  <Nav.Link href={"/user"} className="nav-link">
-                    User
-                  </Nav.Link>
-              )}
+            {currentUser && (
+              <Nav.Link href={"/user"} className="nav-link">
+                User
+              </Nav.Link>
+            )}
 
-              {currentUser ? (
-                <>
-                  <Nav.Link href={"/profile"} className="nav-link">
-                    {currentUser.username}
+            {currentUser ? (
+              <>
+                <Nav.Link href={"/profile"} className="nav-link">
+                  {currentUser.username}
+                </Nav.Link>
+                <Nav.Link href={"/news"} className="nav-link">
+                  News
                   </Nav.Link>
-                  <Nav.Link href={"/news"} className="nav-link">
-                    News
+                <Nav.Link href={"/snus-forum"} className="nav-link">
+                  Snus Forum
                   </Nav.Link>
-                  <Nav.Link href={"/snus-forum"} className="nav-link">
-                    Snus Forum
+                <Nav.Link href={"/snus"} className="nav-link">
+                  Snus
                   </Nav.Link>
-                  <Nav.Link href={"/snus"} className="nav-link">
-                    Snus 
+                <Nav.Link href="/login" className="nav-link" onClick={logOut}>
+                  LogOut
                   </Nav.Link>
-                  <Nav.Link href="/login" className="nav-link" onClick={logOut}>
-                    LogOut
-                  </Nav.Link>
-                </>
-              ) : (
-                <>
-                  <Nav.Link href={"/login"} className="nav-link">
-                    Login
+              </>
+            ) : (
+              <>
+                <Nav.Link href={"/login"} className="nav-link">
+                  Login
                   </Nav.Link>
 
-                  <Nav.Link href={"/register"} className="nav-link">
-                    Sign Up
+                <Nav.Link href={"/register"} className="nav-link">
+                  Sign Up
                   </Nav.Link>
-                </>  
-              )}
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
