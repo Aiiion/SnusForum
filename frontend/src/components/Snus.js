@@ -6,9 +6,9 @@ import authHeader from "../services/auth-header";
 import { Card, ListGroup, ListGroupItem, Form, FormControl, Button, Container, CardGroup, Row, Col } from "react-bootstrap";
 import * as Icon from 'react-bootstrap-icons';
 
-import SnusReview from "./SnusReviews";
+import SnusReviews from "./SnusReviews";
 
-const Snus = () => {
+const Snus = ({ match }) => {
 
     const [snus, setSnus] = useState("");
 
@@ -27,9 +27,9 @@ const Snus = () => {
 
     return snus ?
         <>
-            < div >
+            <div>
                 <h1 className="container-fluid text-center">SNUS</h1>
-            </div >
+            </div>
 
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -50,12 +50,14 @@ const Snus = () => {
                                     <ListGroup className="list-group-flush">
                                         <ListGroupItem>Styrka: {snus.strength}</ListGroupItem>
                                         <ListGroupItem>Typ: {snus.type}</ListGroupItem>
-                                        {/* <ListGroupItem>Format: </ListGroupItem> */}
+                                        <ListGroupItem>Format: {snus.id}</ListGroupItem>
                                         <ListGroupItem>Smak: {snus.flavour_id}</ListGroupItem>
                                     </ListGroup>
                                     <Card.Body>
                                         <Card.Link href="#"><Icon.StarFill style={{ fill: '#8E92A4', float: 'left' }}></Icon.StarFill></Card.Link>
-                                        <Card.Link href="/snus-review"><Icon.ChatLeftTextFill style={{ fill: '#8E92A4', float: 'right' }}></Icon.ChatLeftTextFill></Card.Link>
+                                        <Card.Link href={`/snus-review/${snus.id}`}>
+                                            <Icon.ChatLeftTextFill style={{ fill: '#8E92A4', float: 'right' }}></Icon.ChatLeftTextFill>
+                                        </Card.Link>
                                     </Card.Body>
                                 </Card>
                             </Col>
@@ -63,14 +65,12 @@ const Snus = () => {
                     </Row>
                 </CardGroup>
             </Container>
-
-            <div>
-                <Switch>
-                    <Route exact path={["/snus-review"]} component={SnusReview} />
-                </Switch>
-            </div>
         </>
         : null
+                            
+        
+                            
+  
 }
 
 export default Snus;
