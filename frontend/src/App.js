@@ -116,19 +116,19 @@ const App = () => {
         <MDBRow className="my-4">
           <MDBCol md="4" lg="4">
             <h5 className="text-uppercase mb-4 font-weight-bold">
-              About
+              Om oss
             </h5>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-              Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum.
+              Välkommen! 
+              Med denna webbapplikation vill vi bidra med en plattform och ett forum för alla snusentusiaster runt om i världen - en plats där man kan dela snusrecept, ge tips om sina favoritsnus, diskutera nya snussorter och mycket mer. 
             </p>
             <p>
-              #
+              Registera dig för att gå med i vår gemenskap och utforska vilket snus som passar dig!
             </p>
           </MDBCol>
           <hr className="clearfix w-100 d-md-none" />
           <MDBCol md="2" lg="2" className="ml-auto">
-            <h5 className="text-uppercase mb-4 font-weight-bold">Explore</h5>
+            <h5 className="text-uppercase mb-4 font-weight-bold">Utforska</h5>
             <ul className="list-unstyled">
               <p>
                 <a href="#!">NYHETER</a>
@@ -140,15 +140,15 @@ const App = () => {
                 <a href="#!">SNUSFORUM</a>
               </p>
               <p>
-                <a href="#!">REVIEWS</a>
+                <a href="#!"SNUSRECENSIONER</a>
               </p>
             </ul>
           </MDBCol>
           <hr className="clearfix w-100 d-md-none" />
           <MDBCol md="5" lg="3">
-            <h5 className="text-uppercase mb-4 font-weight-bold">Contact</h5>
+            <h5 className="text-uppercase mb-4 font-weight-bold">Kontakt</h5>
             <p>
-              <i className="fa fa-envelope mr-3" /> info@example.com
+              <i className="fa fa-envelope mr-3" /> snusmumriken.kondtjanst@gmail.com
             </p>
             <p>
               <i className="fa fa-phone mr-3" /> + 12 123 123 12
@@ -157,7 +157,7 @@ const App = () => {
           <hr className="clearfix w-100 d-md-none" />
           <MDBCol md="2" lg="2" className="text-center">
             <h5 className="text-uppercase mb-4 font-weight-bold">
-              Follow us
+              Följ oss
             </h5>
             <div className="mt-2 ">
               <a type="button" className="btn-floating btn-small btn-fb">
