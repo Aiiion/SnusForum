@@ -140,7 +140,7 @@ const App = () => {
                 <a href="#!">SNUSFORUM</a>
               </p>
               <p>
-                <a href="#!"SNUSRECENSIONER</a>
+                <a href="#!">SNUSRECENSIONER</a>
               </p>
             </ul>
           </MDBCol>
