@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Categorys;
 use App\Models\Posts;
 
 class CategorysController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *

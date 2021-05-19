@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comments;
 
 class CommentsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +15,9 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+          $comments = Comment::all();
+
+        return ['comments' => $comments];
     }
 
     /**
@@ -23,7 +27,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -45,7 +49,8 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $comments = Comments::where('id', $id)->first();
+        return ['comments' => $comments];
     }
 
     /**
