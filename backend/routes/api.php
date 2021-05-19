@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SnusController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CategorysController;
-
+use App\Http\Controllers\FlavourController;
 
 
 /*
@@ -36,7 +36,8 @@ Route::group([
     Route::get('/categorys/{id}', [CategorysController::class, 'show']);
     Route::get('/posts', [PostsController::class, 'index']);
     Route::get('/posts/{id}', [PostsController::class, 'show']);
-
+    Route::get('/flavour', [FlavourController::class, 'index']);
+    Route::get('/flavour/{id}', [FlavourController::class, 'show']);
 });
 
 Route::get('/snuses', [SnusController::class, 'index']);

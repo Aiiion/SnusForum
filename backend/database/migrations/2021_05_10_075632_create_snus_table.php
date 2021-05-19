@@ -18,7 +18,7 @@ class CreateSnusTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->integer('strength');
-            $table->string('img_url')->nullable();
+            $table->string('img_url')->default('https://swedishmatch.cdn.storm.io/131a4ba4-41f9-4ddb-a63d-f9e6843189f7.jpg?format=png&w=250&h=250');
             $table->timestamps();
         });
     }
