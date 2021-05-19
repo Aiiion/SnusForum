@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -37,7 +38,19 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()){
+            $post = new Post();
+            $post->user_id = Auth::id();
+            $post->title = $request->title;
+            $post->body = $request->comment;
+            $post->category_id = $request->category_id;
+            $post->save();
+
+            return redirect()->back();
+        } else{
+            return 'we could not validate you, please log in and try again';
+        }
+        
     }
 
     /**

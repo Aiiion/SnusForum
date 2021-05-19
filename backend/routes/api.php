@@ -36,6 +36,7 @@ Route::group([
     Route::get('/categorys/{id}', [CategorysController::class, 'show']);
     Route::get('/posts', [PostsController::class, 'index']);
     Route::get('/posts/{id}', [PostsController::class, 'show']);
+    Route::post('/save-post', [PostsController::class, 'store']);
 
 });
 
