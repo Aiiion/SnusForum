@@ -15,9 +15,14 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Posts::all();
+        if(Auth::check()) {
+            $posts = Posts::all();
 
-        return ['posts' => $posts];
+            return ['posts' => $posts];
+        } else {
+            return ['Not authorized' => 400];
+        }
+
     }
 
     /**
@@ -48,9 +53,9 @@ class PostsController extends Controller
 
             return redirect()->back();
         } else{
-            return 'we could not validate you, please log in and try again';
+            return ['we could not validate you, please log in and try again' => 400];
         }
-        
+
     }
 
     /**
