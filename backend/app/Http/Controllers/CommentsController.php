@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
+=======
+use App\Models\Comments;
+>>>>>>> 85ca89315af11b23e22b9668662d153cc09f26af
 
 class CommentsController extends Controller
 {
@@ -15,7 +19,9 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+          $comments = Comment::all();
+
+        return ['comments' => $comments];
     }
 
     /**
@@ -25,7 +31,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -47,7 +53,8 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $comments = Comments::where('id', $id)->first();
+        return ['comments' => $comments];
     }
 
     /**

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
+=======
+use App\Models\Reviews;
+>>>>>>> 85ca89315af11b23e22b9668662d153cc09f26af
 
 class ReviewsController extends Controller
 {
@@ -15,7 +19,8 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        //
+        $Reviews = Reviews::all();
+        return ['Reviews' => $Reviews];
     }
 
     /**
@@ -47,7 +52,7 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-        //
+         $Reviews = Reviews::where('id', $id)->first();
     }
 
     /**
