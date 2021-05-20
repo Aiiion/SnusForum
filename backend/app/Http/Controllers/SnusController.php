@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Snus;
-use App\Models\Reviews;
+use App\Models\User;
 
 
 class SnusController extends Controller
@@ -59,7 +59,7 @@ class SnusController extends Controller
         $reviews = $snus->reviews();
         
         foreach ($reviews as $review){
-            $review->username = $review->users()->username;
+            $review->username = User::where('id', $review->user_id)-first();
         }
         return ['snus' => $snus, 'reviews' => $reviews];
     }
