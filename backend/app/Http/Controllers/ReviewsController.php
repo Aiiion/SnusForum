@@ -37,7 +37,19 @@ class ReviewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()){
+            $review = new Reviews();
+            $review->user_id = Auth::id();
+            $review->snus_id = $request->snus_id;
+            $review->title = $request->title;
+            $review->body = $request->body;
+            $review->rating = $request->rating;
+            $review->save();
+
+            return redirect()->back();
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
     /**
