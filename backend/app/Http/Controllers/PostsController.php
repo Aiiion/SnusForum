@@ -49,7 +49,7 @@ class PostsController extends Controller
             $post = new Post();
             $post->user_id = Auth::id();
             $post->title = $request->title;
-            $post->body = $request->comment;
+            $post->body = $request->body;
             $post->category_id = $request->category_id;
             $post->save();
 
