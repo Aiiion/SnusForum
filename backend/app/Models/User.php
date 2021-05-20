@@ -74,9 +74,6 @@ class User extends Authenticatable implements JWTSubject
     public function reviews() {
         return $this->hasMany('\App\Models\Reviews')->get();
     }
-     public function favorites() {
-        return $this->hasMany('\App\Models\Favourites')->get();
-    }
 
 
 }
