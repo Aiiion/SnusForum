@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Favourites;
+use App\Models\User;
+use App\Models\Flavours;
 
 class FavouritesController extends Controller
 {
@@ -15,7 +18,8 @@ class FavouritesController extends Controller
      */
     public function index()
     {
-        //
+         $favourites = Favourites::all();
+            return ['favourites' => $favourites ];
     }
 
     /**
@@ -35,8 +39,19 @@ class FavouritesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+      {
+         if(Auth::check()){ 
+            $favourites = new Favourites();
+            $favourites->users_id = Auth::id();
+            $favourites->flavours_id= $request->flavours_id;
+            $favourites->save();
+            $favourites->username = User::where('id',  $favourites->users_id)->first()->username;
+
+            return ['favourites' =>  $favourites];
+         } else {
+            return ['Please Login to view your Favourites' => 400]; }
+       
+
     }
 
     /**
@@ -47,8 +62,15 @@ class FavouritesController extends Controller
      */
     public function show($id)
     {
-        //
+        $favourites = Favourites::where('users_id', $id)->get();
+        foreach ($favourites as $favourite) {
+
+            $favourite->flavour = Flavours::where('id', $favourite->flavours_id)->first()->flavour_type;
+            
+        }
+        return ['favourites' => $favourites];
     }
+    
 
     /**
      * Show the form for editing the specified resource.
