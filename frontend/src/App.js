@@ -111,6 +111,22 @@ const App = () => {
         </Navbar.Collapse>
       </Navbar>
 
+      <div className="container mt-3">
+        <Switch>
+          <Route exact path={["/", "/home"]} component={Home} />
+          <Route exact path="/snus-forum" component={SnusForum} />
+          <Route exact path="/snus" component={Snus} />
+          <Route exact path="/news" component={News} />
+
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/profile" component={Profile} />
+          <Route path="/user" component={BoardUser} />
+          <Route path="/mod" component={BoardModerator} />
+          <Route path="/admin" component={BoardAdmin} />
+        </Switch>
+      </div>
+
     <MDBFooter color="mdb-color" className="font-small lighten-3 pt-4 mt-4">
       <MDBContainer className="text-center text-md-left">
         <MDBRow className="my-4">
@@ -131,13 +147,13 @@ const App = () => {
             <h5 className="text-uppercase mb-4 font-weight-bold">Utforska</h5>
             <ul className="list-unstyled">
               <p>
-                <a href="#!">NYHETER</a>
+                <a href={"/news"}>NYHETER</a>
               </p>
               <p>
-                <a href="#!">SNUS</a>
+                <a href={"/snus"}>SNUS</a>
               </p>
               <p>
-                <a href="#!">SNUSFORUM</a>
+                <a href={"/snus-forum"}>SNUSFORUM</a>
               </p>
               <p>
                 <a href="#!">SNUSRECENSIONER</a>
@@ -160,16 +176,16 @@ const App = () => {
               Följ oss
             </h5>
             <div className="mt-2 ">
-              <a type="button" className="btn-floating btn-small btn-fb">
+              <a type="button" href="#!" className="btn-floating btn-small btn-fb">
                 <i className="fab fa-facebook-f" />
               </a>
-              <a type="button" className="btn-floating btn-small btn-tw">
+              <a type="button" href="#!" className="btn-floating btn-small btn-tw">
                 <i className="fab fa-twitter" />
               </a>
-              <a type="button" className="btn-floating btn-small btn-gplus">
+              <a type="button" href="#!" className="btn-floating btn-small btn-gplus">
                 <i className="fab fa-google-plus" />
               </a>
-              <a type="button" className="btn-floating btn-small btn-dribbble">
+              <a type="button" href="https://github.com/chas-academy/u10-business-idea-snusmumriken-barn" className="btn-floating btn-small btn-github">
                 <i className="fab fa-github" />
               </a>
             </div>
@@ -185,21 +201,6 @@ const App = () => {
       </div>
     </MDBFooter>
 
-      <div className="container mt-3">
-        <Switch>
-          <Route exact path={["/", "/home"]} component={Home} />
-          <Route exact path="/snus-forum" component={SnusForum} />
-          <Route exact path="/snus" component={Snus} />
-          <Route exact path="/news" component={News} />
-
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/profile" component={Profile} />
-          <Route path="/user" component={BoardUser} />
-          <Route path="/mod" component={BoardModerator} />
-          <Route path="/admin" component={BoardAdmin} />
-        </Switch>
-      </div>
     </div>
   );
 };
