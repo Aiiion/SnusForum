@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posts;
-use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -46,7 +45,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         if(Auth::check()){
-            $post = new Post();
+            $post = new Posts();
             $post->user_id = Auth::id();
             $post->title = $request->title;
             $post->body = $request->body;
