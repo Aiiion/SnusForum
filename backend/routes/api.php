@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SnusController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CategorysController;
-use App\Http\Controllers\FlavourController;
+use App\Http\Controllers\FlavoursController;
 
 
 /*
@@ -40,8 +40,8 @@ Route::group([
     Route::get('/comments/{id}', [CommentsController::class, 'show']);  //id === user_id?
     Route::get('/reviews', [ReviewsController::class, 'index']);
     Route::get('/reviews/{id}', [ReviewsController::class, 'show']);
-    Route::get('/flavours', [FlavourController::class, 'index']);
-    Route::get('/flavours/{id}', [FlavourController::class, 'show']);
+    Route::get('/flavours', [FlavoursController::class, 'index']);
+    Route::get('/flavours/{id}', [FlavoursController::class, 'show']);
 
     Route::post('/save-post', [PostsController::class, 'store']);
 
