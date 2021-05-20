@@ -44,6 +44,7 @@ Route::group([
     Route::get('/flavours/{id}', [FlavoursController::class, 'show']);
 
     Route::post('/store-posts', [PostsController::class, 'store']);
+    Route::post('/delete-post/{id}', [PostsController::class, 'destroy']);
     Route::post('/store-reviews', [ReviewsController::class, 'store']);
 
 

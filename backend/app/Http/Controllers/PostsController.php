@@ -70,10 +70,14 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Posts::where('id', $id)->first();
-        $categorys = $post->categorys();
-        $comments = $post->comments();
-        return ['post' => $post, 'categorys' => $categorys, 'comments' => $comments];
+        if(Auth::check()){
+            $post = Posts::where('id', $id)->first();
+            $categorys = $post->categorys();
+            $comments = $post->comments();
+            return ['post' => $post, 'categorys' => $categorys, 'comments' => $comments];
+        }else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
     /**
@@ -107,6 +111,12 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $post = Posts::where('id', $id)->first();
+            $post->delete();
+            return 'The post was deleted';
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 }
