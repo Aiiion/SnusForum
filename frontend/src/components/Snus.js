@@ -42,15 +42,14 @@ const Snus = ({ match }) => {
                         {snus.snuses.map((snus) => (
                             <Col sm="6" md="4" lg="4" >
                                 <Card>
-
                                     <Card.Body style={{ backgroundColor: '#F2F3F8' }}>
                                         <Card.Img variant="top" src={snus.img_url} />
                                     </Card.Body>
-                                    <Card.Title>{snus.name}</Card.Title>
+                                    <Card.Title style={{ marginTop: '10px'}}>{snus.name}</Card.Title>
                                     <ListGroup className="list-group-flush">
                                         <ListGroupItem>Styrka: {snus.strength}</ListGroupItem>
                                         <ListGroupItem>Typ: {snus.type}</ListGroupItem>
-                                        <ListGroupItem>Format: {snus.id}</ListGroupItem>
+                                        {/* <ListGroupItem>Format: {snus.id}</ListGroupItem> */}
                                         <ListGroupItem>Smak: {snus.flavour_id}</ListGroupItem>
                                     </ListGroup>
                                     <Card.Body>
