@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class FavouritesController extends Controller
 {
 
@@ -15,7 +16,9 @@ class FavouritesController extends Controller
      */
     public function index()
     {
-        //
+        $favourites = Favourites::all();
+
+        return ['favourites' => $favourites];
     }
 
     /**
@@ -47,7 +50,13 @@ class FavouritesController extends Controller
      */
     public function show($id)
     {
-        //
+        $favourites = Favourites::where('users_id', $id)->get();
+        foreach ($favourites as $favourite) {
+
+            $favourite->flavour = Flavours::where('id', $favourite->flavours_id)->first()->flavour_type;
+            
+        }
+        return ['favourites' => $favourites];
     }
 
     /**
@@ -58,7 +67,11 @@ class FavouritesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $favouritesExists = Favourites::where('user_id', $id)->first();
+      
+       /*  if($favouritesExists->fails()){
+            return $err
+        } els */
     }
 
     /**
