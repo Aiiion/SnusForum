@@ -51,9 +51,9 @@ class PostsController extends Controller
             $post->user_id = Auth::id();
             $post->title = $request->title;
             $post->body = $request->body;
-            $post->category_id = $request->category_id;
+            $post->categorys_id = $request->categorys_id;
             $post->save();
-            $post->username = User::where('id', $post->user_id)->first()->username;
+            $post->username = User::where('id', $post->users_id)->first()->username;
 
             return ['post' => $post];
         } else {

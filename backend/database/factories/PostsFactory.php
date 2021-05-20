@@ -26,8 +26,8 @@ class PostsFactory extends Factory
         return [
             'title' => $this->faker->text($maxNbChars = 10),
             'body' => $this->faker->text($maxNbChars = 100),
-            'user_id' => \App\Models\User::inRandomOrder()->value('id'),
-            'category_id' => \App\Models\Categorys::inRandomOrder()->value('id'),
+            'users_id' => \App\Models\User::inRandomOrder()->value('id'),
+            'categorys_id' => \App\Models\Categorys::inRandomOrder()->value('id'),
         ];
     }
 }

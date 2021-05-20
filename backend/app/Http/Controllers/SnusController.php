@@ -59,7 +59,7 @@ class SnusController extends Controller
         $reviews = $snus->reviews();
 
         foreach ($reviews as $review){
-            $review->username = User::where('id', $review->user_id)->first()->username;
+            $review->username = User::where('id', $review->users_id)->first()->username;
         }
         return ['snus' => $snus, 'reviews' => $reviews];
     }

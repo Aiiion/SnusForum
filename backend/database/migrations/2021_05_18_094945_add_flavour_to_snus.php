@@ -14,7 +14,7 @@ class AddFlavourToSnus extends Migration
     public function up()
     {
         Schema::table('snuses', function (Blueprint $table) {
-            $table->foreignId('flavour_id')->constrained()->onDelete('cascade');
+            $table->foreignId('flavours_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ class AddFlavourToSnus extends Migration
     public function down()
     {
         Schema::table('snuses', function (Blueprint $table) {
-            $table->dropColumn('flavour_id');
+            $table->dropColumn('flavours_id');
         });
     }
 }

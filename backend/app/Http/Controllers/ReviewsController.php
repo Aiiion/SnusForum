@@ -17,8 +17,8 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        $Reviews = Reviews::all();
-        return ['Reviews' => $Reviews];
+        $reviews = Reviews::all();
+        return ['reviews' => $reviews];
     }
 
     /**
@@ -41,13 +41,13 @@ class ReviewsController extends Controller
     {
         if(Auth::check()){
             $review = new Reviews();
-            $review->user_id = Auth::id();
-            $review->snus_id = $request->snus_id;
+            $review->users_id = Auth::id();
+            $review->snuses_id = $request->snuses_id;
             $review->title = $request->title;
             $review->body = $request->body;
             $review->rating = $request->rating;
             $review->save();
-            $review->username = User::where('id', $review->user_id)->first()->username;
+            $review->username = User::where('id', $review->users_id)->first()->username;
 
             return ['review' => $review];
         } else{
@@ -63,7 +63,10 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-         $Reviews = Reviews::where('id', $id)->first();
+         $review = Reviews::where('id', $id)->first();
+         $review->username = User::where('id', $review->users_id)->first()->username;
+
+         return ['review' => $review];
     }
 
     /**
