@@ -53,9 +53,11 @@ class SnusController extends Controller
     public function show($id)
     {
         $snus = Snus::where('id', $id)->first();
-        $avgRating = $snus->avgRating();
+        $snus->avgRating = $snus->avgRating();
         $reviews = $snus->reviews();
-        return ['snus' => $snus, 'reviews' => $reviews, 'avgRating' => $avgRating];
+        $users = $reviews->users()->username;
+        return ['snus' => $snus, 'reviews' => $reviews, 'users' => $users];
+    }
     }
 
     /**
