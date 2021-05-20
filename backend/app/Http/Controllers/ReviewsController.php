@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Reviews;
+use App\Models\User;
 
 class ReviewsController extends Controller
 {
@@ -45,8 +47,9 @@ class ReviewsController extends Controller
             $review->body = $request->body;
             $review->rating = $request->rating;
             $review->save();
+            $review->username = User::where('id', $review->user_id)->first()->username;
 
-            return redirect()->back();
+            return ['review' => $review];
         } else{
             return ['we could not validate you, please log in and try again' => 400];
         }
