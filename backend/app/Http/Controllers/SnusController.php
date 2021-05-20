@@ -57,13 +57,13 @@ class SnusController extends Controller
         $snus = Snus::where('id', $id)->first();
         $snus->avgRating = $snus->avgRating();
         $reviews = $snus->reviews();
-        
+
         foreach ($reviews as $review){
-            $review->username = User::where('id', $review->user_id)-first();
+            $review->username = User::where('id', $review->user_id)->first()->username;
         }
         return ['snus' => $snus, 'reviews' => $reviews];
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.
