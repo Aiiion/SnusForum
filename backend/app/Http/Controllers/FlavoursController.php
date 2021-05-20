@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD:backend/app/Http/Controllers/FlavourController.php
 use Illuminate\Support\Facades\Auth;
-use App\Models\Flavour;
-=======
 use App\Models\Flavours;
->>>>>>> 85ca89315af11b23e22b9668662d153cc09f26af:backend/app/Http/Controllers/FlavoursController.php
 
 class FlavoursController extends Controller
 {
@@ -20,24 +16,7 @@ class FlavoursController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD:backend/app/Http/Controllers/FlavourController.php
-        $flavour = Flavour::all();
-=======
-        $flavours = Flavours::all();
-
-        return ['flavours' => $flavours];
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
->>>>>>> 85ca89315af11b23e22b9668662d153cc09f26af:backend/app/Http/Controllers/FlavoursController.php
+        $flavour = Flavours::all();
 
         return ['flavour' => $flavour];
     }
@@ -50,20 +29,12 @@ class FlavoursController extends Controller
      */
     public function show($id)
     {
-<<<<<<< HEAD:backend/app/Http/Controllers/FlavourController.php
-        $flavour = Flavour::where('id', $id)->first();
-=======
-        $flavours = Flavours::where('id', $id)->first();
-    }
->>>>>>> 85ca89315af11b23e22b9668662d153cc09f26af:backend/app/Http/Controllers/FlavoursController.php
+        $flavour = Flavours::where('id', $id)->first();
 
         return ['flavour' => $flavour];
     }
 
 
-<<<<<<< HEAD:backend/app/Http/Controllers/FlavourController.php
-}
-=======
     /**
      * Remove the specified resource from storage.
      *
@@ -75,4 +46,3 @@ class FlavoursController extends Controller
         //
     }
 }
->>>>>>> 85ca89315af11b23e22b9668662d153cc09f26af:backend/app/Http/Controllers/FlavoursController.php
