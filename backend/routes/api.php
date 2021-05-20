@@ -7,7 +7,7 @@ use App\Http\Controllers\SnusController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CategorysController;
 use App\Http\Controllers\FlavoursController;
-
+use App\Http\Controllers\ReviewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,9 @@ Route::group([
     Route::get('/reviews/{id}', [ReviewsController::class, 'show']);
     Route::get('/flavours', [FlavoursController::class, 'index']);
     Route::get('/flavours/{id}', [FlavoursController::class, 'show']);
-    Route::post('/save-post', [PostsController::class, 'store']);
+
+    Route::post('/store-posts', [PostsController::class, 'store']);
+    Route::post('/store-reviews', [ReviewsController::class, 'store']);
 
 
 });

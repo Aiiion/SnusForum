@@ -9,7 +9,7 @@ class Posts extends Model
 {
     use HasFactory;
 
-    public function user(){
+    public function users(){
         return $this->belongsTo('\App\Models\User')->first();
     }
 

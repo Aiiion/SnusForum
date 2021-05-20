@@ -25,8 +25,8 @@ class CommentsFactory extends Factory
     {
         return [
             'body' => $this->faker->text($maxNbChars = 50),
-            'user_id' => \App\Models\User::inRandomOrder()->value('id'),
-            'post_id' => \App\Models\Posts::inRandomOrder()->value('id'),
+            'users_id' => \App\Models\User::inRandomOrder()->value('id'),
+            'posts_id' => \App\Models\Posts::inRandomOrder()->value('id'),
         ];
     }
 }

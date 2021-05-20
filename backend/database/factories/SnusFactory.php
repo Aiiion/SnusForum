@@ -26,7 +26,11 @@ class SnusFactory extends Factory
             'name' => $this->faker->cityPrefix(),
             'type' => $this->faker->state(),
             'strength' => $this->faker->numberBetween($min = 0, $max = 5),
+<<<<<<< HEAD
             'flavour_id' => \App\Models\Flavours::inRandomOrder()->value('id'),
+=======
+            'flavours_id' => \App\Models\Flavours::inRandomOrder()->value('id'),
+>>>>>>> sjukstugan
         ];
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Snus;
+use App\Models\User;
+
 
 class SnusController extends Controller
 {
@@ -53,10 +55,15 @@ class SnusController extends Controller
     public function show($id)
     {
         $snus = Snus::where('id', $id)->first();
-        $avgRating = $snus->avgRating();
+        $snus->avgRating = $snus->avgRating();
         $reviews = $snus->reviews();
-        return ['snus' => $snus, 'reviews' => $reviews, 'avgRating' => $avgRating];
+
+        foreach ($reviews as $review){
+            $review->username = User::where('id', $review->users_id)->first()->username;
+        }
+        return ['snus' => $snus, 'reviews' => $reviews];
     }
+
 
     /**
      * Show the form for editing the specified resource.

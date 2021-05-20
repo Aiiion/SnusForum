@@ -52,7 +52,7 @@ class CategorysController extends Controller
     public function show($id)
     {
         $category = Categorys::where('id', $id)->first();
-        $posts = Posts::where('category_id', $id)->get();
+        $posts = Posts::where('categorys_id', $id)->get();
         return ['category' => $category, 'posts' => $posts];
     }
 
