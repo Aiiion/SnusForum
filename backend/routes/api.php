@@ -42,7 +42,6 @@ Route::group([
     Route::get('/reviews/{id}', [ReviewsController::class, 'show']);
     Route::get('/flavours', [FlavoursController::class, 'index']);
     Route::get('/flavours/{id}', [FlavoursController::class, 'show']);
-
     Route::post('/save-post', [PostsController::class, 'store']);
 
 

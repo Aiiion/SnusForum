@@ -30,7 +30,7 @@ class FlavoursController extends Controller
     public function show($id)
     {
         $flavours = Flavours::where('id', $id)->first();
-        return ['flavour' => $flavour];
+        return ['flavours' => $flavours];
     }
 
 
