@@ -13,7 +13,7 @@ class Reviews extends Model
         $this->belongsTo('\App\Models\Snus')->first();
     }
 
-    public function user(){
+    public function users(){
         $this->belongsTo('\App\Models\User')->first();
     }
 
