@@ -100,6 +100,12 @@ class ReviewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $review = Reviews::where('id', $id)->first();
+            $review->delete();
+            return 'The review was deleted';
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 }

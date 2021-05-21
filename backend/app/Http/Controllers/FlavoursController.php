@@ -31,7 +31,7 @@ class FlavoursController extends Controller
     public function show($id)
     {
         $flavour = Flavours::where('id', $id)->first();
-
+        // Skicka med alla snus på flavours
         return ['flavour' => $flavour];
     }
 

@@ -42,12 +42,15 @@ Route::group([
     Route::get('/reviews/{id}', [ReviewsController::class, 'show']);
     Route::get('/flavours', [FlavoursController::class, 'index']);
     Route::get('/flavours/{id}', [FlavoursController::class, 'show']);
-    Route::post('/store-posts', [PostsController::class, 'store']);
-    Route::post('/delete-post/{id}', [PostsController::class, 'destroy']);
-    Route::post('/store-reviews', [ReviewsController::class, 'store']);
     Route::get('/favourites/{id}', [FavouritesController::class, 'show']);
     Route::get('/favourites', [FavouritesController::class, 'index']);
+
+    Route::post('/store-posts', [PostsController::class, 'store']);
+    Route::post('/store-reviews', [ReviewsController::class, 'store']);
     Route::post('/store-favourites', [FavouritesController::class, 'store']);
+
+    Route::post('/delete-post/{id}', [PostsController::class, 'destroy']);
+    Route::post('/delete-reviews/{id}', [ReviewsController::class, 'destroy']);
 
 
 });
