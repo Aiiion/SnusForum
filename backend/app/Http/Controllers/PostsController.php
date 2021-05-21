@@ -20,7 +20,9 @@ class PostsController extends Controller
     {
         if(Auth::check()) {
             $posts = Posts::all();
-
+            foreach($posts as $posts){
+                $post->username = User::where('id', $post->users_id)->first()->username;
+            }
             return ['posts' => $posts];
         } else {
             return ['Not authorized' => 400];
@@ -72,6 +74,7 @@ class PostsController extends Controller
     {
         if(Auth::check()){
             $post = Posts::where('id', $id)->first();
+            $post->username = User::where('id', $post->users_id)->first()->username;
             $categorys = $post->categorys();
             $comments = $post->comments();
             return ['post' => $post, 'categorys' => $categorys, 'comments' => $comments];

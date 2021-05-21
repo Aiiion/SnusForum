@@ -20,7 +20,9 @@ class CommentsController extends Controller
     {
         if(Auth::check()){
             $comments = Comment::all();
-
+            foreach($comments as $comment){
+                $comment->username = User::where('id', $comment->users_id)->first()->username;
+            }
             return ['comments' => $comments];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
@@ -70,6 +72,7 @@ class CommentsController extends Controller
     {
         if (Auth::check()) {
             $comments = Comments::where('id', $id)->first();
+            $comments->username = User::where('id', $comments->users_id)->first()->username;
             return ['comments' => $comments];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
