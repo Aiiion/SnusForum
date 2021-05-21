@@ -8,7 +8,7 @@ import * as Icon from 'react-bootstrap-icons';
 
 import SnusReviews from "./SnusReviews";
 
-const Snus = ({ match }) => {
+const Snus = () => {
 
     const [snus, setSnus] = useState("");
 
@@ -19,7 +19,8 @@ const Snus = ({ match }) => {
                 setSnus(response.data)
             })
             .catch(e => {
-                this.errors.push(e)
+                console.log("Error");
+                // this.errors.push(e)
             })
     }, []);
 
