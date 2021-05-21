@@ -114,7 +114,7 @@ class PostsController extends Controller
         if(Auth::check()){
             $post = Posts::where('id', $id)->first();
             $post->delete();
-            return 'The post was deleted';
+            return 'The post has been deleted';
         } else{
             return ['we could not validate you, please log in and try again' => 400];
         }

@@ -19,11 +19,16 @@ class SnusController extends Controller
      */
     public function index()
     {
-        $snuses = Snus::all();
-        // foreach ($snuses as $snus){
-        //     $snus->avgRating = $snus->avgRating();
-        // } SAVE TO LATER!!!
-        return ['snuses' => $snuses];
+        if (Auth::check()) {
+            $snuses = Snus::all();
+            // foreach ($snuses as $snus){
+            //     $snus->avgRating = $snus->avgRating();
+            // } SAVE TO LATER!!!
+            return ['snuses' => $snuses];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**
@@ -55,14 +60,19 @@ class SnusController extends Controller
      */
     public function show($id)
     {
-        $snus = Snus::where('id', $id)->first();
-        // $snus->avgRating = $snus->avgRating(); save to later!!!
-        $reviews = Reviews::where('snuses_id', $id)->get();
+        if (Auth::check()) {
+            $snus = Snus::where('id', $id)->first();
+            // $snus->avgRating = $snus->avgRating(); save to later!!!
+            $reviews = Reviews::where('snuses_id', $id)->get();
 
-        foreach ($reviews as $review){
-            $review->username = User::where('id', $review->users_id)->first()->username;
+            foreach ($reviews as $review){
+                $review->username = User::where('id', $review->users_id)->first()->username;
+            }
+            return ['snus' => $snus, 'reviews' => $reviews];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
         }
-        return ['snus' => $snus, 'reviews' => $reviews];
+
     }
 
 

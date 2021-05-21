@@ -18,8 +18,13 @@ class FavouritesController extends Controller
      */
     public function index()
     {
-         $favourites = Favourites::all();
+        if (Auth::check()) {
+            $favourites = Favourites::all();
             return ['favourites' => $favourites ];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**
@@ -40,7 +45,7 @@ class FavouritesController extends Controller
      */
     public function store(Request $request)
       {
-         if(Auth::check()){ 
+         if(Auth::check()){
             $favourites = new Favourites();
             $favourites->users_id = Auth::id();
             $favourites->flavours_id= $request->flavours_id;
@@ -49,8 +54,9 @@ class FavouritesController extends Controller
 
             return ['favourites' =>  $favourites];
          } else {
-            return ['Please Login to view your Favourites' => 400]; }
-       
+            return ['Please Login to view your Favourites' => 400];
+        }
+
 
     }
 
@@ -62,15 +68,20 @@ class FavouritesController extends Controller
      */
     public function show($id)
     {
-        $favourites = Favourites::where('users_id', $id)->get();
-        foreach ($favourites as $favourite) {
+        if (Auth::check()) {
+            $favourites = Favourites::where('users_id', $id)->get();
+            foreach ($favourites as $favourite) {
 
             $favourite->flavour = Flavours::where('id', $favourite->flavours_id)->first()->flavour_type;
-            
+
+            }
+            return ['favourites' => $favourites];
+        } else {
+            return ['Please Login to view your Favourites' => 400];
         }
-        return ['favourites' => $favourites];
+
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -103,6 +114,12 @@ class FavouritesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $favourite = Favourites::where('id', $id)->first();
+            $favourite->delete();
+            return 'The favourite has been deleted';
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 }
