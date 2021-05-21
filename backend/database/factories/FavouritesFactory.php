@@ -20,6 +20,7 @@ class FavouritesFactory extends Factory
      * @return array
      */
     public function definition()
+    {
         return [
             'users_id' => \App\Models\User::inRandomOrder()->value('id'),
            'flavours_id' => \App\Models\Flavours::inRandomOrder()->value('id'),
