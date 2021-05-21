@@ -77,6 +77,9 @@ class PostsController extends Controller
             $post->username = User::where('id', $post->users_id)->first()->username;
             $categorys = $post->categorys();
             $comments = $post->comments();
+            foreach($comments as $comment){
+                $comment->username = User::where('id', $comment->users_id)->first()->username;
+            }
             return ['post' => $post, 'categorys' => $categorys, 'comments' => $comments];
         }else{
             return ['we could not validate you, please log in and try again' => 400];
