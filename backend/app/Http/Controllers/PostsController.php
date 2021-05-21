@@ -20,7 +20,7 @@ class PostsController extends Controller
     {
         if(Auth::check()) {
             $posts = Posts::all();
-            foreach($posts as $posts){
+            foreach($posts as $post){
                 $post->username = User::where('id', $post->users_id)->first()->username;
             }
             return ['posts' => $posts];
