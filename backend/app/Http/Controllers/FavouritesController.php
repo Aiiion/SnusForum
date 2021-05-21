@@ -117,7 +117,7 @@ class FavouritesController extends Controller
         if(Auth::check()){
             $favourite = Favourites::where('id', $id)->first();
             $favourite->delete();
-            return 'The comment has been deleted';
+            return 'The favourite has been deleted';
         } else{
             return ['we could not validate you, please log in and try again' => 400];
         }
