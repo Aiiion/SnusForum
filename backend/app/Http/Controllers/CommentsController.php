@@ -19,7 +19,7 @@ class CommentsController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $comments = Comment::all();
+            $comments = Comments::all();
 
             return ['comments' => $comments];
         } else {
