@@ -19,6 +19,9 @@ class ReviewsController extends Controller
     {
         if (Auth::check()) {
             $reviews = Reviews::all();
+            foreach($reviews as $review){
+                $review->username = User::where('id', $review->users_id)->first()->username;
+            }
             return ['reviews' => $reviews];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
