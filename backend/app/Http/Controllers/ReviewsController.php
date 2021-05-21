@@ -103,7 +103,7 @@ class ReviewsController extends Controller
         if(Auth::check()){
             $review = Reviews::where('id', $id)->first();
             $review->delete();
-            return 'The review was deleted';
+            return 'The review has been deleted';
         } else{
             return ['we could not validate you, please log in and try again' => 400];
         }

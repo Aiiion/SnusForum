@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Comments;
+use App\Models\User;
 
 class CommentsController extends Controller
 {
@@ -27,7 +30,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -38,7 +41,18 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()){
+            $comment = new Comments();
+            $comment->user_id = Auth::id();
+            $comment->body = $request->body;
+            $comment->posts_id = $request->posts_id;
+            $comment->save();
+            $comment->username = User::where('id', $comment->users_id)->first()->username;
+
+            return ['post' => $post];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
     /**
@@ -84,6 +98,12 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $comment = Comments::where('id', $id)->first();
+            $comment->delete();
+            return 'The comment has been deleted';
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 }

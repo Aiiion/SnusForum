@@ -9,6 +9,8 @@ use App\Http\Controllers\CategorysController;
 use App\Http\Controllers\FlavoursController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\FavouritesController;
+use App\Http\Controllers\CommentsController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -48,9 +50,13 @@ Route::group([
     Route::post('/store-posts', [PostsController::class, 'store']);
     Route::post('/store-reviews', [ReviewsController::class, 'store']);
     Route::post('/store-favourites', [FavouritesController::class, 'store']);
+    Route::post('/store-comments', [CommentsController::class, 'store']);
 
     Route::post('/delete-post/{id}', [PostsController::class, 'destroy']);
     Route::post('/delete-reviews/{id}', [ReviewsController::class, 'destroy']);
+    Route::post('/delete-favourites/{id}', [FavouritesController::class, 'destroy']);
+    Route::post('/delete-comments/{id}', [CommentsController::class, 'destroy']);
+
 
 
 });
