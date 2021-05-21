@@ -48,7 +48,7 @@ class CommentsController extends Controller
     {
         if(Auth::check()){
             $comment = new Comments();
-            $comment->user_id = Auth::id();
+            $comment->users_id = Auth::id();
             $comment->body = $request->body;
             $comment->posts_id = $request->posts_id;
             $comment->save();

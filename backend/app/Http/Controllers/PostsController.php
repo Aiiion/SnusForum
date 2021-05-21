@@ -48,7 +48,7 @@ class PostsController extends Controller
     {
         if(Auth::check()){
             $post = new Posts();
-            $post->user_id = Auth::id();
+            $post->users_id = Auth::id();
             $post->title = $request->title;
             $post->body = $request->body;
             $post->categorys_id = $request->categorys_id;
