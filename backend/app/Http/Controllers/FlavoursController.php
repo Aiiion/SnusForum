@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Flavours;
+use App\Models\Snus;
 
 class FlavoursController extends Controller
 {
@@ -23,7 +24,6 @@ class FlavoursController extends Controller
         } else {
             return ['we could not validate you, please log in and try again' => 400];
         }
-
     }
 
 
@@ -37,12 +37,12 @@ class FlavoursController extends Controller
     {
         if (Auth::check()) {
             $flavour = Flavours::where('id', $id)->first();
-            // Skicka med alla snus på flavours
-            return ['flavour' => $flavour];
+            $snuses = Snus::where('flavours_id', $id)->get();
+
+            return ['flavour' => $flavour, 'snuses' => $snuses];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
         }
-
     }
 
 
