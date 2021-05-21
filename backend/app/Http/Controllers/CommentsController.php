@@ -18,9 +18,14 @@ class CommentsController extends Controller
      */
     public function index()
     {
-          $comments = Comment::all();
+        if(Auth::check()){
+            $comments = Comment::all();
 
-        return ['comments' => $comments];
+            return ['comments' => $comments];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**
@@ -63,8 +68,13 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        $comments = Comments::where('id', $id)->first();
-        return ['comments' => $comments];
+        if (Auth::check()) {
+            $comments = Comments::where('id', $id)->first();
+            return ['comments' => $comments];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**

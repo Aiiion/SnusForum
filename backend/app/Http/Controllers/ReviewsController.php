@@ -17,8 +17,13 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        $reviews = Reviews::all();
-        return ['reviews' => $reviews];
+        if (Auth::check()) {
+            $reviews = Reviews::all();
+            return ['reviews' => $reviews];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**
@@ -63,10 +68,15 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-         $review = Reviews::where('id', $id)->first();
-         $review->username = User::where('id', $review->users_id)->first()->username;
+        if (Auth::check()) {
+            $review = Reviews::where('id', $id)->first();
+            $review->username = User::where('id', $review->users_id)->first()->username;
 
-         return ['review' => $review];
+            return ['review' => $review];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**

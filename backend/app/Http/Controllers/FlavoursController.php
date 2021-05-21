@@ -16,9 +16,14 @@ class FlavoursController extends Controller
      */
     public function index()
     {
-        $flavours = Flavours::all();
+        if (Auth::check()) {
+            $flavours = Flavours::all();
 
-        return ['flavours' => $flavours];
+            return ['flavours' => $flavours];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
 
@@ -30,9 +35,14 @@ class FlavoursController extends Controller
      */
     public function show($id)
     {
-        $flavour = Flavours::where('id', $id)->first();
-        // Skicka med alla snus på flavours
-        return ['flavour' => $flavour];
+        if (Auth::check()) {
+            $flavour = Flavours::where('id', $id)->first();
+            // Skicka med alla snus på flavours
+            return ['flavour' => $flavour];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
 

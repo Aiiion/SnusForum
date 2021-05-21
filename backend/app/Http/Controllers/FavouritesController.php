@@ -18,8 +18,13 @@ class FavouritesController extends Controller
      */
     public function index()
     {
-         $favourites = Favourites::all();
+        if (Auth::check()) {
+            $favourites = Favourites::all();
             return ['favourites' => $favourites ];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**
@@ -49,7 +54,8 @@ class FavouritesController extends Controller
 
             return ['favourites' =>  $favourites];
          } else {
-            return ['Please Login to view your Favourites' => 400]; }
+            return ['Please Login to view your Favourites' => 400];
+        }
 
 
     }
@@ -62,13 +68,18 @@ class FavouritesController extends Controller
      */
     public function show($id)
     {
-        $favourites = Favourites::where('users_id', $id)->get();
-        foreach ($favourites as $favourite) {
+        if (Auth::check()) {
+            $favourites = Favourites::where('users_id', $id)->get();
+            foreach ($favourites as $favourite) {
 
             $favourite->flavour = Flavours::where('id', $favourite->flavours_id)->first()->flavour_type;
 
+            }
+            return ['favourites' => $favourites];
+        } else {
+            return ['Please Login to view your Favourites' => 400];
         }
-        return ['favourites' => $favourites];
+
     }
 
 
