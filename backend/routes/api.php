@@ -52,7 +52,7 @@ Route::group([
     Route::post('/store-favourites', [FavouritesController::class, 'store']);
     Route::post('/store-comments', [CommentsController::class, 'store']);
 
-    Route::post('/delete-post/{id}', [PostsController::class, 'destroy']);
+    Route::post('/delete-posts/{id}', [PostsController::class, 'destroy']);
     Route::post('/delete-reviews/{id}', [ReviewsController::class, 'destroy']);
     Route::post('/delete-favourites/{id}', [FavouritesController::class, 'destroy']);
     Route::post('/delete-comments/{id}', [CommentsController::class, 'destroy']);
