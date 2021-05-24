@@ -56,6 +56,8 @@ const SnusReviews = () => {
     }
     // FIXA POST REQUESTEN PÅ REVIEWS - END
 
+    console.log(snusData);
+
     return snusData ? 
         <>
             <div>
@@ -88,7 +90,7 @@ const SnusReviews = () => {
                                 {snusData.reviews.map((review) => (
                                 <ListGroup className="list-group-flush">
                                     <ListGroupItem>
-                                        {review.user_id} - {moment(review.created_at).format("YYYY-MM-DD")} 
+                                        {review.username} - {moment(review.created_at).format("YYYY-MM-DD")} 
                                         <p>Betyg: {review.rating}</p>
                                         <p>{review.body}</p>
                                     </ListGroupItem>                                

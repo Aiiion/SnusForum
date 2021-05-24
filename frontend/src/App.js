@@ -74,7 +74,7 @@ const App = () => {
             )}
 
             {currentUser && (
-              <Nav.Link href={"/user"} className="nav-link">
+              <Nav.Link href={"/profile"} className="nav-link">
                 User
               </Nav.Link>
             )}
@@ -123,9 +123,9 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
-          <Route path="/user" component={BoardUser} />
+          {/* <Route path="/user" component={BoardUser} />
           <Route path="/mod" component={BoardModerator} />
-          <Route path="/admin" component={BoardAdmin} />
+          <Route path="/admin" component={BoardAdmin} /> */}
         </Switch>
       </div>
     </div>
