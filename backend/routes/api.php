@@ -10,6 +10,7 @@ use App\Http\Controllers\FlavoursController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\FavouritesController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,6 @@ Route::group([
     Route::post('/delete-favourites/{id}', [FavouritesController::class, 'destroy']);
     Route::post('/delete-comments/{id}', [CommentsController::class, 'destroy']);
 
-
+    Route::get('/search', [SearchController::class, 'search']);
 
 });
