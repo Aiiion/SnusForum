@@ -17,8 +17,16 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        $reviews = Reviews::all();
-        return ['reviews' => $reviews];
+        if (Auth::check()) {
+            $reviews = Reviews::all();
+            foreach($reviews as $review){
+                $review->username = User::where('id', $review->users_id)->first()->username;
+            }
+            return ['reviews' => $reviews];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**
@@ -63,10 +71,15 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-         $review = Reviews::where('id', $id)->first();
-         $review->username = User::where('id', $review->users_id)->first()->username;
+        if (Auth::check()) {
+            $review = Reviews::where('id', $id)->first();
+            $review->username = User::where('id', $review->users_id)->first()->username;
 
-         return ['review' => $review];
+            return ['review' => $review];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**
@@ -100,6 +113,12 @@ class ReviewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $review = Reviews::where('id', $id)->first();
+            $review->delete();
+            return 'The review has been deleted';
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 }

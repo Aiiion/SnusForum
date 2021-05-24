@@ -9,6 +9,8 @@ use App\Http\Controllers\CategorysController;
 use App\Http\Controllers\FlavoursController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\FavouritesController;
+use App\Http\Controllers\CommentsController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -42,12 +44,19 @@ Route::group([
     Route::get('/reviews/{id}', [ReviewsController::class, 'show']);
     Route::get('/flavours', [FlavoursController::class, 'index']);
     Route::get('/flavours/{id}', [FlavoursController::class, 'show']);
-    Route::post('/store-posts', [PostsController::class, 'store']);
-    Route::post('/delete-post/{id}', [PostsController::class, 'destroy']);
-    Route::post('/store-reviews', [ReviewsController::class, 'store']);
     Route::get('/favourites/{id}', [FavouritesController::class, 'show']);
     Route::get('/favourites', [FavouritesController::class, 'index']);
+
+    Route::post('/store-posts', [PostsController::class, 'store']);
+    Route::post('/store-reviews', [ReviewsController::class, 'store']);
     Route::post('/store-favourites', [FavouritesController::class, 'store']);
+    Route::post('/store-comments', [CommentsController::class, 'store']);
+
+    Route::post('/delete-posts/{id}', [PostsController::class, 'destroy']);
+    Route::post('/delete-reviews/{id}', [ReviewsController::class, 'destroy']);
+    Route::post('/delete-favourites/{id}', [FavouritesController::class, 'destroy']);
+    Route::post('/delete-comments/{id}', [CommentsController::class, 'destroy']);
+
 
 
 });

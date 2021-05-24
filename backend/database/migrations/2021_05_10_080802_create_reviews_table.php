@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->foreignId('users_id')->constrained()->onDelete('cascade');
             $table->foreignId('snuses_id')->constrained()->onDelete('cascade');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->longText('body');
             $table->integer('rating');
             $table->timestamps();
