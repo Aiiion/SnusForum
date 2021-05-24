@@ -15,7 +15,7 @@ const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 const SnusForumCategory = (props) => {
 
     let {id} = useParams();
-
+    
     const form = useRef();
     const checkBtn = useRef();
 
@@ -35,20 +35,26 @@ const SnusForumCategory = (props) => {
                 this.errors.push(e)
             })
     }, []);
-    
+     
     console.log(posts);
     const postData = [posts[0]];
 
+    const onChangeTitle = (e) => {
+        const title = e.target.value;
+        console.log(title);
+        setTitle(title);
+    }
+
+    const onChangeBody = (e) => {
+        const body = e.target.value;
+        console.log(body);
+        setBody(body);
+    }
+
     const handlePost = (e) => {
         e.preventDefault();
+        addPost(title, body, id);
 
-        const title = e.target.value;
-        setTitle(title);
-
-        const body = e.target.value;
-        setBody(body);
-
-        addPost(title, body);
     }    
 
 
@@ -64,7 +70,7 @@ const SnusForumCategory = (props) => {
                   className="form-control"
                   name="title"
                   value={title}
-                //   onChange={onChangeTitle}
+                  onChange={onChangeTitle}
                   placeholder="Title på tråd"
                 />
                 <Input
@@ -72,7 +78,7 @@ const SnusForumCategory = (props) => {
                   className="form-control"
                   name="body"
                   value={body}
-                //   onChange={onChangeBody}
+                  onChange={onChangeBody}
                   placeholder="Body på tråd"
                 />
                 <div className="form-group">
