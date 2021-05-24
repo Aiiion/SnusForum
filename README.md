@@ -91,8 +91,11 @@ ger alla posts. benämnt posts
 /posts/{id}:
 
 ger all data om en post baserat på id. benämnt post
+
 alla dess kategorier. benämnt categories
+
 alla dess kommentarer. benämnt comments
+
 
 /store-posts:
 
@@ -112,6 +115,7 @@ ger alla categorys. benämnt categorys
 /categorys/{id}:
 
 ger all data om en category. benämnt category
+
 ger alla posts med en viss category. benämnt posts
 
 /flavours:
@@ -121,6 +125,7 @@ ger alla flavours. benämnt flavours
 /flavours/{id}:
 
 ger all data om en flavour. benämnt flavour
+
 skickar alla snuser med denna flavour. benämnt snuses
 
 /comments:
