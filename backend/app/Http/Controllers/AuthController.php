@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Favourites;
 use Validator;
 
 
@@ -97,7 +98,9 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function userProfile() {
-        return response()->json(auth()->user());
+        $user = response()->json(auth()->user());
+        $favorites = Favourites::where('users_id', Auth::id())->get();
+        return ['user' => $user, 'favorites' => $favorites];
     }
 
     /**
