@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Reviews;
+use App\Models\User;
 
 class ReviewsController extends Controller
 {
@@ -15,8 +17,16 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        $Reviews = Reviews::all();
-        return ['Reviews' => $Reviews];
+        if (Auth::check()) {
+            $reviews = Reviews::all();
+            foreach($reviews as $review){
+                $review->username = User::where('id', $review->users_id)->first()->username;
+            }
+            return ['reviews' => $reviews];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**
@@ -37,7 +47,20 @@ class ReviewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()){
+            $review = new Reviews();
+            $review->users_id = Auth::id();
+            $review->snuses_id = $request->snuses_id;
+            $review->title = $request->title;
+            $review->body = $request->body;
+            $review->rating = $request->rating;
+            $review->save();
+            $review->username = User::where('id', $review->users_id)->first()->username;
+
+            return ['review' => $review];
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
     /**
@@ -48,7 +71,15 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-         $Reviews = Reviews::where('id', $id)->first();
+        if (Auth::check()) {
+            $review = Reviews::where('id', $id)->first();
+            $review->username = User::where('id', $review->users_id)->first()->username;
+
+            return ['review' => $review];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**
@@ -82,6 +113,12 @@ class ReviewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $review = Reviews::where('id', $id)->first();
+            $review->delete();
+            return 'The review has been deleted';
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 }

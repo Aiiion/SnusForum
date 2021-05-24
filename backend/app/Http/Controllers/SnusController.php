@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Snus;
+use App\Models\User;
+use App\Models\Reviews;
+
 
 class SnusController extends Controller
 {
@@ -16,11 +19,16 @@ class SnusController extends Controller
      */
     public function index()
     {
-        $snuses = Snus::all();
-        foreach ($snuses as $snus){
-            $snus->avgRating = $snus->avgRating();
+        if (Auth::check()) {
+            $snuses = Snus::all();
+            // foreach ($snuses as $snus){
+            //     $snus->avgRating = $snus->avgRating();
+            // } SAVE TO LATER!!!
+            return ['snuses' => $snuses];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
         }
-        return ['snuses' => $snuses];
+
     }
 
     /**
@@ -52,11 +60,21 @@ class SnusController extends Controller
      */
     public function show($id)
     {
-        $snus = Snus::where('id', $id)->first();
-        $avgRating = $snus->avgRating();
-        $reviews = $snus->reviews();
-        return ['snus' => $snus, 'reviews' => $reviews, 'avgRating' => $avgRating];
+        if (Auth::check()) {
+            $snus = Snus::where('id', $id)->first();
+            // $snus->avgRating = $snus->avgRating(); save to later!!!
+            $reviews = Reviews::where('snuses_id', $id)->get();
+
+            foreach ($reviews as $review){
+                $review->username = User::where('id', $review->users_id)->first()->username;
+            }
+            return ['snus' => $snus, 'reviews' => $reviews];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
+
 
     /**
      * Show the form for editing the specified resource.

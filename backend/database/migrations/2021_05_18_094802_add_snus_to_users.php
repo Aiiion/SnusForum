@@ -14,7 +14,7 @@ class AddSnusToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('snus_id')->nullable();
+            $table->foreignId('snuses_id')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddSnusToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('snus_id');
+            $table->dropColumn('snuses_id');
         });
     }
 }

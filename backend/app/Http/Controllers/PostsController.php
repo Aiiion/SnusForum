@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posts;
+use App\Models\User;
 
 
 class PostsController extends Controller
@@ -19,7 +20,9 @@ class PostsController extends Controller
     {
         if(Auth::check()) {
             $posts = Posts::all();
-
+            foreach($posts as $post){
+                $post->username = User::where('id', $post->users_id)->first()->username;
+            }
             return ['posts' => $posts];
         } else {
             return ['Not authorized' => 400];
@@ -46,15 +49,16 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         if(Auth::check()){
-            $post = new Post();
-            $post->user_id = Auth::id();
+            $post = new Posts();
+            $post->users_id = Auth::id();
             $post->title = $request->title;
-            $post->body = $request->comment;
-            $post->category_id = $request->category_id;
+            $post->body = $request->body;
+            $post->categorys_id = $request->categorys_id;
             $post->save();
+            $post->username = User::where('id', $post->users_id)->first()->username;
 
-            return redirect()->back();
-        } else{
+            return ['post' => $post];
+        } else {
             return ['we could not validate you, please log in and try again' => 400];
         }
 
@@ -68,10 +72,18 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Posts::where('id', $id)->first();
-        $categorys = $post->categorys();
-        $comments = $post->comments();
-        return ['post' => $post, 'categorys' => $categorys, 'comments' => $comments];
+        if(Auth::check()){
+            $post = Posts::where('id', $id)->first();
+            $post->username = User::where('id', $post->users_id)->first()->username;
+            $categorys = $post->categorys();
+            $comments = $post->comments();
+            foreach($comments as $comment){
+                $comment->username = User::where('id', $comment->users_id)->first()->username;
+            }
+            return ['post' => $post, 'categorys' => $categorys, 'comments' => $comments];
+        }else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
     /**
@@ -105,6 +117,12 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $post = Posts::where('id', $id)->first();
+            $post->delete();
+            return 'The post has been deleted';
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 }

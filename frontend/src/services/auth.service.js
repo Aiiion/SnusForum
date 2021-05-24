@@ -3,7 +3,7 @@ import axios from "axios";
 const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 
 const register = (username, email, password) => {
-  var bodyFormData = new FormData();
+  let bodyFormData = new FormData();
   bodyFormData.append('username', username);
   bodyFormData.append('email', email);
   bodyFormData.append('password', password);
@@ -17,7 +17,7 @@ const register = (username, email, password) => {
 };
 
 const login = (email, password) => {
-  var bodyFormData = new FormData();
+  let bodyFormData = new FormData();
   bodyFormData.append('email', email);
   bodyFormData.append('password', password);
   

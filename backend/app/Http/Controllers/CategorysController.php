@@ -17,9 +17,13 @@ class CategorysController extends Controller
      */
     public function index()
     {
-        $categorys = Categorys::all();
+        if(Auth::check()){
+            $categorys = Categorys::all();
 
-        return ['categorys' => $categorys];
+            return ['categorys' => $categorys];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
     /**
@@ -51,9 +55,15 @@ class CategorysController extends Controller
      */
     public function show($id)
     {
-        $category = Categorys::where('id', $id)->first();
-        $posts = Posts::where('category_id', $id)->get();
-        return ['category' => $category, 'posts' => $posts];
+        if(Auth::check()){
+            $category = Categorys::where('id', $id)->first();
+            $posts = Posts::where('categorys_id', $id)->get();
+
+            return ['category' => $category, 'posts' => $posts];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
+
     }
 
     /**

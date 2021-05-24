@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Flavours;
+use App\Models\Snus;
 
 class FlavoursController extends Controller
 {
@@ -15,9 +17,13 @@ class FlavoursController extends Controller
      */
     public function index()
     {
-        $flavours = Flavours::all();
+        if (Auth::check()) {
+            $flavours = Flavours::all();
 
-        return ['flavours' => $flavours];
+            return ['flavours' => $flavours];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
 
@@ -29,9 +35,25 @@ class FlavoursController extends Controller
      */
     public function show($id)
     {
-        $flavours = Flavours::where('id', $id)->first();
-        return ['flavour' => $flavour];
+        if (Auth::check()) {
+            $flavour = Flavours::where('id', $id)->first();
+            $snuses = Snus::where('flavours_id', $id)->get();
+
+            return ['flavour' => $flavour, 'snuses' => $snuses];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

@@ -20,6 +20,7 @@ import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import Snus from "./components/Snus";
+import SnusReviews from "./components/SnusReviews";
 
 
 
@@ -118,6 +119,9 @@ const App = () => {
           <Route exact path={["/", "/home"]} component={Home} />
           <Route exact path="/snus-forum" component={SnusForum} />
           <Route exact path="/snus" component={Snus} />
+          {/* <Route path="/snus-review/:id" render={(snus) => <SnusReviews {...snus} />} /> */}
+          <Route path="/snus-review/:id" component={SnusReviews}/>
+
           <Route exact path="/news" component={News} />
           
 
