@@ -57,7 +57,7 @@ class PostsController extends Controller
             $post->save();
             $post->username = User::where('id', $post->users_id)->first()->username;
 
-            return ['post' => $post];
+            return ['post' => $post, 'message' => 'Your post has been posted!'];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
         }
@@ -120,7 +120,7 @@ class PostsController extends Controller
         if(Auth::check()){
             $post = Posts::where('id', $id)->first();
             $post->delete();
-            return 'The post has been deleted';
+            return ['message' => 'Your post has been deleted'];
         } else{
             return ['we could not validate you, please log in and try again' => 400];
         }

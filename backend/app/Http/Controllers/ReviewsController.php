@@ -57,7 +57,7 @@ class ReviewsController extends Controller
             $review->save();
             $review->username = User::where('id', $review->users_id)->first()->username;
 
-            return ['review' => $review];
+            return ['review' => $review, 'message' => 'Your review has been posted!'];
         } else{
             return ['we could not validate you, please log in and try again' => 400];
         }
@@ -116,7 +116,7 @@ class ReviewsController extends Controller
         if(Auth::check()){
             $review = Reviews::where('id', $id)->first();
             $review->delete();
-            return 'The review has been deleted';
+            return ['message' => 'Your review has been deleted'];
         } else{
             return ['we could not validate you, please log in and try again' => 400];
         }
