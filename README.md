@@ -157,5 +157,11 @@ saves a flavour to logged in users favourites req: flavourID
 
 tar bort en favorite baserat på dess id
 
+/user-profile:
+
+Ger all data om den inloggade usern. benämnt user
+
+Ger alla favourites inloggade usern har. Benämnt favourites
+
 
 
