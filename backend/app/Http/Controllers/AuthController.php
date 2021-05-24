@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Favourites;
+use App\Models\Flavours;
 use Validator;
 
 
@@ -99,8 +100,12 @@ class AuthController extends Controller
      */
     public function userProfile() {
         $user = response()->json(auth()->user());
-        $favorites = Favourites::where('users_id', Auth::id())->get();
-        return ['user' => $user, 'favorites' => $favorites];
+        $favourites = Favourites::where('users_id', Auth::id())->get();
+        foreach($favourites as $favourite){
+            $favourite->flavour = Flavours::where('id', $favourite->flavours_id)->first()->flavour_type;
+        }
+
+        return ['user' => $user, 'favourites' => $favourites];
     }
 
     /**
