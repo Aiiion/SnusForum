@@ -118,6 +118,12 @@ class SnusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $snus = Snus::where('id', $id)->first();
+            $snus->delete();
+            return ['message' => 'The snus ' . $snus->name . ' ' . $snus->type . ' has been deleted'];
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 }
