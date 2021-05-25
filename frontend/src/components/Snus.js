@@ -41,7 +41,7 @@ const Snus = () => {
                 <CardGroup>
                     <Row>
                         {snus.snuses.map((snus) => (
-                            <Col sm="6" md="4" lg="4" >
+                            <Col key={snus.id} sm="6" md="4" lg="4" >
                                 <Card>
                                     <Card.Body style={{ backgroundColor: '#F2F3F8' }}>
                                         <Card.Img variant="top" src={snus.img_url} />

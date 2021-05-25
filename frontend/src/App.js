@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import './App.css';
 
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { ReactComponent as Logo } from "./logo.svg";
 
 import AuthService from "./services/auth.service";
