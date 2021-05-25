@@ -57,7 +57,7 @@ class SnusController extends Controller
             $snus->img_url = $request->img_url;
             $snus->flavours_id = $request->flavours_id;
             $snus->save();
-            return ['snus' => $snus, 'message' => 'Your snus has been created!'];
+            return ['snus' => $snus, 'message' => 'The snus ' . $snus->name . ' ' . $snus->type . ' has been created!'];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
         }
