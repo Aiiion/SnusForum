@@ -1,3 +1,4 @@
+
 # u10-business-idea-snusmumriken-barn
 ## Description
 This application was built with:
@@ -167,6 +168,5 @@ tar bort en favorite baserat på dess id
 Ger all data om den inloggade usern. benämnt user
 
 Ger alla favourites inloggade usern har. Benämnt favourites
-
 
 
