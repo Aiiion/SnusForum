@@ -22,6 +22,7 @@ import BoardAdmin from "./components/BoardAdmin";
 import Snus from "./components/Snus";
 import SnusReviews from "./components/SnusReviews";
 import SnusForumCategory from "./components/SnusForumCategory";
+import SnusForumPost from "./components/SnusForumPost";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -117,6 +118,7 @@ const App = () => {
           <Route exact path={["/", "/home"]} component={Home} />
           <Route exact path="/snus-forum" component={SnusForum} />
           <Route path="/snus-forum/:id" component={SnusForumCategory}/>
+          <Route path="/snus-post/:id" component={SnusForumPost}/>
           <Route exact path="/snus" component={Snus} />
           <Route path="/snus-review/:id" component={SnusReviews}/>
           <Route exact path="/news" component={News} />

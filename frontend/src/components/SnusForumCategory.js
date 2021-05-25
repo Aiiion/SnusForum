@@ -3,7 +3,7 @@ import axios from "axios";
 import authHeader from "../services/auth-header";
 import { Switch, Route, Link, useParams } from "react-router-dom";
 import SnusForumService from "../services/snus-forum.service"
-import { Button, Container, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, Card, Container, ListGroup, ListGroupItem } from "react-bootstrap";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -25,11 +25,13 @@ const SnusForumCategory = (props) => {
 
 
      useEffect(() => {
-        axios.get(`${API_URL}posts/${id}`, { headers: authHeader() })
+        axios.get(`${API_URL}categorys/${id}`, { headers: authHeader() })
             .then(response => {
                 // JSON responses are automatically parsed.
-                const arr = Object.values(response.data)
-                setPosts(arr);
+                // const arr = Object.values(response.data)
+                // const data = response.data.posts
+                // setPosts(posts=>[...posts, data])
+                setPosts(response.data)
             })
             .catch(e => {
                 this.errors.push(e)
@@ -37,8 +39,7 @@ const SnusForumCategory = (props) => {
     }, []);
      
     console.log(posts);
-    const postData = [posts[0]];
-
+    
     const onChangeTitle = (e) => {
         const title = e.target.value;
         console.log(title);
@@ -53,15 +54,15 @@ const SnusForumCategory = (props) => {
 
     const handlePost = (e) => {
         e.preventDefault();
-        addPost(title, body, id);
 
+        addPost(title, body, id);
     }    
 
 
     return posts ? 
         <>
             <div>
-                <h1 className="container-fluid text-center text-uppercase">{posts[1].category}</h1>
+                <h1 className="container-fluid text-center text-uppercase">{posts.category.category}</h1>
             </div>
             
             <Form onSubmit={handlePost} ref={form}>
@@ -85,12 +86,13 @@ const SnusForumCategory = (props) => {
                     <Button onClick={handlePost} className="mt-3 mb-3" variant="outline-success">Lägg till</Button>
                 </div>
                 {/* <CheckButton style={{ display: "none" }} ref={checkBtn} /> */}
-            </Form>  
+            </Form> 
+            
             <Container>
-                {postData.map((post) => (
+                {posts.posts.map((post) => (
                     <ListGroup className="list-group-flush">
                         <ListGroupItem>
-                            <h5 className="text-uppercase">{post.body}</h5>
+                            <Card.Link className="text-uppercase" href={`/snus-post/${post.id}`}>{post.title}</Card.Link>
                             <p>Startad av: {post.username} - {moment(post.created_at).format("YYYY-MM-DD")}</p>
                         </ListGroupItem>
                     </ListGroup>

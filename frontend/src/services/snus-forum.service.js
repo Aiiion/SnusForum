@@ -18,10 +18,10 @@ const addPost = (title, body, id) => {
             "Content-Type": "multipart/form-data", 
             ...authHeader() 
         }})
-            // .then(() => {
-            //     window.location.reload();
-            // })
-            
+            .then(() => {
+                window.location.reload();
+            })
+
             // .then(
             //     () => {
             //     history.push("/snus-forum/:id");
