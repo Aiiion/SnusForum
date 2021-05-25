@@ -49,7 +49,18 @@ class SnusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()){
+            $snus = new Snus();
+            $snus->name = $request->name;
+            $snus->type = $request->type;
+            $snus->strength = $request->strength;
+            $snus->img_url = $request->img_url;
+            $snus->flavours_id = $request->flavours_id;
+            $snus->save();
+            return ['snus' => $snus, 'message' => 'Your snus has been created!'];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
     /**

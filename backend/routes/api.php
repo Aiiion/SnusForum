@@ -51,6 +51,7 @@ Route::group([
     Route::post('/store-reviews', [ReviewsController::class, 'store']);
     Route::post('/store-favourites', [FavouritesController::class, 'store']);
     Route::post('/store-comments', [CommentsController::class, 'store']);
+    Route::post('/store-snuses', [SnusController::class, 'store']);
 
     Route::post('/delete-posts/{id}', [PostsController::class, 'destroy']);
     Route::post('/delete-reviews/{id}', [ReviewsController::class, 'destroy']);
