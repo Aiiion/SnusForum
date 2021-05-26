@@ -1,3 +1,4 @@
+
 # u10-business-idea-snusmumriken-barn
 ## Description
 This application was built with:
@@ -91,8 +92,11 @@ ger alla posts. benämnt posts
 /posts/{id}:
 
 ger all data om en post baserat på id. benämnt post
+
 alla dess kategorier. benämnt categories
+
 alla dess kommentarer. benämnt comments
+
 
 /store-posts:
 
@@ -112,6 +116,7 @@ ger alla categorys. benämnt categorys
 /categorys/{id}:
 
 ger all data om en category. benämnt category
+
 ger alla posts med en viss category. benämnt posts
 
 /flavours:
@@ -121,6 +126,7 @@ ger alla flavours. benämnt flavours
 /flavours/{id}:
 
 ger all data om en flavour. benämnt flavour
+
 skickar alla snuser med denna flavour. benämnt snuses
 
 /comments:
@@ -157,5 +163,10 @@ saves a flavour to logged in users favourites req: flavourID
 
 tar bort en favorite baserat på dess id
 
+/user-profile:
+
+Ger all data om den inloggade usern. benämnt user
+
+Ger alla favourites inloggade usern har. Benämnt favourites
 
 

@@ -56,7 +56,7 @@ class CommentsController extends Controller
             $comment->save();
             $comment->username = User::where('id', $comment->users_id)->first()->username;
 
-            return ['post' => $post];
+            return ['comment' => $comment];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
         }

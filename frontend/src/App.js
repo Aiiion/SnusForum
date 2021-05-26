@@ -24,6 +24,8 @@ import SnusReviews from "./components/SnusReviews";
 import SnusForumCategory from "./components/SnusForumCategory";
 import SnusForumPost from "./components/SnusForumPost";
 
+
+
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -97,6 +99,7 @@ const App = () => {
                 <Nav.Link href="/login" className="nav-link" onClick={logOut}>
                   LogOut
                   </Nav.Link>
+                  
               </>
             ) : (
               <>

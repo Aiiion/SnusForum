@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Favourites;
+use App\Models\Flavours;
 use Validator;
 
 
@@ -54,7 +56,9 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json([
+                'message' => 'The password confirmation does not match',
+                'validator' => $validator->errors()->toJson()], 400);
         }
 
         $user = User::create(array_merge(
@@ -95,7 +99,13 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function userProfile() {
-        return response()->json(auth()->user());
+        $user = response()->json(auth()->user());
+        $favourites = Favourites::where('users_id', Auth::id())->get();
+        foreach($favourites as $favourite){
+            $favourite->flavour = Flavours::where('id', $favourite->flavours_id)->first()->flavour_type;
+        }
+
+        return ['user' => $user, 'favourites' => $favourites];
     }
 
     /**

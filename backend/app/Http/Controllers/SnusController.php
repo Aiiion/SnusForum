@@ -49,7 +49,18 @@ class SnusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()){
+            $snus = new Snus();
+            $snus->name = $request->name;
+            $snus->type = $request->type;
+            $snus->strength = $request->strength;
+            $snus->img_url = $request->img_url;
+            $snus->flavours_id = $request->flavours_id;
+            $snus->save();
+            return ['snus' => $snus, 'message' => 'The snus ' . $snus->name . ' ' . $snus->type . ' has been created!'];
+        } else {
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 
     /**
@@ -62,7 +73,7 @@ class SnusController extends Controller
     {
         if (Auth::check()) {
             $snus = Snus::where('id', $id)->first();
-            // $snus->avgRating = $snus->avgRating(); save to later!!!
+            // $snus->avgRating = $snus->avgRating()->get(); 
             $reviews = Reviews::where('snuses_id', $id)->get();
 
             foreach ($reviews as $review){
@@ -107,6 +118,12 @@ class SnusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+            $snus = Snus::where('id', $id)->first();
+            $snus->delete();
+            return ['message' => 'The snus ' . $snus->name . ' ' . $snus->type . ' has been deleted'];
+        } else{
+            return ['we could not validate you, please log in and try again' => 400];
+        }
     }
 }
