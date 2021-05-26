@@ -23,7 +23,9 @@ class SearchController extends Controller
             $relatedSnus = Snus::where('flavours_id', $flavour->id)->get();
             $snuses = $snuses->merge($relatedSnus); 
         }
-        
+        foreach($snuses as $snus){
+            $snus->flavour_name = Flavours::where('id', $snus->flavours_id)->first()->flavour_type;
+        }
 
         return ['snuses' => $snuses];
     }
