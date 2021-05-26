@@ -9,6 +9,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.min.js";
 // import "bootstrap/jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 
 ReactDOM.render(
   <BrowserRouter>
