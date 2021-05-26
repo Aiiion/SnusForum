@@ -21,9 +21,9 @@ class SnusController extends Controller
     {
         if (Auth::check()) {
             $snuses = Snus::all();
-            // foreach ($snuses as $snus){
-            //     $snus->avgRating = $snus->avgRating();
-            // } SAVE TO LATER!!!
+            foreach ($snuses as $snus){
+                $snus->avgRating = $snus->avgRating();
+            } 
             return ['snuses' => $snuses];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
