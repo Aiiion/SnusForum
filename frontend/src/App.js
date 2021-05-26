@@ -4,6 +4,8 @@ import './App.css';
 
 import { Nav, Navbar } from "react-bootstrap";
 import { ReactComponent as Logo } from "./logo.svg";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+
 
 import AuthService from "./services/auth.service";
 
@@ -133,6 +135,80 @@ const App = () => {
           <Route path="/admin" component={BoardAdmin} /> */}
         </Switch>
       </div>
+
+      <MDBFooter color="mdb-color" className="font-small lighten-3 pt-4 mt-4">
+        <MDBContainer className="text-center text-md-left">
+          <MDBRow className="my-4">
+            <MDBCol md="4" lg="4">
+              <h5 className="text-uppercase mb-4 font-weight-bold">
+                Om oss
+            </h5>
+              <p>
+                Välkommen!
+                Med denna webbapplikation vill vi bidra med en plattform och ett forum för alla snusentusiaster runt om i världen - en plats där man kan dela snusrecept, ge tips om sina favoritsnus, diskutera nya snussorter och mycket mer.
+            </p>
+              <p>
+                Registera dig för att gå med i vår gemenskap och utforska vilket snus som passar dig!
+            </p>
+            </MDBCol>
+            <hr className="clearfix w-100 d-md-none" />
+            <MDBCol md="2" lg="2" className="ml-auto">
+              <h5 className="text-uppercase mb-4 font-weight-bold">Utforska</h5>
+              <ul className="list-unstyled">
+                <p>
+                  <a href={"/news"}>NYHETER</a>
+                </p>
+                <p>
+                  <a href={"/snus"}>SNUS</a>
+                </p>
+                <p>
+                  <a href={"/snus-forum"}>SNUSFORUM</a>
+                </p>
+                <p>
+                  <a href="#!">SNUSRECENSIONER</a>
+                </p>
+              </ul>
+            </MDBCol>
+            <hr className="clearfix w-100 d-md-none" />
+            <MDBCol md="5" lg="3">
+              <h5 className="text-uppercase mb-4 font-weight-bold">Kontakt</h5>
+              <p>
+                <i className="fa fa-envelope mr-3" /> snusmumriken.kondtjanst@gmail.com
+            </p>
+              <p>
+                <i className="fa fa-phone mr-3" /> + 12 123 123 12
+            </p>
+            </MDBCol>
+            <hr className="clearfix w-100 d-md-none" />
+            <MDBCol md="2" lg="2" className="text-center">
+              <h5 className="text-uppercase mb-4 font-weight-bold">
+                Följ oss
+            </h5>
+              <div className="mt-2 ">
+                <a type="button" href="#!" className="btn-floating btn-small btn-fb">
+                  <i className="fab fa-facebook-f" />
+                </a>
+                <a type="button" href="#!" className="btn-floating btn-small btn-tw">
+                  <i className="fab fa-twitter" />
+                </a>
+                <a type="button" href="#!" className="btn-floating btn-small btn-gplus">
+                  <i className="fab fa-google-plus" />
+                </a>
+                <a type="button" href="https://github.com/chas-academy/u10-business-idea-snusmumriken-barn" className="btn-floating btn-small btn-github">
+                  <i className="fab fa-github" />
+                </a>
+              </div>
+            </MDBCol>
+            <hr className="clearfix w-100 d-md-none" />
+          </MDBRow>
+        </MDBContainer>
+        <div className="footer-copyright text-center py-3">
+          <MDBContainer fluid>
+            &copy; {new Date().getFullYear()} Copyright:{" "}
+            <p>Snus</p>
+          </MDBContainer>
+        </div>
+      </MDBFooter>
     </div>
   );
 };
