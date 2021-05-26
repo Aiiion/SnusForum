@@ -8,12 +8,11 @@ import Input from "react-validation/build/input";
 import addComment from "../services/snus-comments.service";
 import moment from 'moment';
 
-
 const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 
 const SnusForumPost = () => {
 
-    let {id} = useParams();
+    let { id } = useParams();
     const form = useRef();
     console.log(id);
 
@@ -35,7 +34,6 @@ const SnusForumPost = () => {
     const [response, setResponse] = useState()
     const { body } = request;
 
-
     useEffect(() => {
         axios.get(`${API_URL}posts/${id}`, { headers: authHeader() })
             .then(response => {
@@ -45,10 +43,11 @@ const SnusForumPost = () => {
                 console.log(response);
                 setComment(data);
             })
-            // .catch(e => {
-            //     this.errors.push(e)
-            // })
+        // .catch(e => {
+        //     this.errors.push(e)
+        // })
     }, []);
+
     console.log(response);
     console.log(comment);
 
@@ -77,7 +76,7 @@ const SnusForumPost = () => {
                     <Card.Body>
                         {/* <Card.Body className="text-uppercase">{body}</Card.Link> */}
                         <p>{body}</p>
-                        <p style={{fontStyle: 'italic'}}>{username} - {moment(created_at).format("YYYY-MM-DD")}</p>
+                        <p style={{ fontStyle: 'italic' }}>{username} - {moment(created_at).format("YYYY-MM-DD")}</p>
                     </Card.Body>
                 </Card>
             )
@@ -85,18 +84,7 @@ const SnusForumPost = () => {
         return data;
     }
 
-    // const onChangeComment = (e) => {
-    //     const commentBody = e.target.value;
-    //     console.log(commentBody);
-    //     setCommentBody(commentBody);
-    // }
-
-    // const handleComment = (e) => {
-    //     e.preventDefault();
-    //     // addPost(title, body, id);
-    // }
-
-    return comment ? 
+    return comment ?
         <>
             <div>
                 <h5 className="container-fluid text-center text-uppercase">{response.post.title}</h5>
@@ -104,26 +92,26 @@ const SnusForumPost = () => {
             <Card style={{ backgroundColor: '#D1E0DD' }}>
                 <Card.Body >
                     <p>{response.post.body}</p>
-                    <p style={{fontStyle: 'italic'}}>Startad av: {response.post.username} - {moment(response.post.created_at).format("YYYY-MM-DD")}</p>
+                    <p style={{ fontStyle: 'italic' }}>Startad av: {response.post.username} - {moment(response.post.created_at).format("YYYY-MM-DD")}</p>
                 </Card.Body>
             </Card>
 
             <Form className="mt-3" onSubmit={submitHandler} ref={form}>
                 <Input
-                  type="text"
-                  className="form-control"
-                  name="body"
-                  value={body}
-                  onChange={e => {
+                    type="text"
+                    className="form-control"
+                    name="body"
+                    value={body}
+                    onChange={e => {
                         e.preventDefault()
                         setRequest({ ...request, body: e.target.value });
                     }}
-                  placeholder="Svara på inlägg"
+                    placeholder="Svara på inlägg"
                 />
                 <div className="form-group">
-                    <Button type="submit" className="mt-3 mb-3" style={{backgroundColor: '#2A324B'}}>Lägg till</Button>
+                    <Button type="submit" className="mt-3 mb-3" style={{ backgroundColor: '#2A324B' }}>Lägg till</Button>
                 </div>
-            </Form> 
+            </Form>
             <Container>
                 {comment ? RenderData(comment) :
                     <div>
@@ -131,9 +119,8 @@ const SnusForumPost = () => {
                     </div>
                 }
             </Container>
-        </>        
-    : null
-
+        </>
+        : null
 }
 
 export default SnusForumPost;
