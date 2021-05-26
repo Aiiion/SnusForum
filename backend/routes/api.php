@@ -58,6 +58,6 @@ Route::group([
     Route::post('/delete-favourites/{id}', [FavouritesController::class, 'destroy']);
     Route::post('/delete-comments/{id}', [CommentsController::class, 'destroy']);
 
-    Route::get('/search', [SearchController::class, 'search']);
+    Route::get('search/{key}', [SearchController::class, 'search']);
 
 });
