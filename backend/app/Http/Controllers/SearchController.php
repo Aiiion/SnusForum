@@ -12,5 +12,5 @@ class SearchController extends Controller
 
         return Snus::where('name','Like',"%$key%")->orWhere('type', 'like', "%{$key}%")->get();
 
-}
+    }
 }
