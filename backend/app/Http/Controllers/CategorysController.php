@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Categorys;
 use App\Models\Posts;
+use App\Models\User;
 
 class CategorysController extends Controller
 {
@@ -58,7 +59,9 @@ class CategorysController extends Controller
         if(Auth::check()){
             $category = Categorys::where('id', $id)->first();
             $posts = Posts::where('categorys_id', $id)->get();
-
+            foreach($posts as $post){
+                $post->username = User::where('id', $post->users_id)->first()->username;
+            }
             return ['category' => $category, 'posts' => $posts];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
