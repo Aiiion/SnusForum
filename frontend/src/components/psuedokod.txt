@@ -1,0 +1,75 @@
+import React, { useState } from 'react'
+
+const testPost = () => {
+    /* tanken här är att vi har en default värde på post som är tom och vi kan spara alla post här och sidan ska uppdateras när vi lägger in ett  till */
+
+    const post = [
+        { title: "jagaåg", body: "aogajha" },
+        { title: "jagaåg", body: "aogajha" },
+        { title: "jagaåg", body: "aogajha" },
+        { title: "jagaåg", body: "aogajha" }
+    ]
+
+    const { posts, setPosts } = useState(post)
+    const { request, setRequest } = useState({ title, body })
+
+    /* tanken här är att spara det som användare skriver direkt i en state som vi sedan kan använda i api anropet  */
+
+    function userIput(e) {
+
+        const body = e.target.value
+        setRequest({ body: body })
+
+    }
+    function userIputT(e) {
+        const title = e.target.value
+
+        setRequest({ title: "title" })
+
+    }
+
+    /* det här blocket borde kollar om posts är satt om inte då körs inte resten av koden nedan 
+     om post är satt då destruturera vi det och kan använda post category  istället av att skriva posts.post
+  */
+    if (!posts) return
+    const [post, category, msg] = posts  // destruturing av posts 
+
+
+
+    const updatePost = () => {
+
+        //spara i post 
+        setPosts([...post, response.data])
+
+
+    }
+    /* skriver api anropet att ta emot en parameter(request) och det används lägger vi i request */
+    const apiCall = (request) => {
+        //api_call
+        axios.post(posts)
+
+            , [updatePost] /*en callback som updaterar post varge gång vi hämtar data*/
+    }
+
+    return (
+        <div>
+            <input
+                onChange={userIputT}>
+            </input>
+            <input
+                onChange={userIput}>
+            </input>
+            <button
+                onClick={apiCall(request)}>
+
+            </button>
+        </div>
+    )
+
+
+}
+export default testPost
+
+
+/*man skulle även kunna skicka data till db och displaya just det som skickas på sidan  */
+
