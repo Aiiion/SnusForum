@@ -10,15 +10,26 @@ class SearchController extends Controller
 {
 
     public function search($key) {
-        $snus = Snus::query()
+        $flavours = Flavours::query()
+        ->where('flavour_type', 'LIKE', "%{$key}%")
+        ->get();
+        $snuses = Snus::query()
         ->where('name', 'LIKE', "%{$key}%")
         ->orWhere('type', 'LIKE', "%{$key}%")
         ->get();
 
-        $flavours = Flavours::query()
-        ->where('flavour_type', 'LIKE', "%{$key}%")
-        ->get();
+        
+        foreach($flavours as $flavour){
+            $relatedSnus = Snus::where('flavours_id', $flavour->id)->get();
+            $snuses = $snuses->merge($relatedSnus); 
+        }
+        
+        
+        
+        
 
-        return ['snus' => $snus, 'flavours' => $flavours];
+        
+
+        return ['snuses' => $snuses, 'flavours' => $flavours];
     }
 }
