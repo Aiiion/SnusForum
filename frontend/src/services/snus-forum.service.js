@@ -9,7 +9,6 @@ export default function addPost(title, body, id) {
     bodyFormData.append('body', body);
     bodyFormData.append('categorys_id', id);
 
-
     return axios({
         method: "post",
         url: `${API_URL}store-posts`,
@@ -19,16 +18,6 @@ export default function addPost(title, body, id) {
             ...authHeader()
         }
     })
-    /*    .then(() => {
-           window.location.reload();
-       })
-
-       .then(
-           () => {
-               history.push("/snus-forum/:id");
-               window.location.reload();
-           }) */
-
 }
 
 // export const api =

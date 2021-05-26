@@ -26,25 +26,34 @@ const SnusForum = () => {
 
     console.log(categories);
 
+    // const randomColor = () => {
+    //     const color = {
+    //         bgColor: [
+    //             '#D1E0DD',
+    //             '#F2F3F8',
+    //             '#F4DA9D',
+    //             '#E7BAC0',
+    //         ],
+    //     }
+    //     const showColor = color.bgColor[Math.floor(Math.random() * bgColor.lenght)]
+    //     return showColor;
+    // }
+
+
     return categories ? 
         <>  
             <div>
-                <h1 className="container-fluid text-center">SNUS FORUM</h1>
+                <h1 className="container-fluid text-center" style={{color: '#2A324B'}}>SNUS FORUM</h1>
             </div>
-
-            {/* <Form onSubmit={handleReview} inline>
-                <FormControl onChange={onChangeReview} type="text" name="review" placeholder="Lägg till review" className="mr-sm-2" />
-                <Button className="mt-3 mb-3" variant="outline-success">Lägg till</Button>
-            </Form> */}
             
             <Container>
                 <CardGroup>
-                    <Row>
+                    <Row className="mb-2">
                         {categories.map((title) => (
-                            <Col sm="6" md="4" lg="4">
-                                <Card>
+                            <Col className="mb-1" sm="6" md="6" lg="4">
+                                <Card  className="text-center" style={{backgroundColor: '#E7BAC0'}}>
                                     <Card.Title style={{ marginTop: '10px'}}>
-                                        <Card.Link href={`/snus-forum/${title.id}`}>{title.category}</Card.Link>
+                                        <Card.Link style={{color: '#2A324B'}} href={`/snus-forum/${title.id}`}>{title.category}</Card.Link>
                                     </Card.Title>
                                 </Card>
                             </Col> 

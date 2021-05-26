@@ -29,12 +29,12 @@ const Snus = () => {
     return snus ?
         <>
             <div>
-                <h1 className="container-fluid text-center">SNUS</h1>
+                <h1 className="container-fluid text-center" style={{color: '#2A324B'}}>SNUS</h1>
             </div>
 
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button className="mt-3 mb-3" variant="outline-success">Sök snus</Button>
+                <Button className="mt-3 mb-3" style={{backgroundColor: '#2A324B'}}>Sök snus</Button>
             </Form>
 
             <Container>
