@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Snus;
 use App\Models\User;
 use App\Models\Reviews;
+use App\Models\Flavours;
 
 
 class SnusController extends Controller
@@ -24,6 +25,9 @@ class SnusController extends Controller
             // foreach ($snuses as $snus){
             //     $snus->avgRating = $snus->avgRating();
             // } SAVE TO LATER!!!
+            foreach($snuses as $snus){
+                $snus->flavour_name = Flavours::where('id', $snus->flavours_id)->first()->flavour_type;
+            }
             return ['snuses' => $snuses];
         } else {
             return ['we could not validate you, please log in and try again' => 400];
@@ -75,7 +79,8 @@ class SnusController extends Controller
             $snus = Snus::where('id', $id)->first();
             // $snus->avgRating = $snus->avgRating(); save to later!!!
             $reviews = Reviews::where('snuses_id', $id)->get();
-
+            
+            $snus->flavour_name = Flavours::where('id', $snus->flavours_id)->first()->flavour_type;
             foreach ($reviews as $review){
                 $review->username = User::where('id', $review->users_id)->first()->username;
             }

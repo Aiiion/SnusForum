@@ -24,12 +24,7 @@ class SearchController extends Controller
             $snuses = $snuses->merge($relatedSnus); 
         }
         
-        
-        
-        
 
-        
-
-        return ['snuses' => $snuses, 'flavours' => $flavours];
+        return ['snuses' => $snuses];
     }
 }
