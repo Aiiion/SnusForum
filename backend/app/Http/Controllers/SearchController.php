@@ -10,8 +10,15 @@ class SearchController extends Controller
 {
 
     public function search($key) {
+        $snus = Snus::query()
+        ->where('name', 'LIKE', "%{$key}%")
+        ->orWhere('type', 'LIKE', "%{$key}%")
+        ->get();
 
-        return Snus::where('name','Like',"%$key%")->orWhere('type', 'like', "%{$key}%")->get();
+        $flavours = Flavours::query()
+        ->where('flavour_type', 'LIKE', "%{$key}%")
+        ->get();
 
+        return ['snus' => $snus, 'flavours' => $flavours];
     }
 }
