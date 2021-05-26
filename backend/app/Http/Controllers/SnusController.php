@@ -73,7 +73,7 @@ class SnusController extends Controller
     {
         if (Auth::check()) {
             $snus = Snus::where('id', $id)->first();
-            // $snus->avgRating = $snus->avgRating()->get(); 
+            $snus->avgRating = $snus->avgRating(); 
             $reviews = Reviews::where('snuses_id', $id)->get();
 
             foreach ($reviews as $review){
