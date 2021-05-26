@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import UserService from "../services/user.service";
 import { Jumbotron, Button, Image } from "react-bootstrap";
-
+import '../App.css';
 const Home = () => {
   const [content, setContent] = useState("");
 
@@ -25,18 +25,17 @@ const Home = () => {
 
 
   return (
-    <Jumbotron style={{ backgroundColor: '#f2f3f8'}}>
-      <Image src="https://www.lovethegarden.com/sites/default/files/styles/header_image_xl/public/content/articles/UK_advice-gardening-grow-your-own-how-grow-your-own-tobacco_header.jpg?itok=tj4g_4OD" fluid />
-      <h1 className="container-fluid text-center" >Welcome to Snusmumriken Website!</h1>
-      <p className="text-center">
-        This is a simple hero unit, a simple jumbotron-style component for calling
-        extra attention to featured content or information.
+    <Jumbotron>
+      <h1 className="container-fluid text-center text-dark fw-bold" >Välkommen till Snusmumriken Webbsida!</h1>
+      <p className="text-center text-center text-dark">
+        En platform för dig som älskar snus. Ta del av andra entusiasters favoriter,snus recept och tips!
   </p>
       <p className="text-center">
-        <Button href={"/login"} variant="outline-primary">Sign in!</Button>{' '}
-        <Button href={"/register"} variant="outline-primary">Sign up!</Button>{' '}
+        <Button href={"/login"} variant="outline-dark">Sign in!</Button>{' '}
+        <Button href={"/register"} variant="outline-dark">Sign up!</Button>{' '}
       </p>
     </Jumbotron>
+   
   );
 };
 

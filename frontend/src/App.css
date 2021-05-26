@@ -32,3 +32,10 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+.jumbotron {
+    background-image: url('https://swedsnus.nu/image/information/Article_Swedsnus_Bio-Dosa_Img_1000px.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 135%;
+    
+}
