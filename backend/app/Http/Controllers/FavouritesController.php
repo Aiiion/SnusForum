@@ -52,7 +52,7 @@ class FavouritesController extends Controller
             $favourites->save();
             $favourites->username = User::where('id',  $favourites->users_id)->first()->username;
 
-            return ['favourites' =>  $favourites];
+            return ['favourites' =>  $favourites, 'message' => 'added to your favourites!'];
          } else {
             return ['Please Login to view your Favourites' => 400];
         }
@@ -117,7 +117,7 @@ class FavouritesController extends Controller
         if(Auth::check()){
             $favourite = Favourites::where('id', $id)->first();
             $favourite->delete();
-            return 'The favourite has been deleted';
+            return ['message' => 'The favourite has been deleted'];
         } else{
             return ['we could not validate you, please log in and try again' => 400];
         }
