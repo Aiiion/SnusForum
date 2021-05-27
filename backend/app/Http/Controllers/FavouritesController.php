@@ -49,7 +49,7 @@ class FavouritesController extends Controller
          if(Auth::check()){
             $favourites = new Favourites();
             $favourites->users_id = Auth::id();
-            $favourites->snus_id= $request->snus_id;
+            $favourites->id= $request->id;
             $favourites->save();
             $favourites->username = User::where('id',  $favourites->users_id)->first()->username;
 
@@ -73,7 +73,7 @@ class FavouritesController extends Controller
             $favourites = Favourites::where('users_id', $id)->get();
             foreach ($favourites as $favourite) {
 
-            $favourite->Snus = Snus::where('id', $favourite->snus_id)->first();
+            $favourite->Snus = Snus::where('id', $favourite->id)->first();
 
             }
             return ['favourites' => $favourites];
