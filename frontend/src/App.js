@@ -105,11 +105,11 @@ const App = () => {
             ) : (
               <>
                 <Nav.Link href={"/login"} className="nav-link">
-                  Login
+                  Logga in
                   </Nav.Link>
 
                 <Nav.Link href={"/register"} className="nav-link">
-                  Sign Up
+                  Registrera dig
                   </Nav.Link>
               </>
             )}

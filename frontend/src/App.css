@@ -11,9 +11,9 @@ label {
 }
 
 .card {
-  background-color: #f7f7f7;
+  /* background-color: #f7f7f7; */
   padding: 40px 15px 50px;
-  /* margin: 0 auto 25px; */
+  margin: 0 auto 25px;
   margin-top: 50px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;

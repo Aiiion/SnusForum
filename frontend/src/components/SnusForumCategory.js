@@ -20,6 +20,7 @@ const SnusForumCategory = () => {
         allposts: [],
         message: "There are no post yet, create a new one?"
     }
+    
     const { allposts, message } = forum
 
     const req = {
@@ -37,34 +38,31 @@ const SnusForumCategory = () => {
             .then(response => {
                 const data = response.data.posts
                 setReponse(response.data)
-
                 setPosts(data)
             })
 
     }, []);
-    console.log(response)
 
     const updatePost = async () => {
         await addPost(title, body, id)
         axios.get(`${API_URL}categorys/${id}`, { headers: authHeader() })
             .then(response => {
                 const data = response.data.posts
-
                 setPosts(data)
             })
     }
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(request);
         updatePost()
+        setRequest(req);
     };
 
     const RenderData = (array) => {
-        const data = array.map((post) => {
+        const data = array.slice(0).reverse().map((post) => {
             const { title, body, id, username, created_at } = post
             return (
-                <Card style={{ backgroundColor: '#F2F3F8' }}>
+                <Card key={id} style={{ backgroundColor: '#F2F3F8' }}>
                     <Card.Body>
                         <ListGroup className="list-group-flush">
                             <ListGroupItem style={{ backgroundColor: '#F2F3F8' }}>
@@ -88,13 +86,13 @@ const SnusForumCategory = () => {
     return (
         <>
             <div>
-                <h1 className="container-fluid text-center text-uppercase">{response && response.category.category}</h1>
+                <h1 className="container-fluid text-center text-uppercase mt-5">{response && response.category.category}</h1>
             </div>
 
             <Form ref={form} onSubmit={submitHandler}>
                 <Input
                     type="text"
-                    className="form-control mb-2"
+                    className="form-control mb-2 mt-5"
                     name="title"
                     value={title}
                     onChange={e => {

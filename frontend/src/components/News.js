@@ -20,7 +20,7 @@ const News = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3 className="text-white fw-bold" >Ny rapport: Okunskap om nikotin hotar potentialen med nikotinportioner</h3>
+                        <h3 className="text-white fw-bold">Ny rapport: Okunskap om nikotin hotar potentialen med nikotinportioner</h3>
                         <p className="text-white fw-bolder">Nikotinportioner har potential att vara ett ”trovärdigt, livskraftigt och säkrare” alternativ till dödliga cigaretter.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -33,8 +33,8 @@ const News = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3 className="text-white fw-bold ">Snuskommissionen: ”Finland är snart rökfritt – förklaringen är snuset”</h3>
-                        <p className="text-white fw-bolder">Snuskommissionen slår fast: Bara fem procent av den finska befolkningen röker. Därmed kan Finland snart bli världens första rökfria land.</p>
+                        <h3 className="text-white fw-bold" >Snuskommissionen: ”Finland är snart rökfritt – förklaringen är snuset”</h3>
+                        <p className="text-white fw-bolder" >Snuskommissionen slår fast: Bara fem procent av den finska befolkningen röker. Därmed kan Finland snart bli världens första rökfria land.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -46,8 +46,8 @@ const News = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3 className="text-white fw-bold">Cancer och cigaretter – 99 procent av svenskarna har fel information</h3>
-                        <p className="text-white fw-bolder">– Det här är ännu ett exempel på varför svenska myndigheter måste börja tala klarspråk kring hur olika tobaksprodukter påverkar hälsan,
+                        <h3 className="text-white fw-bold" >Cancer och cigaretter – 99 procent av svenskarna har fel information</h3>
+                        <p className="text-white fw-bolder" >– Det här är ännu ett exempel på varför svenska myndigheter måste börja tala klarspråk kring hur olika tobaksprodukter påverkar hälsan,
                              säger Svenska Snustillverkarföreningens generalsekreterare Patrik Strömer.</p>
                     </Carousel.Caption>
                 </Carousel.Item>

@@ -18,15 +18,11 @@ const SnusForum = () => {
             })
     }, []);
 
-    console.log(categories);
-
     return categories ?
         <>
             <div>
-                <h1 className="container-fluid text-center mt-3" style={{ color: '#2A324B' }}>SNUS FORUM</h1>
+                <h1 className="container-fluid text-center mt-5" style={{ color: '#2A324B' }}>SNUS FORUM</h1>
             </div>
-            
-
             <Container>
                 <CardGroup>
                     <Row className="mb-2">
