@@ -25,6 +25,7 @@ import Snus from "./components/Snus";
 import SnusReviews from "./components/SnusReviews";
 import SnusForumCategory from "./components/SnusForumCategory";
 import SnusForumPost from "./components/SnusForumPost";
+import Favourites from "./components/Favourites";
 
 
 
@@ -101,7 +102,7 @@ const App = () => {
                 <Nav.Link href="/login" className="nav-link" onClick={logOut}>
                   LogOut
                   </Nav.Link>
-                  
+
               </>
             ) : (
               <>
@@ -122,14 +123,15 @@ const App = () => {
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
           <Route exact path="/snus-forum" component={SnusForum} />
-          <Route path="/snus-forum/:id" component={SnusForumCategory}/>
-          <Route path="/snus-post/:id" component={SnusForumPost}/>
+          <Route path="/snus-forum/:id" component={SnusForumCategory} />
+          <Route path="/snus-post/:id" component={SnusForumPost} />
           <Route exact path="/snus" component={Snus} />
-          <Route path="/snus-review/:id" component={SnusReviews}/>
+          <Route path="/snus-review/:id" component={SnusReviews} />
           <Route exact path="/news" component={News} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/favourites/:id" component={Favourites} />
           {/* <Route path="/user" component={BoardUser} />
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} /> */}
