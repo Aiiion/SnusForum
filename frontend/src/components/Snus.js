@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import authHeader from "../services/auth-header";
+import AuthService from "../services/auth.service";
 
 import { Card, ListGroup, ListGroupItem, Form, FormControl, Button, Container, CardGroup, Row, Col } from "react-bootstrap";
 import * as Icon from 'react-bootstrap-icons';
 
 const Snus = () => {
+    const currentUser = AuthService.getCurrentUser();
 
     const [snus, setSnus] = useState("");
 
@@ -21,6 +23,8 @@ const Snus = () => {
 
     console.log(snus)
 
+    const FooterStyle = { fill: '#8E92A4' }
+
     return snus ?
         <>
             <div>
@@ -28,7 +32,7 @@ const Snus = () => {
             </div>
 
             <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <FormControl type="text" placeholder="Search" className="mr-sm-2 w-75" />
                 <Button className="mt-3 mb-3" style={{ backgroundColor: '#2A324B' }}>Sök snus</Button>
             </Form>
 
@@ -47,12 +51,12 @@ const Snus = () => {
                                         <ListGroupItem>Typ: {snus.type}</ListGroupItem>
                                         <ListGroupItem>Smak: {snus.flavour_id}</ListGroupItem>
                                     </ListGroup>
-                                    <Card.Body>
-                                        <Card.Link href="#"><Icon.StarFill style={{ fill: '#8E92A4', float: 'left' }}></Icon.StarFill></Card.Link>
-                                        <Card.Link href={`/snus-review/${snus.id}`}>
-                                            <Icon.ChatLeftTextFill style={{ fill: '#8E92A4', float: 'right' }}></Icon.ChatLeftTextFill>
+                                    <Card.Footer className=" d-flex justify-content-lg-between">
+                                        <Card.Link href={`/favourites/${currentUser.user.id}`} className="w-50"><Button><Icon.StarFill style={FooterStyle}></Icon.StarFill></Button> </Card.Link>
+                                        <Card.Link href={`/snus-review/${snus.id}`} > <Button>
+                                            <Icon.ChatLeftTextFill style={FooterStyle}></Icon.ChatLeftTextFill> </Button>
                                         </Card.Link>
-                                    </Card.Body>
+                                    </Card.Footer>
                                 </Card>
                             </Col>
                         ))}
