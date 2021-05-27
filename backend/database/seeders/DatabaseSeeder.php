@@ -15,15 +15,35 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $categorys = [
-            'GÖRA EGET SNUS',
+            'GÖR EGET SNUS',
             'MATCHA SNUS MED KÄK Å DRYCK',
             'ODLA TOBAK',
             'SNUSTIPSET',
             'ÖVRIGT'
         ];
-
+        $flavours = [
+            'Tall',
+            'Gran',
+            'Mint',
+            'Bär',
+            'Frukt',
+            'Kaffe',
+            'Choklad',
+            'Laktris',
+            'Geranium',
+            'Bergamott',
+            'Örter',
+            'Citrus',
+            'Rök',
+            'Cognac'
+        ];
         \App\Models\User::factory(10)->create();
-        \App\Models\Flavours::factory(10)->create();
+        foreach($flavours as $flavour){
+            \App\Models\Flavours::create([
+                'flavour_type' => $flavour
+            ]);
+        };
+        
         \App\Models\Snus::factory(10)->create();
         \App\Models\Reviews::factory(50)->create();
         foreach($categorys as $category){

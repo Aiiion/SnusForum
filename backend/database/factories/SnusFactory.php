@@ -29,9 +29,10 @@ class SnusFactory extends Factory
             'TOBAKSFRI',
             'NIKOTINFRI'
         ];
+        
         return [
             'name' => $this->faker->cityPrefix(),
-            'type' => $this->faker->state(),
+            'type' => $types[rand(0,4)],
             'strength' => $this->faker->numberBetween($min = 1, $max = 5),
             'flavours_id' => \App\Models\Flavours::inRandomOrder()->value('id'),
         ];
