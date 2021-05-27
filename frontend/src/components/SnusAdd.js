@@ -4,14 +4,14 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 import authHeader from '../services/auth-header';
 
-const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
+const API_URL = "http://localhost:80/api/auth/";
 
 const SnusAdd = () => {
 
   const [brand, setBrand] = useState('');
-  const [strength, setStrength] = useState(null);
-  const [type, setType] = useState(null);
-  const [flavour, setFlavour] = useState(null);
+  const [type, setType] = useState('');
+  const [strength, setStrength] = useState('');
+  const [flavour, setFlavour] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
   const onChangeBrand = (e) => {
@@ -19,14 +19,14 @@ const SnusAdd = () => {
     setBrand(brand);
   };
 
-  const onChangeStrenght = (e) => {
-    const strength = e.target.value;
-    setStrength(strength);
-  };
-
   const onChangeType = (e) => {
     const type = e.target.value;
     setType(type);
+  };
+
+  const onChangeStrenght = (e) => {
+    const strength = e.target.value;
+    setStrength(strength);
   };
 
   const onChangeFlavour = (e) => {
@@ -34,12 +34,29 @@ const SnusAdd = () => {
     setFlavour(flavour);
   };
 
+  const HandleSubmit = (e) => {
+    // alert('Ditt snus har lagts till!');
+
+    useEffect(() => {
+      axios.post(`${API_URL}store-snuses`, { headers: authHeader() })
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }, []);
+
+  }
+
+
+
 
   return (
     <div>
       <h1>Lägg till snus i databasen!</h1>
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-      <Form>
+      <Form onSubmit={HandleSubmit}>
         <Form.Group>
           <Form.Label>Märke</Form.Label>
           <Form.Control
@@ -48,22 +65,6 @@ const SnusAdd = () => {
             value={brand}
             onChange={onChangeBrand}
           />
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label>Styrka</Form.Label>
-          <Form.Control
-            as="select"
-            name="strenght"
-            value={strength}
-            onChange={onChangeStrenght}
-          >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Form.Control>
         </Form.Group>
 
         <Form.Group>
@@ -79,6 +80,22 @@ const SnusAdd = () => {
             <option>White portion</option>
             <option>Tobaksfri</option>
             <option>Nikotinfri</option>
+          </Form.Control>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Styrka</Form.Label>
+          <Form.Control
+            as="select"
+            name="strenght"
+            value={strength}
+            onChange={onChangeStrenght}
+          >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
           </Form.Control>
         </Form.Group>
 
@@ -105,7 +122,7 @@ const SnusAdd = () => {
         <Form.File />
       </Form.Group>
 
-        <Button type="submit" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>
+        <Button type="submit" value="Submit" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>
           Submit
         </Button>
       </Form>
