@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import UserService from "../services/user.service";
-
+import { Jumbotron, Button, Image } from "react-bootstrap";
+import '../App.css';
 const Home = () => {
   const [content, setContent] = useState("");
 
@@ -18,15 +19,23 @@ const Home = () => {
 
       //   setContent(_content);
       // }
+      
     );
   }, []);
 
+
   return (
-    <div className="container">
-      <header className="jumbotron">
-        <h3>Hej</h3>
-      </header>
-    </div>
+    <Jumbotron>
+      <h1 className="container-fluid text-center text-dark fw-bold" >Välkommen till Snusmumriken Webbsida!</h1>
+      <p className="text-center text-center text-dark">
+        En platform för dig som älskar snus. Ta del av andra entusiasters favoriter,snus recept och tips!
+  </p>
+      <p className="text-center">
+        <Button href={"/login"} variant="outline-dark">Sign in!</Button>{' '}
+        <Button href={"/register"} variant="outline-dark">Sign up!</Button>{' '}
+      </p>
+    </Jumbotron>
+   
   );
 };
 

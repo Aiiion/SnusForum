@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Switch, Route, Link } from "react-router-dom";
 import authHeader from "../services/auth-header";
 
 import { Card, ListGroup, ListGroupItem, Form, FormControl, Button, Container, CardGroup, Row, Col } from "react-bootstrap";
 import * as Icon from 'react-bootstrap-icons';
-
-import SnusReviews from "./SnusReviews";
 
 const Snus = () => {
 
@@ -15,13 +12,11 @@ const Snus = () => {
     useEffect(() => {
         axios.get('https://snusare-backend.herokuapp.com/api/auth/snuses', { headers: authHeader() })
             .then(response => {
-                // JSON responses are automatically parsed.
                 setSnus(response.data)
             })
-            .catch(e => {
-                console.log("Error");
-                // this.errors.push(e)
-            })
+        // .catch(e => {
+        //     console.log("Error");
+        // })
     }, []);
 
     console.log(snus)
@@ -29,12 +24,12 @@ const Snus = () => {
     return snus ?
         <>
             <div>
-                <h1 className="container-fluid text-center" style={{color: '#2A324B'}}>SNUS</h1>
+                <h1 className="container-fluid text-center" style={{ color: '#2A324B' }}>SNUS</h1>
             </div>
 
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button className="mt-3 mb-3" style={{backgroundColor: '#2A324B'}}>Sök snus</Button>
+                <Button className="mt-3 mb-3" style={{ backgroundColor: '#2A324B' }}>Sök snus</Button>
             </Form>
 
             <Container>
@@ -46,11 +41,10 @@ const Snus = () => {
                                     <Card.Body style={{ backgroundColor: '#F2F3F8' }}>
                                         <Card.Img variant="top" src={snus.img_url} />
                                     </Card.Body>
-                                    <Card.Title style={{ marginTop: '10px'}}>{snus.name}</Card.Title>
+                                    <Card.Title style={{ marginTop: '10px' }}>{snus.name}</Card.Title>
                                     <ListGroup className="list-group-flush">
                                         <ListGroupItem>Styrka: {snus.strength}</ListGroupItem>
                                         <ListGroupItem>Typ: {snus.type}</ListGroupItem>
-                                        {/* <ListGroupItem>Format: {snus.id}</ListGroupItem> */}
                                         <ListGroupItem>Smak: {snus.flavour_id}</ListGroupItem>
                                     </ListGroup>
                                     <Card.Body>
@@ -61,16 +55,16 @@ const Snus = () => {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                        ))};
+                        ))}
                     </Row>
                 </CardGroup>
             </Container>
         </>
         : null
-                            
-        
-                            
-  
+
+
+
+
 }
 
 export default Snus;
