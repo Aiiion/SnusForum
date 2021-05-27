@@ -40,7 +40,7 @@ const SnusForumCategory = () => {
                 setPosts(data)
             })
 
-    }, []);
+    }, [id]);
     console.log(response)
 
     const updatePost = async () => {
