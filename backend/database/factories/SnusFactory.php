@@ -22,10 +22,17 @@ class SnusFactory extends Factory
      */
     public function definition()
     {
+        $types = [
+            'LÖS',
+            'PORTION',
+            'WHITE PORTION',
+            'TOBAKSFRI',
+            'NIKOTINFRI'
+        ];
         return [
             'name' => $this->faker->cityPrefix(),
             'type' => $this->faker->state(),
-            'strength' => $this->faker->numberBetween($min = 0, $max = 5),
+            'strength' => $this->faker->numberBetween($min = 1, $max = 5),
             'flavours_id' => \App\Models\Flavours::inRandomOrder()->value('id'),
         ];
     }
