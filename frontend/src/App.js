@@ -7,7 +7,12 @@ import { Image, Nav, Navbar } from "react-bootstrap";
 import leaf from "./image/leaf.png";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
-import AuthService from "./services/auth.service";
+import {
+  register,
+  login,
+  logout,
+  getCurrentUser,
+} from "./services/auth.service";
 
 import Login from './components/Login';
 import Register from './components/Register';
@@ -32,7 +37,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
 
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
+    const user = getCurrentUser();
 
     if (user) {
       setCurrentUser(user);
@@ -42,18 +47,19 @@ const App = () => {
   }, []);
 
   const logOut = () => {
-    AuthService.logout();
+    logout();
   };
 
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
         <Navbar.Brand href={"/"}>
-          <img src={leaf} 
+          <img src={leaf}
             width="30"
             height="30"
             className="d-inline-block align-top"
-            />
+            alt="logo"
+          />
           {/* <Logo
             alt=""
             width="30"
