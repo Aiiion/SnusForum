@@ -25,6 +25,7 @@ const SnusForum = () => {
             <div>
                 <h1 className="container-fluid text-center" style={{ color: '#2A324B' }}>SNUS FORUM</h1>
             </div>
+            
 
             <Container>
                 <CardGroup>

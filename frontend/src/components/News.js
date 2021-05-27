@@ -59,8 +59,8 @@ const News = () => {
                     <Card style={{ backgroundColor: '#F2F3F8', padding: '0.5em', margin: '15px'  }}>
                         <Card.Img variant="top" src="https://swedishmatch.cdn.storm.io/67ed9e14-11f6-4068-8e47-f5b7a39da5e5.jpg?format=png" />
                         <Card.Body className='p-2'>
-                            <Card.Title>HUR FARLIGT ÄR DET ATT SNUSA?</Card.Title>
-                            <Button href="/snus" variant="outline-primary">LÄS MER!</Button>{' '}
+                            <Card.Title style={{ color: '#2A324B' }}>HUR FARLIGT ÄR DET ATT SNUSA?</Card.Title>
+                            <Button href="/snus" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>LÄS MER</Button>{' '}
                         </Card.Body>
                     </Card>
                 </Col>
@@ -68,8 +68,8 @@ const News = () => {
                     <Card style={{ backgroundColor: '#F4DA9D', padding: '0.5em', margin: '15px' }}>
                         <Card.Img variant="top" src="https://swedishmatch.cdn.storm.io/11b9b348-b144-4ee9-8a09-e58971889e38.jpg?format=png" />
                         <Card.Body className='p-2'>
-                            <Card.Title>NU LANSERAS FACTORY BATCH</Card.Title>
-                            <Button href="/snus" variant="outline-primary">LÄS MER!</Button>{' '}
+                            <Card.Title style={{ color: '#2A324B' }}>NU LANSERAS FACTORY BATCH</Card.Title>
+                            <Button href="/snus" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>LÄS MER</Button>{' '}
                         </Card.Body>
                     </Card>
                 </Col>
@@ -77,8 +77,8 @@ const News = () => {
                     <Card style={{ backgroundColor: '#D1E0DD', padding: '0.5em', margin: '15px' }}>
                         <Card.Img variant="top" src="https://swedishmatch.cdn.storm.io/f21ff84f-8e55-4d1f-9d80-1272657d2aaa.jpg?format=png" />
                         <Card.Body className='p-2'>
-                            <Card.Title>GÖTEBORGS RAPÈ WESTCOAST IPA</Card.Title>
-                            <Button href="/snus" variant="outline-primary">LÄS MER!</Button>{' '}
+                            <Card.Title style={{ color: '#2A324B' }}>GÖTEBORGS RAPÈ WESTCOAST IPA</Card.Title>
+                            <Button href="/snus" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>LÄS MER</Button>{' '}
                         </Card.Body>
                     </Card>
                 </Col>
@@ -86,8 +86,8 @@ const News = () => {
                     <Card style={{ backgroundColor: '#E7BAC0', padding: '0.5em', margin: '15px' }}>
                         <Card.Img variant="top" src="https://swedishmatch.cdn.storm.io/f3c751c9-0e4b-46f5-9b37-6277b80ed08c.jpg?format=png" />
                         <Card.Body className='p-2'>
-                            <Card.Title>VINNARE I SMAKTEST 2021</Card.Title>
-                            <Button href="/snus" variant="outline-primary">LÄS MER!</Button>{' '}
+                            <Card.Title style={{ color: '#2A324B' }}>VINNARE I SMAKTEST 2021</Card.Title>
+                            <Button href="/snus" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>LÄS MER</Button>{' '}
                         </Card.Body>
                     </Card>
                 </Col>

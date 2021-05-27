@@ -1,33 +1,65 @@
 import React from "react";
 import AuthService from "../services/auth.service";
+import { Card, Container, CardGroup, Row, Col } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
   console.log(currentUser);
 
   return (
-    <div className="container">
-      <header className="jumbotron">
+    <>
+      <Container>
         <h3>
-          <strong>Profile:</strong> {currentUser.user.username} 
+          <strong>Välkommen</strong> {currentUser.user.username} 
         </h3>
-      </header>
-      {/* <p>
-        <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
-        {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-      </p>
-      <p>
-        <strong>Id:</strong> {currentUser.id}
-      </p> */}
-      <p>
-        <strong>Email:</strong> {currentUser.user.email}
-      </p>
-      {/* <strong>Authorities:</strong>
-      <ul>
-        {currentUser.roles &&
-          currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-      </ul> */}
-    </div>
+        <p>
+          <strong>Email:</strong> {currentUser.user.email}
+        </p>
+      </Container>
+      <Container>
+        <CardGroup>
+          <Row>
+            <Col sm="6" md="4" lg="4" >
+              <Card>
+                <Card.Body>
+                  <Card.Title>Forum Trådar</Card.Title>
+                  <Card.Text>
+                    Klicka på länken för att se alla dina startade trådar
+                  </Card.Text>
+                  <Card.Link href="#">Se trådar</Card.Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          
+            <Col sm="6" md="4" lg="4" >
+              <Card >
+                <Card.Body>
+                  <Card.Title>Recensioner</Card.Title>
+                  <Card.Text>
+                  Klicka på länken för att se dina recensioner
+                  </Card.Text>
+                  <Card.Link href="#">Se recensioner</Card.Link>
+                </Card.Body>
+              </Card>
+            </Col>
+       
+            <Col sm="6" md="4" lg="4" >     
+              <Card >
+                <Card.Body>
+                  <Card.Title>Kommentarer</Card.Title>
+                  <Card.Text>
+                    Klicka på länken för att se dina kommentarer
+                  </Card.Text>
+                  <Card.Link href="#">Se kommentarer</Card.Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </CardGroup>
+      </Container>
+    </>
   );
 };
 

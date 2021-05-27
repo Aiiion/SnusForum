@@ -29,7 +29,7 @@ const Snus = () => {
 
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button className="mt-3 mb-3" style={{ backgroundColor: '#2A324B' }}>Sök snus</Button>
+                <Button className="mt-3 mb-3" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>Sök snus</Button>
             </Form>
 
             <Container>

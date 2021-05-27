@@ -109,7 +109,7 @@ const SnusForumPost = () => {
                     placeholder="Svara på inlägg"
                 />
                 <div className="form-group">
-                    <Button type="submit" className="mt-3 mb-3" style={{ backgroundColor: '#2A324B' }}>Lägg till</Button>
+                    <Button type="submit" className="mt-3 mb-3" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>Lägg till</Button>
                 </div>
             </Form>
             <Container>
