@@ -69,9 +69,9 @@ const SnusForumCategory = () => {
                         <ListGroup className="list-group-flush">
                             <ListGroupItem style={{ backgroundColor: '#F2F3F8' }}>
                                 <img src={leaf} 
-                                        width="30"
-                                        height="30"
-                                        className="d-inline-block mb-2"
+                                    width="30"
+                                    height="30"
+                                    className="d-inline-block mb-2"
                                 />
                                 <Card.Link className="text-uppercase ml-3" style={{ color: 'black' }} href={`/snus-post/${id}`} >{title}</Card.Link>
                                 <p>{body}</p>

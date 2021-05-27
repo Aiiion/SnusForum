@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 import UserService from "../services/user.service";
-import { Jumbotron, Button, Container, Image, Col, Row } from "react-bootstrap";
-import bgimage from "../image/tobacco-flowers.png";
+import { Button, Container, Image, Col, Row } from "react-bootstrap";
+
 import '../App.css';
+import authService from "../services/auth.service";
+
 const Home = () => {
+
+  const currentUser = authService.getCurrentUser();
+
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -45,10 +50,12 @@ const Home = () => {
         <h5 className="text-center text-center text-dark" style={{ color: '#2A324B' }}>
           Ta del av andra entusiasters favoriter, snus recept och tips!
         </h5>
+        {!currentUser && ( 
         <div className="text-center">
           <Button href={"/login"} variant="#2A324B" style={{ color: 'white', background: "#2A324B", width: "10rem", margin: '1rem'}}>Logga in</Button>
           <Button href={"/register"} variant="#2A324B" style={{ color: 'white', background: "#2A324B", width: "10rem", margin: '1rem' }}>Registrera</Button>
         </div>
+        )}
       </Container>
    </>
   );

@@ -2,21 +2,21 @@ import React from "react";
 import AuthService from "../services/auth.service";
 import { Card, Container, CardGroup, Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import leaf from "../image/leaf.png";
 
 
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
-  console.log(currentUser);
 
   return (
     <>
       <Container>
-        <h3>
+        <h2>
           <strong>Välkommen</strong> {currentUser.user.username} 
-        </h3>
-        <p>
+        </h2>
+        <h5>
           <strong>Email:</strong> {currentUser.user.email}
-        </p>
+        </h5>
       </Container>
       <Container>
         <CardGroup>
@@ -24,7 +24,14 @@ const Profile = () => {
             <Col sm="6" md="4" lg="4" >
               <Card>
                 <Card.Body>
-                  <Card.Title>Forum Trådar</Card.Title>
+                  <Card.Title>
+                    <img src={leaf} 
+                    width="30"
+                    height="30"
+                    className="d-inline-block mb-2 mr-2"
+                    />
+                    Forum Trådar
+                  </Card.Title>
                   <Card.Text>
                     Klicka på länken för att se alla dina startade trådar
                   </Card.Text>
@@ -36,7 +43,14 @@ const Profile = () => {
             <Col sm="6" md="4" lg="4" >
               <Card >
                 <Card.Body>
-                  <Card.Title>Recensioner</Card.Title>
+                  <Card.Title>
+                    <img src={leaf} 
+                    width="30"
+                    height="30"
+                    className="d-inline-block mb-2 mr-2"
+                    />
+                    Recensioner
+                  </Card.Title>
                   <Card.Text>
                   Klicka på länken för att se dina recensioner
                   </Card.Text>
@@ -48,7 +62,14 @@ const Profile = () => {
             <Col sm="6" md="4" lg="4" >     
               <Card >
                 <Card.Body>
-                  <Card.Title>Kommentarer</Card.Title>
+                  <Card.Title>
+                    <img src={leaf} 
+                    width="30"
+                    height="30"
+                    className="d-inline-block mb-2 mr-2"
+                    />
+                    Kommentarer
+                  </Card.Title>
                   <Card.Text>
                     Klicka på länken för att se dina kommentarer
                   </Card.Text>

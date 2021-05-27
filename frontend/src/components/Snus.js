@@ -41,7 +41,7 @@ const Snus = () => {
                                     <Card.Body style={{ backgroundColor: '#F2F3F8' }}>
                                         <Card.Img variant="top" src={snus.img_url} />
                                     </Card.Body>
-                                    <Card.Title style={{ marginTop: '10px' }}>{snus.name}</Card.Title>
+                                    <Card.Title style={{ marginTop: '10px', textTransform: 'uppercase' }}>{snus.name}</Card.Title>
                                     <ListGroup className="list-group-flush">
                                         <ListGroupItem>Styrka: {snus.strength}</ListGroupItem>
                                         <ListGroupItem>Typ: {snus.type}</ListGroupItem>
