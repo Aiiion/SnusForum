@@ -4,7 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
-import AuthService from "../services/auth.service";
+import { register } from "../services/auth.service";
 
 const required = (value) => {
   if (!value) {
@@ -47,8 +47,8 @@ const vpassword = (value) => {
 };
 // Password confirmation fungerar ej vi återkommer till detta
 const vpasswordConfirmation = (event) => {
-  if(event.onPasswordConfirmation !== event.onChangePassword) {
-    return ( 
+  if (event.onPasswordConfirmation !== event.onChangePassword) {
+    return (
       <p>Password does not match!</p>
     );
   }
@@ -91,11 +91,11 @@ const Register = (props) => {
 
     setMessage("");
     setSuccessful(false);
-// Object.values(bar)[0][0] ta errorresponsen o fiska upp meddelandet
+    // Object.values(bar)[0][0] ta errorresponsen o fiska upp meddelandet
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+      register(username, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -177,7 +177,7 @@ const Register = (props) => {
           {message && (
             <div className="form-group">
               <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
+                className={successful ? "alert alert-success" : "alert alert-danger"}
                 role="alert"
               >
                 {message}
