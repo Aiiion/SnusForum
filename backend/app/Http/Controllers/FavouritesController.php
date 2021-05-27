@@ -49,8 +49,8 @@ class FavouritesController extends Controller
          if(Auth::check()){
             $favourites = new Favourites();
             $favourites->users_id = Auth::id();
-            $favourites->id= $request->id;
             $favourites->save();
+            $favourite->Snus = Snus::where('id', $favourite->snus_id)->first();
             $favourites->username = User::where('id',  $favourites->users_id)->first()->username;
 
             return ['favourites' =>  $favourites, 'message' => 'added to your favourites!'];
