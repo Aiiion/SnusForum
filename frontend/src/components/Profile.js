@@ -9,7 +9,7 @@ const Profile = () => {
     <div className="container">
       <header className="jumbotron">
         <h3>
-          <strong>Profile:</strong> {currentUser.user.username} 
+          <strong>Profil:</strong> {currentUser.user.username} 
         </h3>
       </header>
       {/* <p>

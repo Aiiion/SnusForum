@@ -63,7 +63,7 @@ const App = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href={"/"} className="navbar-brand">
-              u10
+              Hem
               </Nav.Link>
 
             {showModeratorBoard && (
@@ -80,7 +80,7 @@ const App = () => {
 
             {currentUser && (
               <Nav.Link href={"/profile"} className="nav-link">
-                User
+                Profil
               </Nav.Link>
             )}
 
@@ -90,7 +90,7 @@ const App = () => {
                   {currentUser.username}
                 </Nav.Link>
                 <Nav.Link href={"/news"} className="nav-link">
-                  News
+                  Nyheter
                   </Nav.Link>
                 <Nav.Link href={"/snus-forum"} className="nav-link">
                   Snus Forum
@@ -99,18 +99,18 @@ const App = () => {
                   Snus
                   </Nav.Link>
                 <Nav.Link href="/login" className="nav-link" onClick={logOut}>
-                  LogOut
+                  Logga ut
                   </Nav.Link>
                   
               </>
             ) : (
               <>
                 <Nav.Link href={"/login"} className="nav-link">
-                  Login
+                  Logga in
                   </Nav.Link>
 
                 <Nav.Link href={"/register"} className="nav-link">
-                  Sign Up
+                  Registrera dig
                   </Nav.Link>
               </>
             )}

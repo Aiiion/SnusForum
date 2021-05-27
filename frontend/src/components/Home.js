@@ -31,8 +31,8 @@ const Home = () => {
         En platform för dig som älskar snus. Ta del av andra entusiasters favoriter,snus recept och tips!
   </p>
       <p className="text-center">
-        <Button href={"/login"} variant="outline-dark">Sign in!</Button>{' '}
-        <Button href={"/register"} variant="outline-dark">Sign up!</Button>{' '}
+        <Button href={"/login"} variant="outline-dark">Logga in!</Button>{' '}
+        <Button href={"/register"} variant="outline-dark">Registrera dig!</Button>{' '}
       </p>
     </Jumbotron>
    
