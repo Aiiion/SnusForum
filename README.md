@@ -163,6 +163,12 @@ saves a flavour to logged in users favourites req: flavourID
 
 tar bort en favorite baserat på dess id
 
+/create-snus:
+
+Ger alla flavours med id. benämnt flavours
+
+Ger alla typer av snus som strängar i CAPS. benämnt types
+
 /user-profile:
 
 Ger all data om den inloggade usern. benämnt user
