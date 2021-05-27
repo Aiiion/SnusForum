@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favourites;
 use App\Models\User;
-use App\Models\Flavours;
+use App\Models\Flavours; 
+use App\Models\Snus;
 
 class FavouritesController extends Controller
 {
@@ -48,7 +49,7 @@ class FavouritesController extends Controller
          if(Auth::check()){
             $favourites = new Favourites();
             $favourites->users_id = Auth::id();
-            $favourites->flavours_id= $request->flavours_id;
+            $favourites->snus_id= $request->snus_id;
             $favourites->save();
             $favourites->username = User::where('id',  $favourites->users_id)->first()->username;
 
@@ -72,7 +73,7 @@ class FavouritesController extends Controller
             $favourites = Favourites::where('users_id', $id)->get();
             foreach ($favourites as $favourite) {
 
-            $favourite->flavour = Flavours::where('id', $favourite->flavours_id)->first()->flavour_type;
+            $favourite->Snus = Snus::where('id', $favourite->snus_id)->first();
 
             }
             return ['favourites' => $favourites];
