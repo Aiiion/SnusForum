@@ -23,6 +23,7 @@ import Snus from "./components/Snus";
 import SnusReviews from "./components/SnusReviews";
 import SnusForumCategory from "./components/SnusForumCategory";
 import SnusForumPost from "./components/SnusForumPost";
+import SnusAdd from "./components/SnusAdd";
 
 
 
@@ -96,10 +97,13 @@ const App = () => {
                 <Nav.Link href={"/snus"} className="nav-link">
                   Snus
                   </Nav.Link>
+                  <Nav.Link href={"/snus-add"} className="nav-link">
+                  Add Snus
+                  </Nav.Link>
                 <Nav.Link href="/login" className="nav-link" onClick={logOut}>
                   LogOut
                   </Nav.Link>
-                  
+
               </>
             ) : (
               <>
@@ -123,6 +127,7 @@ const App = () => {
           <Route path="/snus-forum/:id" component={SnusForumCategory}/>
           <Route path="/snus-post/:id" component={SnusForumPost}/>
           <Route exact path="/snus" component={Snus} />
+          <Route exact path="/snus-add" component={SnusAdd} />
           <Route path="/snus-review/:id" component={SnusReviews}/>
           <Route exact path="/news" component={News} />
           <Route exact path="/login" component={Login} />
