@@ -6,19 +6,21 @@ import { useParams } from "react-router-dom";
 import { Card, ListGroup, ListGroupItem, Form, FormControl, Button, Container, CardGroup, Row, Col } from "react-bootstrap";
 import * as Icon from 'react-bootstrap-icons';
 
+
 const Favourites = () => {
     const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
-    const [favourites, setFavourites] = useState("");
+    const [myFav, setmyFav] = useState();
     let { id } = useParams();
     useEffect(() => {
         axios.get(`${API_URL}favourites/${id}`, { headers: authHeader() })
             .then(response => {
-                setFavourites(response.data)
+                setmyFav(response.data)
             })
 
     }, [id]);
 
-    console.log(favourites)
+    console.log(myFav)
+
 
     return (
 
