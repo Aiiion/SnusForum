@@ -49,9 +49,10 @@ class FavouritesController extends Controller
          if(Auth::check()){
             $favourites = new Favourites();
             $favourites->users_id = Auth::id();
-            $favourites->save();
-            $favourite->Snus = Snus::where('id', $favourite->snus_id)->first();
-            $favourites->username = User::where('id',  $favourites->users_id)->first()->username;
+            $favourites->save(); //nu sparar du favorites utan något snus_id, den kommer kasta error då den inte får vara null
+            $favourite->Snus = Snus::where('id', $favourite->snus_id)->first(); //du borde döpa variabeln till snuses_id för enhetlig kodstandard, detta är även fel i sql queryn. samt att favorites->snuses_id inte hinns här ännu. syftet här är att skapa den och definiera den
+             //du har värdet för snuses_id i requesten (datan användaren skickar för att sparas) så då blir det $request->
+            $favourites->username = User::where('id',  $favourites->users_id)->first()->username; //denna ska dock vara efter save då det inte ska sparas till db utan endast skickas till frontend
 
             return ['favourites' =>  $favourites, 'message' => 'added to your favourites!'];
          } else {
