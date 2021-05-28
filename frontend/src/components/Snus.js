@@ -26,8 +26,9 @@ const Snus = () => {
     const FooterStyle = { fill: '#8E92A4' };
     const btnStyle = { color: 'white', background: "#2A324B" }
 
-    const updatefav = async () => {
-        await saveFavourite(`${snus.flavour_id}`)
+    const updatefav = (id) => {
+        console.log(id)
+        /* await saveFavourite(id) */
 
     }
 
@@ -60,7 +61,7 @@ const Snus = () => {
                                         <ListGroupItem>Smak: {snus.flavour_name}</ListGroupItem>
                                     </ListGroup>
                                     <Card.Footer className=" d-flex justify-content-lg-between">
-                                        <Card.Link href={`/favourites/${currentUser.user.id}`}><Button variant="#2A324B" style={btnStyle} onClick={updatefav}><Icon.StarFill style={FooterStyle}></Icon.StarFill></Button> </Card.Link>
+                                        <Card.Link href={`#`}><Button variant="#2A324B" style={btnStyle} onClick={updatefav(snus.flavour_id)}><Icon.StarFill style={FooterStyle}></Icon.StarFill></Button> </Card.Link>
                                         <Card.Link href={`/snus-review/${snus.id}`} > <Button variant="#2A324B" style={btnStyle}>
                                             <Icon.ChatLeftTextFill style={FooterStyle}></Icon.ChatLeftTextFill> </Button>
                                         </Card.Link>
