@@ -22,9 +22,9 @@ class SnusController extends Controller
     {
         if (Auth::check()) {
             $snuses = Snuses::all();
-            // foreach ($snuses as $snus){
-            //     $snus->avgRating = $snus->avgRating();
-            // } SAVE TO LATER!!!
+             foreach ($snuses as $snus){
+                 $snus->avgRating = $snus->avgRating();
+            }
             foreach($snuses as $snus){
                 $snus->flavour_name = Flavours::where('id', $snus->flavours_id)->first()->flavour_type;
             }

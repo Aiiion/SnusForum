@@ -18,6 +18,5 @@ class Snuses extends Model
     }
     public function avgRating(){
         return $this->hasMany('\App\Models\Reviews')->where('snuses_id', $this->id)->avg('rating');
-        // return $this->id;
     }
 }
