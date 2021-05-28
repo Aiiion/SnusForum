@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import UserService from "../services/user.service";
+import { getPublicContent } from "../services/user.service";
 import { Button, Container, Image, Col, Row } from "react-bootstrap";
 
 import '../App.css';
@@ -13,7 +13,7 @@ const Home = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    UserService.getPublicContent().then(
+    getPublicContent().then(
       (response) => {
         setContent(response.data);
       },
