@@ -6,6 +6,7 @@ import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
 import Profile from "./Profile";
+import { Container } from "react-bootstrap";
 
 const required = (value) => {
   if (!value) {
@@ -70,53 +71,55 @@ const Login = (props) => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <Form onSubmit={handleLogin} ref={form}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <Input
-              type="text"
-              className="form-control"
-              name="email"
-              value={email}
-              onChange={onChangeEmail}
-              validations={[required]}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="password">Lösenord</label>
-            <Input
-              type="password"
-              className="form-control"
-              name="password"
-              value={password}
-              onChange={onChangePassword}
-              validations={[required]}
-            />
-          </div>
-
-          <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
-              {loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              <span>Logga in</span>
-            </button>
-          </div>
-
-          {message && (
+    <Container>
+      <div>
+        <div className="card card-container">
+          <Form onSubmit={handleLogin} ref={form}>
             <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {message}
-              </div>
+              <label htmlFor="email">Email</label>
+              <Input
+                type="text"
+                className="form-control"
+                name="email"
+                value={email}
+                onChange={onChangeEmail}
+                validations={[required]}
+              />
             </div>
-          )}
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
-        </Form>
+
+            <div className="form-group">
+              <label htmlFor="password">Lösenord</label>
+              <Input
+                type="password"
+                className="form-control"
+                name="password"
+                value={password}
+                onChange={onChangePassword}
+                validations={[required]}
+              />
+            </div>
+
+            <div className="form-group">
+              <button className="btn" style={{ color: 'white', backgroundColor: "#2A324B"}} disabled={loading}>
+                {loading && (
+                  <span className="spinner-border spinner-border-sm"></span>
+                )}
+                <span>Logga in</span>
+              </button>
+            </div>
+
+            {message && (
+              <div className="form-group">
+                <div className="alert alert-danger" role="alert">
+                  {message}
+                </div>
+              </div>
+            )}
+            <CheckButton style={{ display: "none" }} ref={checkBtn} />
+          </Form>
+        </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

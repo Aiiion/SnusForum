@@ -18,21 +18,18 @@ const SnusForum = () => {
             })
     }, []);
 
-    console.log(categories);
-
     return categories ?
         <>
             <div>
-                <h1 className="container-fluid text-center" style={{ color: '#2A324B' }}>SNUS FORUM</h1>
+                <h1 className="container-fluid text-center mt-5" style={{ color: '#2A324B' }}>SNUS FORUM</h1>
             </div>
-
             <Container>
                 <CardGroup>
                     <Row className="mb-2">
                         {categories.map((title) => (
                             <Col className="mb-1" sm="6" md="6" lg="4">
                                 <Card className="text-center" style={{ backgroundColor: '#E7BAC0' }}>
-                                    <Card.Title style={{ marginTop: '10px' }}>
+                                    <Card.Title style={{ marginTop: '10px', textTransform: 'uppercase' }}>
                                         <Card.Link style={{ color: '#2A324B' }} href={`/snus-forum/${title.id}`}>{title.category}</Card.Link>
                                     </Card.Title>
                                 </Card>

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Categorys;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +14,44 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $categorys = [
+            'GÖR EGET SNUS',
+            'MATCHA SNUS MED KÄK Å DRYCK',
+            'ODLA TOBAK',
+            'SNUSTIPSET',
+            'ÖVRIGT'
+        ];
+        $flavours = [
+            'Tall',
+            'Gran',
+            'Mint',
+            'Bär',
+            'Frukt',
+            'Kaffe',
+            'Choklad',
+            'Laktris',
+            'Geranium',
+            'Bergamott',
+            'Örter',
+            'Citrus',
+            'Rök',
+            'Cognac'
+        ];
         \App\Models\User::factory(10)->create();
-        \App\Models\Flavours::factory(10)->create();
+        foreach($flavours as $flavour){
+            \App\Models\Flavours::create([
+                'flavour_type' => $flavour
+            ]);
+        };
+        
         \App\Models\Snus::factory(10)->create();
         \App\Models\Reviews::factory(50)->create();
-        \App\Models\Categorys::factory(5)->create();
+        foreach($categorys as $category){
+            \App\Models\Categorys::create([
+                'category' => $category
+            ]);
+        };
+        
         \App\Models\Posts::factory(20)->create();
         \App\Models\Comments::factory(50)->create();
         \App\Models\Favourites::factory(10)->create();
