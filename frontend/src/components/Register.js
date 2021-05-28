@@ -3,8 +3,8 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-
 import { register } from "../services/auth.service";
+
 
 const required = (value) => {
   if (!value) {
@@ -54,7 +54,7 @@ const vpasswordConfirmation = (event) => {
   }
 };
 
-const Register = (props) => {
+const Reg = (props) => {
   const form = useRef();
   const checkBtn = useRef();
 
@@ -114,7 +114,6 @@ const Register = (props) => {
       );
     }
   };
-
   return (
     <div className="col-md-12">
       <div className="card card-container">
@@ -122,7 +121,7 @@ const Register = (props) => {
           {!successful && (
             <div>
               <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">Användarnamn</label>
                 <Input
                   type="text"
                   className="form-control"
@@ -146,7 +145,7 @@ const Register = (props) => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Lösenord</label>
                 <Input
                   type="password"
                   className="form-control"
@@ -157,7 +156,7 @@ const Register = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="password">Confirm Password</label>
+                <label htmlFor="password">Verifiera Lösenord</label>
                 <Input
                   type="password"
                   className="form-control"
@@ -167,9 +166,13 @@ const Register = (props) => {
                   validations={[required, vpasswordConfirmation]}
                 />
               </div>
-
+              <div>
+                <input type="checkbox" id="scales" name="scales"
+                />
+                <label for="scales">Här intygar jag att jag är över 18 år!</label>
+              </div>
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
+                <button className="btn btn-primary btn-block">Registrera dig</button>
               </div>
             </div>
           )}
@@ -187,8 +190,9 @@ const Register = (props) => {
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
       </div>
+
     </div>
   );
 };
 
-export default Register;
+export default Reg;
