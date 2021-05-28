@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favourites;
 use App\Models\User;
-use App\Models\Flavours; 
+use App\Models\Flavours;
 use App\Models\Snus;
 
 class FavouritesController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of all favourites.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,18 +28,9 @@ class FavouritesController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created favourite in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -49,10 +40,10 @@ class FavouritesController extends Controller
          if(Auth::check()){
             $favourites = new Favourites();
             $favourites->users_id = Auth::id();
-            $favourites->save(); //nu sparar du favorites utan något snus_id, den kommer kasta error då den inte får vara null
-            $favourite->Snus = Snus::where('id', $favourite->snus_id)->first(); //du borde döpa variabeln till snuses_id för enhetlig kodstandard, detta är även fel i sql queryn. samt att favorites->snuses_id inte hinns här ännu. syftet här är att skapa den och definiera den
-             //du har värdet för snuses_id i requesten (datan användaren skickar för att sparas) så då blir det $request->
-            $favourites->username = User::where('id',  $favourites->users_id)->first()->username; //denna ska dock vara efter save då det inte ska sparas till db utan endast skickas till frontend
+            $favourites->flavours_id = $request->flavours_id;
+            $favourites->save();
+            // adds the username for the user having this favourite
+            $favourites->username = User::where('id',  $favourites->users_id)->first()->username;
 
             return ['favourites' =>  $favourites, 'message' => 'added to your favourites!'];
          } else {
@@ -63,7 +54,7 @@ class FavouritesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display one specific users favourites.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -86,30 +77,7 @@ class FavouritesController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
+     * Remove the specified favourite from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
