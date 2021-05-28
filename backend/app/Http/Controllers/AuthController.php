@@ -9,6 +9,14 @@ use App\Models\Favourites;
 use App\Models\Flavours;
 use Validator;
 
+/**
+ * This is where all the security happens.
+ * We have used JWT tokens to confirm the logged in user based on Bearer tokens.
+ * Each user gets a uniqe token when logged in that is reseted after 1 hour of no activity.
+ *
+ * To ensure security, all controllers have an Auth::check().
+ */
+
 
 class AuthController extends Controller
 {
