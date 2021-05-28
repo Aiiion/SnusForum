@@ -65,6 +65,10 @@ const App = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
 
+            <Nav.Link href={"/"} className="navbar-brand">
+              Hem
+              </Nav.Link>
+
             {showModeratorBoard && (
               <Nav.Link href={"/mod"} className="nav-link">
                 Moderator Board

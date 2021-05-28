@@ -99,7 +99,7 @@ const SnusForumCategory = () => {
                         e.preventDefault()
                         setRequest({ ...request, title: e.target.value });
                     }}
-                    placeholder="Title"
+                    placeholder="Titel"
                 />
                 <Input
                     type="text"
