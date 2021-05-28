@@ -3,8 +3,9 @@ import axios from "axios";
 import authHeader from "../services/auth-header";
 import { useParams } from "react-router-dom";
 
-import { Card, ListGroup, ListGroupItem, Form, FormControl, Button, Container, CardGroup, Row, Col } from "react-bootstrap";
-import * as Icon from 'react-bootstrap-icons';
+import { Container, Row } from "react-bootstrap";
+import RenderSnus from "./RenderSnus";
+
 
 
 const Favourites = () => {
@@ -23,10 +24,17 @@ const Favourites = () => {
 
 
     return (
+        <>
+            <div>
+                <h1 className="container-fluid text-center" style={{ color: '#2A324B' }}>Dina Favorit Snusar</h1>
+            </div>
+            <Container>
+                <Row>
+                    {myFav ? myFav.favourites.map((snuses) => (RenderSnus(snuses))) : <div> LOADING SNUSES</div>}
+                </Row>
+            </Container>
 
-        <div>
-            <h1 className="container-fluid text-center" style={{ color: '#2A324B' }}>Dina Favorit Snusar</h1>
-        </div>
+        </>
     )
 
 

@@ -4,9 +4,9 @@ import authHeader from "./auth-header";
 const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 
 
-export default function saveFavourite(snusID) {
+export default function saveFavourite(flavours_id) {
     let bodyFormData = new FormData();
-    bodyFormData.append('flavours_id', snusID);
+    bodyFormData.append('flavours_id', flavours_id);
 
 
 
