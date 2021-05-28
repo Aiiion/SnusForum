@@ -40,7 +40,7 @@ class FavouritesController extends Controller
          if(Auth::check()){
             $favourites = new Favourites();
             $favourites->users_id = Auth::id();
-            $favourites->id= $request->id;
+            $favourites->flavours_id = $request->flavours_id;
             $favourites->save();
             // adds the username for the user having this favourite
             $favourites->username = User::where('id',  $favourites->users_id)->first()->username;
