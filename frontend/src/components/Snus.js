@@ -29,7 +29,7 @@ const Snus = () => {
 
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button className="mt-3 mb-3" style={{ backgroundColor: '#2A324B' }}>Sök snus</Button>
+                <Button className="mt-3 mb-3" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>Sök snus</Button>
             </Form>
 
             <Container>
@@ -41,7 +41,7 @@ const Snus = () => {
                                     <Card.Body style={{ backgroundColor: '#F2F3F8' }}>
                                         <Card.Img variant="top" src={snus.img_url} />
                                     </Card.Body>
-                                    <Card.Title style={{ marginTop: '10px' }}>{snus.name}</Card.Title>
+                                    <Card.Title style={{ marginTop: '10px', textTransform: 'uppercase' }}>{snus.name}</Card.Title>
                                     <ListGroup className="list-group-flush">
                                         <ListGroupItem>Styrka: {snus.strength}</ListGroupItem>
                                         <ListGroupItem>Typ: {snus.type}</ListGroupItem>
