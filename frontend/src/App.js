@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import './App.css';
 
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { ReactComponent as Logo } from "./logo.svg";
+import { Image, Nav, Navbar } from "react-bootstrap";
+// import { ReactComponent as Logo } from "./logo.svg";
+import leaf from "./image/leaf.png";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
 import AuthService from "./services/auth.service";
 
@@ -11,9 +13,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Home from "./components/Home";
-
 import SnusForum from "./components/SnusForum";
-
 import News from "./components/News";
 
 import BoardUser from "./components/BoardUser";
@@ -21,6 +21,9 @@ import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import Snus from "./components/Snus";
 import SnusReviews from "./components/SnusReviews";
+import SnusForumCategory from "./components/SnusForumCategory";
+import SnusForumPost from "./components/SnusForumPost";
+
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -45,20 +48,22 @@ const App = () => {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
         <Navbar.Brand href={"/"}>
-          <Logo
+          <img src={leaf} 
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+            />
+          {/* <Logo
             alt=""
             width="30"
             height="30"
             className="d-inline-block align-top"
-          />
+          /> */}
           Snus
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href={"/"} className="navbar-brand">
-              u10
-              </Nav.Link>
 
             {showModeratorBoard && (
               <Nav.Link href={"/mod"} className="nav-link">
@@ -73,37 +78,38 @@ const App = () => {
             )}
 
             {currentUser && (
-              <Nav.Link href={"/user"} className="nav-link">
-                User
+              <Nav.Link href={"/profile"} className="nav-link">
+                Profil
               </Nav.Link>
             )}
 
             {currentUser ? (
               <>
-                <Nav.Link href={"/profile"} className="nav-link">
+                {/* <Nav.Link href={"/profile"} className="nav-link">
                   {currentUser.username}
-                </Nav.Link>
+                </Nav.Link> */}
                 <Nav.Link href={"/news"} className="nav-link">
-                  News
+                  Nyheter
                   </Nav.Link>
                 <Nav.Link href={"/snus-forum"} className="nav-link">
-                  Snus Forum
+                  Snusforum
                   </Nav.Link>
                 <Nav.Link href={"/snus"} className="nav-link">
                   Snus
                   </Nav.Link>
                 <Nav.Link href="/login" className="nav-link" onClick={logOut}>
-                  LogOut
+                  Logga ut
                   </Nav.Link>
+                  
               </>
             ) : (
               <>
                 <Nav.Link href={"/login"} className="nav-link">
-                  Login
+                  Logga in
                   </Nav.Link>
 
                 <Nav.Link href={"/register"} className="nav-link">
-                  Sign Up
+                  Registrera dig
                   </Nav.Link>
               </>
             )}
@@ -115,20 +121,84 @@ const App = () => {
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
           <Route exact path="/snus-forum" component={SnusForum} />
+          <Route path="/snus-forum/:id" component={SnusForumCategory}/>
+          <Route path="/snus-post/:id" component={SnusForumPost}/>
           <Route exact path="/snus" component={Snus} />
-          {/* <Route path="/snus-review/:id" render={(snus) => <SnusReviews {...snus} />} /> */}
           <Route path="/snus-review/:id" component={SnusReviews}/>
-
           <Route exact path="/news" component={News} />
-
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
-          <Route path="/user" component={BoardUser} />
+          {/* <Route path="/user" component={BoardUser} />
           <Route path="/mod" component={BoardModerator} />
-          <Route path="/admin" component={BoardAdmin} />
+          <Route path="/admin" component={BoardAdmin} /> */}
         </Switch>
       </div>
+
+      <MDBFooter color="mdb-color" className="font-small lighten-3 pt-4 mt-4">
+        <MDBContainer className="text-center text-md-left">
+          <MDBRow className="my-4">
+            <MDBCol md="4" lg="4">
+              <h5 className="text-uppercase mb-4 font-weight-bold">
+                Om oss
+            </h5>
+              <p>
+                Välkommen!
+                Med denna webbapplikation vill vi bidra med en plattform och ett forum för alla snusentusiaster runt om i världen - en plats där man kan dela snusrecept, ge tips om sina favoritsnus, diskutera nya snussorter och mycket mer.
+            </p>
+              <p>
+                Registera dig för att gå med i vår gemenskap och utforska vilket snus som passar dig!
+            </p>
+            </MDBCol>
+            <hr className="clearfix w-100 d-md" />
+            <MDBCol md="2" lg="2" className="ml-auto">
+              <h5 className="text-uppercase mb-4 font-weight-bold">Utforska</h5>
+              <ul className="list-unstyled">
+                <p>
+                  <a href={"/news"}>NYHETER</a>
+                </p>
+                <p>
+                  <a href={"/snus"}>SNUS</a>
+                </p>
+                <p>
+                  <a href={"/snus-forum"}>SNUSFORUM</a>
+                </p>
+                <p>
+                  <a href="#!">SNUSRECENSIONER</a>
+                </p>
+              </ul>
+            </MDBCol>
+            <hr className="clearfix w-100 d-md" />
+            <MDBCol md="5" lg="3">
+              <h5 className="text-uppercase mb-4 font-weight-bold">Kontakt</h5>
+              <p>
+                <i className="fa fa-envelope mr-3" /> snusmumriken.kondtjanst@gmail.com
+            </p>
+              <p>
+                <i className="fa fa-phone mr-3" /> + 12 123 123 12
+            </p>
+            </MDBCol>
+            <hr className="clearfix w-100 d-md" />
+            <MDBCol md="2" lg="2" className="text-center">
+              <h5 className="text-uppercase mb-4 font-weight-bold">
+                Följ oss
+            </h5>
+              <div className="mt-2">
+                <a type="button" href="https://github.com/chas-academy/u10-business-idea-snusmumriken-barn" className="btn-floating btn-small btn-github">
+                  <i className="fab fa-github" />
+                </a>
+              </div>
+            </MDBCol>
+            <hr className="clearfix w-100 d-md" />
+          </MDBRow>
+        </MDBContainer>
+        <div className="footer-copyright text-center py-3">
+          <MDBContainer fluid>
+            &copy; {new Date().getFullYear()} Copyright:{" "}
+            <p>Snusmumrikens-barn</p>
+          </MDBContainer>
+        </div>
+      </MDBFooter>
     </div>
   );
 };

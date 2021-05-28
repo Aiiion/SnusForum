@@ -8,11 +8,25 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function search(Request $request, Snus $snus, Flavours $flavours) {
-        $query = $request->input('query');
 
-        $snus = Snus::query()->where('name', 'like', "%$query%")->orWhere('type', 'like', "%$query%")->get();
-        $flavours = Flavours::query()->where('flavour_type', 'like', "%$query%")->get();
+    public function search($key) {
+        $flavours = Flavours::query()
+        ->where('flavour_type', 'LIKE', "%{$key}%")
+        ->get();
+        $snuses = Snus::query()
+        ->where('name', 'LIKE', "%{$key}%")
+        ->orWhere('type', 'LIKE', "%{$key}%")
+        ->get();
 
+        
+        foreach($flavours as $flavour){
+            $relatedSnus = Snus::where('flavours_id', $flavour->id)->get();
+            $snuses = $snuses->merge($relatedSnus); 
+        }
+        foreach($snuses as $snus){
+            $snus->flavour_name = Flavours::where('id', $snus->flavours_id)->first()->flavour_type;
+        }
+
+        return ['snuses' => $snuses];
     }
 }
