@@ -15,7 +15,7 @@ class FlavoursController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //sends back all flavours
     {
         if (Auth::check()) {
             $flavours = Flavours::all();
@@ -33,7 +33,7 @@ class FlavoursController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) //sends back a specific falvours based on id along with all snuses with that flavour
     {
         if (Auth::check()) {
             $flavour = Flavours::where('id', $id)->first();

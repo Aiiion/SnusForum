@@ -12,7 +12,7 @@ class CommentsController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the comments.
      *
      * @return \Illuminate\Http\Response
      */
@@ -20,6 +20,7 @@ class CommentsController extends Controller
     {
         if(Auth::check()){
             $comments = Comments::all();
+            // Loops thru all comments and sends the username
             foreach($comments as $comment){
                 $comment->username = User::where('id', $comment->users_id)->first()->username;
             }
@@ -30,18 +31,9 @@ class CommentsController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created comment in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -54,6 +46,7 @@ class CommentsController extends Controller
             $comment->body = $request->body;
             $comment->posts_id = $request->posts_id;
             $comment->save();
+            // adds the username for the user creating the comment
             $comment->username = User::where('id', $comment->users_id)->first()->username;
 
             return ['comment' => $comment];
@@ -63,7 +56,7 @@ class CommentsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified comment.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -72,6 +65,7 @@ class CommentsController extends Controller
     {
         if (Auth::check()) {
             $comments = Comments::where('id', $id)->first();
+            // adds the username for the user who created this comment
             $comments->username = User::where('id', $comments->users_id)->first()->username;
             return ['comments' => $comments];
         } else {
@@ -80,31 +74,9 @@ class CommentsController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
+     * Remove the specified comment from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
