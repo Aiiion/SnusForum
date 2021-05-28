@@ -35,7 +35,7 @@ The page is deployed to snusare.surge.sh
         laravelsail/php80-composer:latest \
         composer install --ignore-platform-reqs
 - Make the .env file
-- .vendor/bin/sail up (or artisan key:generate)
+- ./vendor/bin/sail up (or artisan key:generate)
 - Open the application at localhost:80
 - Follow the instructions to generate a key
 #### Setting up database connection
