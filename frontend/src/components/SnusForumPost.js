@@ -28,7 +28,7 @@ const SnusForumPost = () => {
     }
 
     const [comment, setComment] = useState("");
-    const [commentBody, setCommentBody] = useState("");
+    // const [commentBody, setCommentBody] = useState("");
     const [request, setRequest] = useState(req)
     const [response, setResponse] = useState()
     const { body } = request;
@@ -46,7 +46,7 @@ const SnusForumPost = () => {
         //     this.errors.push(e)
         // })
     }, []);
-
+    console.log(response);
     const updateComment = async () => {
         await addComment(body, id)
         axios.get(`${API_URL}posts/${id}`, { headers: authHeader() })
