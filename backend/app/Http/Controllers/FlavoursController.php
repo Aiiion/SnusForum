@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Flavours;
-use App\Models\Snus;
+use App\Models\Snuses;
 
 class FlavoursController extends Controller
 {
@@ -37,7 +37,7 @@ class FlavoursController extends Controller
     {
         if (Auth::check()) {
             $flavour = Flavours::where('id', $id)->first();
-            $snuses = Snus::where('flavours_id', $id)->get();
+            $snuses = Snuses::where('flavours_id', $id)->get();
 
             return ['flavour' => $flavour, 'snuses' => $snuses];
         } else {

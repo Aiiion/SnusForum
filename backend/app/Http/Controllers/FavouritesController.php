@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Favourites;
 use App\Models\User;
 use App\Models\Flavours; 
-use App\Models\Snus;
+use App\Models\Snuses;
 
 class FavouritesController extends Controller
 {
@@ -73,7 +73,7 @@ class FavouritesController extends Controller
             $favourites = Favourites::where('users_id', $id)->get();
             foreach ($favourites as $favourite) {
 
-            $favourite->Snus = Snus::where('id', $favourite->id)->first();
+            $favourite->Snus = Snuses::where('id', $favourite->id)->first();
 
             }
             return ['favourites' => $favourites];

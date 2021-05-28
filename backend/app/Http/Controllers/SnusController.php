@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Snus;
+use App\Models\Snuses;
 use App\Models\User;
 use App\Models\Reviews;
 use App\Models\Flavours;
@@ -21,7 +21,7 @@ class SnusController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $snuses = Snus::all();
+            $snuses = Snuses::all();
             // foreach ($snuses as $snus){
             //     $snus->avgRating = $snus->avgRating();
             // } SAVE TO LATER!!!
@@ -54,7 +54,7 @@ class SnusController extends Controller
     public function store(Request $request)
     {
         if(Auth::check()){
-            $snus = new Snus();
+            $snus = new Snuses();
             $snus->name = $request->name;
             $snus->type = $request->type;
             $snus->strength = $request->strength;
@@ -76,7 +76,7 @@ class SnusController extends Controller
     public function show($id)
     {
         if (Auth::check()) {
-            $snus = Snus::where('id', $id)->first();
+            $snus = Snuses::where('id', $id)->first();
             $snus->avgRating = $snus->avgRating(); 
             $reviews = Reviews::where('snuses_id', $id)->get();
             
@@ -124,7 +124,7 @@ class SnusController extends Controller
     public function destroy($id)
     {
         if(Auth::check()){
-            $snus = Snus::where('id', $id)->first();
+            $snus = Snuses::where('id', $id)->first();
             $snus->delete();
             return ['message' => 'The snus ' . $snus->name . ' ' . $snus->type . ' has been deleted'];
         } else{

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Snus extends Model
+class Snuses extends Model
 {
     use HasFactory;
 
@@ -17,6 +17,7 @@ class Snus extends Model
         return $this->hasMany('\App\Models\Reviews')->get();
     }
     public function avgRating(){
-        return $this->hasMany('\App\Models\Reviews')->where('snuses_id', $this->id)->avg('rating')->get();
+        return $this->hasMany('\App\Models\Reviews')->where('snuses_id', $this->id)->avg('rating');
+        // return $this->id;
     }
 }
