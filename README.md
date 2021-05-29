@@ -1,10 +1,36 @@
-
+[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Issues][issues-shield]][issues-url]
 # u10-business-idea-snusmumriken-barn
-## Description
+<details  open="open">
+
+<summary><h2  style="display: inline-block">Table of Contents</h2></summary>
+
+<ol>
+
+<li><a  href="#about-the-project">About The Project</a>
+    
+<li><a  href="#design">Design</a>
+
+
+<ul>
+
+<li><a  href="#built-with">Built With</a></li>
+
+<li><a  href="#code-standards">Code Standards</a></li>
+
+</ul>
+
+</li>
+
+</ol>
+
+</details>
+
+## About The Project<br>
+> ### Built With
 This application was built with:
-- React
-- Laravel sail
-- Bootstrap
+*  [React.js](https://reactjs.org/)
+*  [React.js](https://reactjs.org/)
+*  [React.js](https://reactjs.org/)
 The aim with this app is to get all snus-enthusiasts a forum where we can share snus-recipes, tips on favourite-snus and much more.
 ### Skiss databas
 [draw.io](https://app.diagrams.net/#G1NGWY1s4TLEN6tDkRtfDoxssnLPw4PbVJ)
@@ -54,119 +80,40 @@ FLUSH PRIVILEGES;
 
 ./vendor/bin/sail composer require tymon/jwt-auth --ignore-platform-reqs 
 
-API ROUTES:
+## Page and Route Descriptions
+| Command | Description |
+| --- | --- |
+| /snuses | ger alla snuser och dess snittbetyg. benämnt snuses |
+| /snuses/{id} | ger alla data om en snus baserat på id. benämnt snus |
+| /reviews | ger alla reviews. benämnt reviews |
+| /reviews/{id} | ger all data om en review baserat på id. benämnt review |
+| /store-review | sparar en review, vill ha följande data -snuses_id -body -rating (går även att lägga till title om så önskas) |
+| /delete-comments/{id} | tar bort en comment baserat på dess id |
+| /store-comments | sparar en comment, vill ha följande data |
+| /comments/{id} | ger all data om en comment. benämnt comment |
+| /comments | ger alla comments. benämnt comments |
+| /flavours/{id} | ger all data om en flavour. benämnt flavour |
+| /flavours | ger alla flavours. benämnt flavours |
+| /categorys/{id} | ger all data om en category. benämnt category|
+| /categorys | ger alla categorys. benämnt categorys|
+| /delete-posts/{id} | tar bort en post baserat på dess id |
+| /store-posts |sparar en post, vill ha följande data |
+| /posts/{id} | ger all data om en post baserat på id. benämnt post |
+| /posts | ger alla posts. benämnt posts |
+| /delete-review/{id} | tar bort en specifik review baserat på dess id |
+| /favourites | returns a list of all  favourites available  | 
+| /favourites/{userID}| returns a list of specified users favourites | 
+| /store-favourites | saves a flavour to logged in users favourites req: flavourID |
+| /delete-favourites/{id} | tar bort en favorite baserat på dess id | 
+| /user-profile | Ger all data om den inloggade usern. benämnt user| 
 
-api/auth
+[contributors-shield]: https://img.shields.io/github/contributors/chas-academy/u10-business-idea-snusmumriken-barn.svg?style=for-the-badge
 
-/snuses:
+[contributors-url]: https://github.com/chas-academy/u10-business-idea-snusmumriken-barn/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/chas-academy/u10-business-idea-snusmumriken-barn.svg?style=for-the-badge
 
-ger alla snuser och dess snittbetyg. benämnt snuses
+[forks-url]: https://github.com/chas-academy/u10-business-idea-snusmumriken-barn/network/members
 
-/snuses/{id}:
+[issues-shield]: https://img.shields.io/github/issues/chas-academy/u10-business-idea-snusmumriken-barn.svg?style=for-the-badge
 
-ger alla data om en snus baserat på id. benämnt snus
-
-/reviews:
-
-ger alla reviews. benämnt reviews
-
-/reviews/{id}:
-
-ger all data om en review baserat på id. benämnt review
-
-/store-review:
-
-sparar en review, vill ha följande data
--snuses_id
--body
--rating
-(går även att lägga till title om så önskas)
-
-/delete-review/{id}:
-
-tar bort en specifik review baserat på dess id
-
-/posts:
-ger alla posts. benämnt posts
-
-/posts/{id}:
-
-ger all data om en post baserat på id. benämnt post
-
-alla dess kategorier. benämnt categories
-
-alla dess kommentarer. benämnt comments
-
-
-/store-posts:
-
-sparar en post, vill ha följande data
--title
--body
--categorys_id
-
-/delete-posts/{id}:
-
-tar bort en post baserat på dess id
-
-/categorys:
-
-ger alla categorys. benämnt categorys
-
-/categorys/{id}:
-
-ger all data om en category. benämnt category
-
-ger alla posts med en viss category. benämnt posts
-
-/flavours:
-
-ger alla flavours. benämnt flavours
-
-/flavours/{id}:
-
-ger all data om en flavour. benämnt flavour
-
-skickar alla snuser med denna flavour. benämnt snuses
-
-/comments:
-
-ger alla comments. benämnt comments
-
-/comments/{id}:
-
-ger all data om en comment. benämnt comment
-
-/store-comments:
-
-sparar en comment, vill ha följande data
--body
--posts_id
-
-/delete-comments/{id}:
-
-tar bort en comment baserat på dess id
-
-/favourites:
-
- returns a list of all  favourites available 
-
-/favourites/{userID}: 
-
-returns a list of specified users favourites 
-
-/store-favourites: 
-
-saves a flavour to logged in users favourites req: flavourID
-
-/delete-favourites/{id}:
-
-tar bort en favorite baserat på dess id
-
-/user-profile:
-
-Ger all data om den inloggade usern. benämnt user
-
-Ger alla favourites inloggade usern har. Benämnt favourites
-
-
+[issues-url]: https://github.com/chas-academy/u10-business-idea-snusmumriken-barn/issues
