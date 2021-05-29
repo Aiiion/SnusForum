@@ -4,7 +4,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-import AuthService from "../services/auth.service";
+import { login } from "../services/auth.service";
 import Profile from "./Profile";
 import { Container } from "react-bootstrap";
 
@@ -47,24 +47,24 @@ const Login = (props) => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(email, password)
-      .then(
-        () => {
-          props.history.push("/profile");
-          window.location.reload();
-        },
-        (error) => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
+      login(email, password)
+        .then(
+          () => {
+            props.history.push("/profile");
+            window.location.reload();
+          },
+          (error) => {
+            const resMessage =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
 
-          setLoading(false);
-          setMessage(resMessage);
-        }
-      );
+            setLoading(false);
+            setMessage(resMessage);
+          }
+        );
     } else {
       setLoading(false);
     }
@@ -100,7 +100,7 @@ const Login = (props) => {
             </div>
 
             <div className="form-group">
-              <button className="btn" style={{ color: 'white', backgroundColor: "#2A324B"}} disabled={loading}>
+              <button className="btn" style={{ color: 'white', backgroundColor: "#2A324B" }} disabled={loading}>
                 {loading && (
                   <span className="spinner-border spinner-border-sm"></span>
                 )}

@@ -20,7 +20,7 @@ const SnusForumCategory = () => {
         allposts: [],
         message: "There are no post yet, create a new one?"
     }
-    
+
     const { allposts, message } = forum
 
     const req = {
@@ -41,7 +41,8 @@ const SnusForumCategory = () => {
                 setPosts(data)
             })
 
-    }, []);
+    }, [id]);
+    console.log(response)
 
     const updatePost = async () => {
         await addPost(title, body, id)
@@ -66,10 +67,11 @@ const SnusForumCategory = () => {
                     <Card.Body>
                         <ListGroup className="list-group-flush">
                             <ListGroupItem style={{ backgroundColor: '#F2F3F8' }}>
-                                <img src={leaf} 
+                                <img src={leaf}
                                     width="30"
                                     height="30"
                                     className="d-inline-block mb-2"
+                                    alt="logo"
                                 />
                                 <Card.Link className="text-uppercase ml-3" style={{ color: 'black' }} href={`/snus-post/${id}`} >{title}</Card.Link>
                                 <p>{body}</p>

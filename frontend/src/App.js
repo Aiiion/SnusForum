@@ -7,7 +7,12 @@ import { Image, Nav, Navbar } from "react-bootstrap";
 import leaf from "./image/leaf.png";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
-import AuthService from "./services/auth.service";
+import {
+  register,
+  login,
+  logout,
+  getCurrentUser,
+} from "./services/auth.service";
 
 import Login from './components/Login';
 import Register from './components/Register';
@@ -23,6 +28,7 @@ import Snus from "./components/Snus";
 import SnusReviews from "./components/SnusReviews";
 import SnusForumCategory from "./components/SnusForumCategory";
 import SnusForumPost from "./components/SnusForumPost";
+import Favourites from "./components/Favourites";
 
 
 const App = () => {
@@ -31,7 +37,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
 
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
+    const user = getCurrentUser();
 
     if (user) {
       setCurrentUser(user);
@@ -41,18 +47,19 @@ const App = () => {
   }, []);
 
   const logOut = () => {
-    AuthService.logout();
+    logout();
   };
 
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
         <Navbar.Brand href={"/"}>
-          <img src={leaf} 
+          <img src={leaf}
             width="30"
             height="30"
             className="d-inline-block align-top"
-            />
+            alt="logo"
+          />
           {/* <Logo
             alt=""
             width="30"
@@ -104,7 +111,7 @@ const App = () => {
                 <Nav.Link href="/login" className="nav-link" onClick={logOut}>
                   Logga ut
                   </Nav.Link>
-                  
+
               </>
             ) : (
               <>
@@ -125,14 +132,15 @@ const App = () => {
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
           <Route exact path="/snus-forum" component={SnusForum} />
-          <Route path="/snus-forum/:id" component={SnusForumCategory}/>
-          <Route path="/snus-post/:id" component={SnusForumPost}/>
+          <Route path="/snus-forum/:id" component={SnusForumCategory} />
+          <Route path="/snus-post/:id" component={SnusForumPost} />
           <Route exact path="/snus" component={Snus} />
-          <Route path="/snus-review/:id" component={SnusReviews}/>
+          <Route path="/snus-review/:id" component={SnusReviews} />
           <Route exact path="/news" component={News} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/favourites/:id" component={Favourites} />
           {/* <Route path="/user" component={BoardUser} />
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} /> */}

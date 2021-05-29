@@ -3,10 +3,8 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import { register } from "../services/auth.service";
 
-import AuthService from "../services/auth.service";
-import { Button } from "bootstrap";
-import { Check } from "react-bootstrap-icons";
 
 const required = (value) => {
   if (!value) {
@@ -49,14 +47,14 @@ const vpassword = (value) => {
 };
 // Password confirmation fungerar ej vi återkommer till detta
 const vpasswordConfirmation = (event) => {
-  if(event.onPasswordConfirmation !== event.onChangePassword) {
-    return ( 
+  if (event.onPasswordConfirmation !== event.onChangePassword) {
+    return (
       <p>Password does not match!</p>
     );
   }
 };
 
-const Register = (props) => {
+const Reg = (props) => {
   const form = useRef();
   const checkBtn = useRef();
 
@@ -93,11 +91,11 @@ const Register = (props) => {
 
     setMessage("");
     setSuccessful(false);
-// Object.values(bar)[0][0] ta errorresponsen o fiska upp meddelandet
+    // Object.values(bar)[0][0] ta errorresponsen o fiska upp meddelandet
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+      register(username, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -170,8 +168,8 @@ const Register = (props) => {
               </div>
               <div>
                 <input type="checkbox" id="scales" name="scales"
-                  />
-                  <label for="scales">Här intygar jag att jag är över 18 år!</label>
+                />
+                <label for="scales">Här intygar jag att jag är över 18 år!</label>
               </div>
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Registrera dig</button>
@@ -182,7 +180,7 @@ const Register = (props) => {
           {message && (
             <div className="form-group">
               <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
+                className={successful ? "alert alert-success" : "alert alert-danger"}
                 role="alert"
               >
                 {message}
@@ -192,9 +190,9 @@ const Register = (props) => {
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
       </div>
-      
+
     </div>
   );
 };
 
-export default Register;
+export default Reg;
