@@ -4,6 +4,7 @@ import authHeader from "../services/auth-header";
 
 
 import { Form, FormControl, Button, Container, Row, } from "react-bootstrap";
+import * as Icon from 'react-bootstrap-icons';
 import RenderSnus from "./RenderSnus";
 import SnusModal from "./SnusModal";
 
@@ -12,6 +13,7 @@ import SnusModal from "./SnusModal";
 const Snus = () => {
 
     const [snus, setSnus] = useState();
+    const [modalShow, setModalShow] = useState(false);
 
     useEffect(() => {
         axios.get('https://snusare-backend.herokuapp.com/api/auth/snuses', { headers: authHeader() })
@@ -41,6 +43,10 @@ const Snus = () => {
                 <Button className="mb-3 mt-3 " variant="#2A324B" style={btnStyle} >Sök snus</Button>
 
             </Form>
+
+            <Button variant="#2A324B" style={btnStyle} onClick={() => setModalShow(true)}>
+                Lägg till snus
+            </Button>
 
             <SnusModal
                 show={modalShow}
