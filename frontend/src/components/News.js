@@ -90,7 +90,6 @@ const News = () => {
         </CardGroup>
         </>
     );
-
 }
 
 export default News;
