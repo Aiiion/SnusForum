@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AuthService from "../services/auth.service";
+import { getCurrentUser } from "../services/auth.service";
 import axios from "axios";
 import moment from 'moment';
 
@@ -14,7 +14,7 @@ import { data } from "jquery";
 const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 
 const Profile = () => {
-  const currentUser = AuthService.getCurrentUser();
+  const currentUser = getCurrentUser();
   console.log(currentUser)
   const userId = currentUser.user.id;
 
