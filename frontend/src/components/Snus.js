@@ -5,23 +5,29 @@ import authHeader from "../services/auth-header";
 
 import { Form, FormControl, Button, Container, Row, } from "react-bootstrap";
 import RenderSnus from "./RenderSnus";
+import { useAlert } from "react-alert";
 
 
 
-const Snus = () => {
+const Snus = (notis) => {
 
     const [snus, setSnus] = useState();
+
 
     useEffect(() => {
         axios.get('https://snusare-backend.herokuapp.com/api/auth/snuses', { headers: authHeader() })
             .then(response => {
                 setSnus(response.data)
 
+
             })
         // .catch(e => {
         //     
         // })
     }, []);
+    const alert = useAlert()
+
+
 
     const btnStyle = { color: 'white', background: "#2A324B" }
 
@@ -30,6 +36,7 @@ const Snus = () => {
     return (
 
         <>
+
             <div>
                 <h1 className="container-fluid text-center" style={{ color: '#2A324B' }}>SNUS</h1>
             </div>
@@ -42,7 +49,7 @@ const Snus = () => {
             </Form>
             <Container>
                 <Row>
-                    {snus ? snus.snuses.map((snuses) => (RenderSnus(snuses))) : <div> LOADING SNUSES</div>}
+                    {snus ? snus.snuses.map((snuses) => (RenderSnus(snuses, notis = { alert }))) : <div> LOADING SNUSES</div>}
                 </Row>
             </Container>
 
