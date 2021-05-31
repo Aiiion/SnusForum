@@ -1,11 +1,9 @@
 import React, { useState, useRef } from "react";
-import { Router, Route } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import { login } from "../services/auth.service";
-import Profile from "./Profile";
 import { Container } from "react-bootstrap";
 
 const required = (value) => {

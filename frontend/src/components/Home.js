@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { getPublicContent } from "../services/user.service";
-import { Button, Container, Image, Col, Row } from "react-bootstrap";
+
+import { Button, Container, Col, Row } from "react-bootstrap";
 
 import '../App.css';
 import { getCurrentUser } from "../services/auth.service";
@@ -9,26 +9,6 @@ import { getCurrentUser } from "../services/auth.service";
 const Home = () => {
 
   const currentUser = getCurrentUser();
-
-  const [content, setContent] = useState("");
-
-  useEffect(() => {
-    getPublicContent().then(
-      (response) => {
-        setContent(response.data);
-      },
-      // (error) => {
-      //   const _content =
-      //     (error.response && error.response.data) ||
-      //     error.message ||
-      //     error.toString();
-
-      //   setContent(_content);
-      // }
-
-    );
-  }, []);
-
 
   return (
     <>
@@ -42,7 +22,6 @@ const Home = () => {
             />
           </Row>
         </Col>
-        {/* <Jumbotron className="h-80" style={{ height: '80px', backgroundImage: `url(${bgimage})`, backgroundSize: 'cover' }}></Jumbotron> */}
 
       </div>
       <Container>

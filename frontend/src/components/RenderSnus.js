@@ -1,6 +1,4 @@
 import React from 'react'
-import { useAlert } from 'react-alert';
-
 import { Card, ListGroup, ListGroupItem, Button, Col } from "react-bootstrap";
 import * as Icon from 'react-bootstrap-icons';
 import saveFavourite from "../services/store-favourites";
@@ -17,21 +15,10 @@ export default function RenderSnus(obj, notis) {
 
     const updatefav = () => {
         notis.alert.success('Favorit Tillagd');
-
         saveFavourite(flavours_id)
-
-
     }
 
-
-
-
-
-
     return (
-
-
-
         <Col key={id} sm="12" md="6" lg="4" >
             <Card>
                 <Card.Body style={{ backgroundColor: '#F2F3F8' }}>
@@ -52,9 +39,5 @@ export default function RenderSnus(obj, notis) {
                 </Card.Footer>
             </Card>
         </Col>
-
-
-
     )
-
 }

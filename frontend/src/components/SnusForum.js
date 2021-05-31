@@ -27,7 +27,7 @@ const SnusForum = () => {
                 <CardGroup>
                     <Row className="mb-2">
                         {categories.map((title) => (
-                            <Col className="mb-1" sm="6" md="6" lg="4">
+                            <Col key={title.id} className="mb-1" sm="6" md="6" lg="4">
                                 <Card className="text-center" style={{ backgroundColor: '#E7BAC0' }}>
                                     <Card.Title style={{ marginTop: '10px', textTransform: 'uppercase' }}>
                                         <Card.Link style={{ color: '#2A324B' }} href={`/snus-forum/${title.id}`}>{title.category}</Card.Link>

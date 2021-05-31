@@ -33,7 +33,7 @@ const Favourites = (notis) => {
             <Container id="board">
 
                 <Row>
-                    {myFav ? myFav.favourites.map((snuses) => (RenderFav(snuses, notis = { alert }))) : <div> LOADING SNUSES</div>}
+                    {myFav ? myFav.favourites.map((snuses) => (RenderFav(snuses, notis = { alert }))) : <div> LADDDAR IN  SNUS</div>}
                 </Row>
             </Container>
 

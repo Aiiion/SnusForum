@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import authHeader from "../services/auth-header";
 import { useParams } from "react-router-dom";
-import { Button, Card, Container, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import addComment from "../services/snus-comments.service";
@@ -28,7 +28,6 @@ const SnusForumPost = () => {
     }
 
     const [comment, setComment] = useState("");
-    // const [commentBody, setCommentBody] = useState("");
     const [request, setRequest] = useState(req)
     const [response, setResponse] = useState()
     const { body } = request;
@@ -36,17 +35,13 @@ const SnusForumPost = () => {
     useEffect(() => {
         axios.get(`${API_URL}posts/${id}`, { headers: authHeader() })
             .then(response => {
-                // JSON responses are automatically parsed.
+
                 const data = response.data.comments
                 setResponse(response.data)
-                console.log(response);
                 setComment(data);
             })
-        // .catch(e => {
-        //     this.errors.push(e)
-        // })
     }, []);
-    console.log(response);
+   
     const updateComment = async () => {
         await addComment(body, id)
         axios.get(`${API_URL}posts/${id}`, { headers: authHeader() })

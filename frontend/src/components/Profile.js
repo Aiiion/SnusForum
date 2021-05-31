@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getCurrentUser } from "../services/auth.service";
 import axios from "axios";
-import moment from 'moment';
-
-
-import { Card, Container, CardGroup, Row, Col, Button, InputGroup, ListGroupItem, ListGroup } from "react-bootstrap";
+import { Card, Container, CardGroup, Row, Col, Button, ListGroup } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import leaf from "../image/leaf.png";
 import authHeader from "../services/auth-header";
-import { data } from "jquery";
-
 
 const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 
@@ -18,14 +13,9 @@ const Profile = () => {
   console.log(currentUser)
   const userId = currentUser.user.id;
 
-  // console.log(id)
-
-
   const [getPosts, setGetPosts] = useState()
-  const [getUserId, setGetUserId] = useState()
   const [getReviews, setGetReviews] = useState()
   const [getComments, setGetComments] = useState()
-
 
   const getPostsData = () => {
     axios.get(`${API_URL}posts`, { headers: authHeader() })
@@ -38,7 +28,6 @@ const Profile = () => {
   const getReviewsData = () => {
     axios.get(`${API_URL}reviews`, { headers: authHeader() })
       .then(response => {
-        // console.log(response)
         const data = response.data;
         setGetReviews(data);
       })
@@ -47,7 +36,6 @@ const Profile = () => {
   const getCommentsData = () => {
     axios.get(`${API_URL}comments`, { headers: authHeader() })
       .then(response => {
-        console.log(response)
         const data = response.data;
         setGetComments(data);
       })
@@ -56,8 +44,6 @@ const Profile = () => {
 
   const renderData = (array) => {
     const data = array.posts.map(id => {
-      // console.log(id.users_id)
-      // console.log(userId)
       if (id.users_id === userId) {
         return (
           <Card key={id} style={{ backgroundColor: '#F2F3F8' }}>
@@ -76,8 +62,6 @@ const Profile = () => {
 
   const renderReviewsData = (array) => {
     const data = array.reviews.map(id => {
-      // console.log(id.users_id)
-      // console.log(userId)
       if (id.users_id === userId) {
         return (
           <Card key={id} style={{ backgroundColor: '#F2F3F8' }}>
@@ -95,8 +79,6 @@ const Profile = () => {
 
   const renderCommentsData = (array) => {
     const data = array.comments.map(id => {
-      // console.log(id.users_id)
-      // console.log(userId)
       if (id.users_id === userId) {
         return (
           <Card key={id} style={{ backgroundColor: '#F2F3F8' }}>
@@ -111,12 +93,6 @@ const Profile = () => {
     })
     return data;
   }
-  // return setGetUserId(data);
-
-  // setGetUserId(data);
-
-
-  // console.log(getPosts)
 
   const submitHandlerPosts = (e) => {
     e.preventDefault();
@@ -292,7 +268,6 @@ const Profile = () => {
       <Container>
         {getPosts ? renderData(getPosts) :
           <div>
-            {/* <h1>Hej</h1> */}
           </div>
         }
       </Container>
@@ -300,7 +275,6 @@ const Profile = () => {
       <Container>
         {getReviews ? renderReviewsData(getReviews) :
           <div>
-            {/* <h1>Hej</h1> */}
           </div>
         }
       </Container>
@@ -308,7 +282,6 @@ const Profile = () => {
       <Container>
         {getComments ? renderCommentsData(getComments) :
           <div>
-            {/* <h1>Hej</h1> */}
           </div>
         }
       </Container>
