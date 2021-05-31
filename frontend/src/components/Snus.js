@@ -5,6 +5,7 @@ import authHeader from "../services/auth-header";
 
 import { Form, FormControl, Button, Container, Row, } from "react-bootstrap";
 import RenderSnus from "./RenderSnus";
+import SnusModal from "./SnusModal";
 
 
 
@@ -40,6 +41,12 @@ const Snus = () => {
                 <Button className="mb-3 mt-3 " variant="#2A324B" style={btnStyle} >Sök snus</Button>
 
             </Form>
+
+            <SnusModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
+
             <Container>
                 <Row>
                     {snus ? snus.snuses.map((snuses) => (RenderSnus(snuses))) : <div> LOADING SNUSES</div>}
