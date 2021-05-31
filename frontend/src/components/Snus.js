@@ -24,7 +24,7 @@ const Snus = () => {
         // .catch(e => {
         //     
         // })
-    }, []);
+    }, [],[modalShow]);
 
     const btnStyle = { color: 'white', background: "#2A324B" }
 

@@ -154,20 +154,20 @@ export default function SnusModal(props) {
                         }}
                     />
                     <datalist id="flavours_id">
-                        <option value="0">Tall</option>
-                        <option value="1">Gran</option>
-                        <option value="2">Mint</option>
-                        <option value="3">Bär</option>
-                        <option value="4">Frukt</option>
-                        <option value="5">Kaffe</option>
-                        <option value="6">Choklad</option>
-                        <option value="7">Laktrits</option>
-                        <option value="8">Geranium</option>
-                        <option value="9">Bergamott</option>
-                        <option value="10">Örter</option>
-                        <option value="11">Citrus</option>
-                        <option value="12">Rökt</option>
-                        <option value="13">Cognac</option>
+                        <option value="1">Tall</option>
+                        <option value="2">Gran</option>
+                        <option value="3">Mint</option>
+                        <option value="4">Bär</option>
+                        <option value="5">Frukt</option>
+                        <option value="6">Kaffe</option>
+                        <option value="7">Choklad</option>
+                        <option value="8">Laktrits</option>
+                        <option value="9">Geranium</option>
+                        <option value="10">Bergamott</option>
+                        <option value="11">Örter</option>
+                        <option value="12">Citrus</option>
+                        <option value="13">Rökt</option>
+                        <option value="14">Cognac</option>
                     </datalist>
                     </Form.Group>
 
