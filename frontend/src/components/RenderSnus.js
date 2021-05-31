@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Card, ListGroup, ListGroupItem, Button, Container, CardGroup, Row, Col } from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, Button, Col } from "react-bootstrap";
 import * as Icon from 'react-bootstrap-icons';
 import saveFavourite from "../services/store-favourites";
 
@@ -12,16 +12,10 @@ export default function RenderSnus(obj) {
     const btnStyle = { color: 'white', background: "#2A324B" }
 
     const updatefav = () => {
-
-
         saveFavourite(flavours_id)
-
     }
 
     return (
-
-
-
         <Col key={id} sm="6" md="4" lg="4" >
             <Card>
                 <Card.Body style={{ backgroundColor: '#F2F3F8' }}>
@@ -42,9 +36,5 @@ export default function RenderSnus(obj) {
                 </Card.Footer>
             </Card>
         </Col>
-
-
-
     )
-
 }

@@ -7,8 +7,6 @@ import leaf from "./image/leaf.png";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
 import {
-  register,
-  login,
   logout,
   getCurrentUser,
 } from "./services/auth.service";
@@ -20,9 +18,9 @@ import Home from "./components/Home";
 import SnusForum from "./components/SnusForum";
 import News from "./components/News";
 
-import BoardUser from "./components/BoardUser";
-import BoardModerator from "./components/BoardModerator";
-import BoardAdmin from "./components/BoardAdmin";
+// import BoardUser from "./components/BoardUser";
+// import BoardModerator from "./components/BoardModerator";
+// import BoardAdmin from "./components/BoardAdmin";
 import Snus from "./components/Snus";
 import SnusReviews from "./components/SnusReviews";
 import SnusForumCategory from "./components/SnusForumCategory";
@@ -31,8 +29,9 @@ import Favourites from "./components/Favourites";
 
 
 const App = () => {
-  const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
+
+  // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
+  // const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
 
   const textColor = { color: "#2A324B"}
@@ -62,12 +61,6 @@ const App = () => {
             alt="logo"
             style={textColor}
           />
-          {/* <Logo
-            alt=""
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          /> */}
           Snus
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -78,7 +71,7 @@ const App = () => {
               Hem
               </Nav.Link>
 
-            {showModeratorBoard && (
+            {/* {showModeratorBoard && (
               <Nav.Link href={"/mod"} style={textColor} className="nav-link">
                 Moderator Board
               </Nav.Link>
@@ -88,7 +81,7 @@ const App = () => {
               <Nav.Link href={"/admin"} style={textColor} className="nav-link">
                 Admin Board
               </Nav.Link>
-            )}
+            )} */}
 
             {currentUser && (
               <Nav.Link href={"/profile"} style={textColor} className="nav-link">
@@ -98,9 +91,6 @@ const App = () => {
 
             {currentUser ? (
               <>
-                {/* <Nav.Link href={"/profile"} className="nav-link">
-                  {currentUser.username}
-                </Nav.Link> */}
                 <Nav.Link href={"/news"} style={textColor} className="nav-link">
                   Nyheter
                   </Nav.Link>

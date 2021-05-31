@@ -19,24 +19,15 @@ export default function SnusModal(props) {
         }
     ]
 
-    // const [brand, setBrand] = useState('');
-    const [snusType, setSnusType] = useState('');
-    // const [snusStrength, setSnusStrength] = useState('');
     const [snusFlavour, setSnusFlavour] = useState('');
     const [request, setRequest] = useState(req)
-    const [response, setResponse] = useState()
-    const [errorMsg, setErrorMsg] = useState('');
     const { name, type, strength, img_url, flavours_id } = request;
-
 
     useEffect(() => {
         axios.get(`${API_URL}flavours`, { headers: authHeader() })
         .then(response => {
-            console.log(response);
             const data = response.data.flavours;
-            // setSnusType(response.data.types);
             setSnusFlavour(data);
-            // setSnusStrength
         })
     },[])
 
@@ -51,7 +42,6 @@ export default function SnusModal(props) {
                 // setComment(data)
         })
     }
-    console.log(request);
 
     const HandleSubmit = (e) => {
         e.preventDefault();
