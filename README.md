@@ -13,6 +13,7 @@
         <li><a href="#database-sketch">Built With</a></li>
         <li><a href="#code-standards">Code Standards</a></li>
         <li><a href="#api-sample">API Sample</a></li>
+        <li><a href="#economic-calculation">Economic Calculation</a></li>
     </ul>
 </li>
 <li><a href="#setting-up-the-application">Setting up the application</a>
@@ -62,6 +63,9 @@ This application was built with:
 
 ### API Sample
 <img src="https://i.imgur.com/HTFpLjG.png" />
+
+### Economic Calculation
+[Budget](https://docs.google.com/document/d/13KDwhIvNXFuv98ILRNuPZxMr4k6nqL9afMC050u6EV0/edit)
 
 
 ## Setting up the application
