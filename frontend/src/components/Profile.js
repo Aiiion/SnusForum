@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { getCurrentUser } from "../services/auth.service";
 import axios from "axios";
-
-import { Card, Container, CardGroup, Row, Col, Button } from "react-bootstrap";
+import { Card, Container, CardGroup, Row, Col, Button, ListGroup } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import leaf from "../image/leaf.png";
 import authHeader from "../services/auth-header";
@@ -109,93 +108,157 @@ const Profile = () => {
     e.preventDefault();
     getCommentsData()
   }
+  const bgcolors = {
+    yellow: '#F4DA9D',
+    green: '#73f952',
+    blue: '#D1E0DD',
+    pink: '#E7BAC0',
+    textColor: '#2A324B',
+    headerColor: ' #73939C',
+    borderRadius: '5px'
+
+  }
+  const Logo = () => {
+    return (
+      <img src={leaf}
+        width="30"
+        height="30"
+        className="d-inline-block mb-2 mr-2"
+        alt="LOGO"
+      />)
+  }
+  let color = "#";
+  function randomColor() {
+    const letters = "0123456789ABCDEF";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 5)];
+    }
+    return color;
+  }
+  randomColor()
+
+  const ProfileImg = {
+    content: 'AA',
+    height: '45px',
+    width: '45px',
+    margin: '1rem',
+    backgroundColor: `${color}`,
+    borderRadius: '50%',
+    display: 'inlineblock',
+  }
+
 
   return (
     <>
 
+
+      <>
+
+        <div className="d-flex justify-content-between">
+
+
+          <Container>
+            <ListGroup horizontal>
+              <ListGroup.Item style={ProfileImg}></ListGroup.Item>
+              <ListGroup.Item><h2>{currentUser.user.username}</h2></ListGroup.Item>
+            </ListGroup>
+          </Container>
+          <Container className=" d-lg-block d-none">
+            <ListGroup horizontal>
+              <ListGroup.Item> <p >Välkommen till din profil här hittar du länkar till forum, dina sparade favoriter med mera</p></ListGroup.Item>
+            </ListGroup>
+          </Container>
+
+
+        </div>
+
+
+
+
+
+      </>
+
       <Container>
-        <h2 style={{
-          color: '#2A324B'
-        }}>
-          <strong>Välkommen</strong> {currentUser.user.username}
-        </h2>
-        <h5 style={{
-          color: '#2A324B'
-        }}>
-          <strong>Email:</strong> {currentUser.user.email}
-        </h5>
-      </Container>
-      <Container>
-        <CardGroup>
+        <CardGroup  >
           <Row>
-            <Col sm={6} md={6} lg={4} >
-              <Card style={{ backgroundColor: '#F4DA9D' }}>
-                <Card.Body>
-                  <Card.Title style={{
-                    color: '#2A324B'
-                  }}>
-                    <img src={leaf}
-                      width="30"
-                      height="30"
-                      className="d-inline-block mb-2 mr-2"
-                      alt="leaf-logo"
-                    />
-                    Forumtrådar
+            <Col sm={12} md={12} lg={6}>
+
+              <Card.Link href={`/snus-forum`}>
+                <Card style={{ backgroundColor: bgcolors.yellow, minWidth: '100%', padding: '1em' }}>
+                  <Card.Body>
+                    <Card.Title style={{
+                      color: bgcolors.textColor
+                    }}>
+                      <Logo />
+                   Forum
                   </Card.Title>
-                  <Card.Text style={{
-                    color: '#2A324B'
-                  }}>
-                    Klicka på länken för att se alla dina startade trådar
+                    <Card.Text style={{
+                      color: bgcolors.textColor
+                    }}>
+                      Klicka här för att Komma till Forumet
                   </Card.Text>
-                  <Button className="mt-3 mb-3" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerPosts}>Se trådar</Button>
-                </Card.Body>
-              </Card>
+                    <Button className="mt-3 mb-3 p-2" variant="outline-dark" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerReviews}>Se Forum</Button>
+                  </Card.Body>
+                </Card>
+              </Card.Link>
             </Col>
 
-            <Col sm={6} md={6} lg={4}  >
-              <Card style={{ backgroundColor: '#D1E0DD' }}>
+            <Col sm={12} md={12} lg={6}>
+
+              <Card.Link href={`/favourites/${userId}`}>
+                <Card style={{ backgroundColor: bgcolors.blue, minWidth: '100%', padding: '1em' }}>
+                  <Card.Body>
+                    <Card.Title style={{
+                      color: bgcolors.textColor
+                    }}>
+                      <Logo />
+                    Dina Favoriter
+                  </Card.Title>
+                    <Card.Text style={{
+                      color: bgcolors.textColor
+                    }}>
+                      Klicka här för att se dina favoriter
+                  </Card.Text>
+                    <Button className="mt-3 mb-3 p-2" variant="outline-dark" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerReviews}>Se favoriter</Button>
+                  </Card.Body>
+                </Card>
+              </Card.Link>
+            </Col>
+
+            <Col sm={12} md={12} lg={6}   >
+              <Card style={{ backgroundColor: bgcolors.green, minWidth: '100%', padding: '1em' }}>
                 <Card.Body>
                   <Card.Title style={{
-                    color: '#2A324B'
+                    color: bgcolors.textColor
                   }}>
-                    <img src={leaf}
-                      width="30"
-                      height="30"
-                      className="d-inline-block mb-2 mr-2"
-                      alt="leaf-logo"
-                    />
+                    <Logo />
                     Recensioner
                   </Card.Title>
                   <Card.Text style={{
-                    color: '#2A324B'
+                    color: bgcolors.textColor
                   }}>
-                    Klicka på länken för att se dina recensioner
+                    Klicka här för att se dina recensioner
                   </Card.Text>
-                  <Button className="mt-3 mb-3" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerReviews}>Se recensioner</Button>
+                  <Button className="mt-3 mb-3 p-2" variant="outline-dark" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerReviews}>Se recensioner</Button>
                 </Card.Body>
               </Card>
             </Col>
 
-            <Col sm={6} md={6} lg={4} >
-              <Card style={{ backgroundColor: '#E7BAC0' }}>
+            <Col sm={12} md={12} lg={6}  >
+              <Card style={{ backgroundColor: bgcolors.pink, minWidth: '100%', padding: '1em' }}>
                 <Card.Body>
                   <Card.Title style={{
-                    color: '#2A324B'
+                    color: bgcolors.textColor
                   }}>
-                    <img src={leaf}
-                      width="30"
-                      height="30"
-                      className="d-inline-block mb-2 mr-2"
-                      alt="leaf-logo"
-                    />
+                    <Logo />
                     Kommentarer
                   </Card.Title>
                   <Card.Text style={{
-                    color: '#2A324B'
+                    color: bgcolors.textColor
                   }}>
                     Klicka på länken för att se dina kommentarer
                   </Card.Text>
-                  <Button className="mt-3 mb-3" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerComments}>Se kommentarer</Button>
+                  <Button className="mt-3 mb-3 p-2" variant="outline-dark" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerComments}>Se kommentarer</Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -204,7 +267,7 @@ const Profile = () => {
       </Container>
       <Container>
         {getPosts ? renderData(getPosts) :
-          <div>            
+          <div>
           </div>
         }
       </Container>

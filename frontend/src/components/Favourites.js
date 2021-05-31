@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import authHeader from "../services/auth-header";
 import { useParams } from "react-router-dom";
-
 import { Container, Row } from "react-bootstrap";
-import RenderSnus from "./RenderSnus";
+import RenderFav from "./RenderFav";
+import { useAlert } from 'react-alert'
 
 
 
-const Favourites = () => {
+const Favourites = (notis) => {
     const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
     const [myFav, setmyFav] = useState();
+
     let { id } = useParams();
     useEffect(() => {
         axios.get(`${API_URL}favourites/${id}`, { headers: authHeader() })
@@ -20,17 +21,19 @@ const Favourites = () => {
 
     }, [id]);
 
-    console.log(myFav)
+    const alert = useAlert()
+
 
 
     return (
         <>
             <div>
-                <h1 className="container-fluid text-center" style={{ color: '#2A324B' }}>Dina Favorit Snusar</h1>
+                <h1 className="container-fluid text-center" style={{ color: '#2A324B' }}>Dina Favorit Smaker</h1>
             </div>
-            <Container>
+            <Container id="board">
+
                 <Row>
-                    {myFav ? myFav.favourites.map((snuses) => (RenderSnus(snuses))) : <div> LOADING SNUSES</div>}
+                    {myFav ? myFav.favourites.map((snuses) => (RenderFav(snuses, notis = { alert }))) : <div> LADDDAR IN  SNUS</div>}
                 </Row>
             </Container>
 

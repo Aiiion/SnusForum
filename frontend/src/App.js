@@ -34,7 +34,7 @@ const App = () => {
   // const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
 
-  const textColor = { color: "#2A324B"}
+  const textColor = { color: "#2A324B" }
 
   useEffect(() => {
     const user = getCurrentUser();
