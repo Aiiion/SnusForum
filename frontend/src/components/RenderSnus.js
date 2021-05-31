@@ -6,7 +6,6 @@ import saveFavourite from "../services/store-favourites";
 
 export default function RenderSnus(obj) {
 
-
     const { id, img_url, name, strength, type, flavour_name, flavours_id } = obj
     const FooterStyle = { fill: '#8E92A4' };
     const btnStyle = { color: 'white', background: "#2A324B" }
