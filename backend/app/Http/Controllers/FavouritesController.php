@@ -64,8 +64,8 @@ class FavouritesController extends Controller
         if (Auth::check()) {
             $favourites = Favourites::where('users_id', $id)->get();
             foreach ($favourites as $favourite) {
-
-            $favourite->Snus = Snus::where('id', $favourite->id)->first();
+        $favourite->name= Flavours::where('id', $favourite->flavours_id)->first()->flavour_type;
+           
 
             }
             return ['favourites' => $favourites];
