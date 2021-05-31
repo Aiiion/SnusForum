@@ -138,12 +138,12 @@ const Profile = () => {
 
       <Container>
         <h2 style={{
-          color: '##2A324B'
+          color: '#2A324B'
         }}>
           <strong>Välkommen</strong> {currentUser.user.username}
         </h2>
         <h5 style={{
-          color: '##2A324B'
+          color: '#2A324B'
         }}>
           <strong>Email:</strong> {currentUser.user.email}
         </h5>
@@ -155,7 +155,7 @@ const Profile = () => {
               <Card style={{ backgroundColor: '#F4DA9D' }}>
                 <Card.Body>
                   <Card.Title style={{
-                    color: '##2A324B'
+                    color: '#2A324B'
                   }}>
                     <img src={leaf}
                       width="30"
@@ -165,7 +165,7 @@ const Profile = () => {
                     Forumtrådar
                   </Card.Title>
                   <Card.Text style={{
-                    color: '##2A324B'
+                    color: '#2A324B'
                   }}>
                     Klicka på länken för att se alla dina startade trådar
                   </Card.Text>
@@ -178,7 +178,7 @@ const Profile = () => {
               <Card style={{ backgroundColor: '#D1E0DD' }}>
                 <Card.Body>
                   <Card.Title style={{
-                    color: '##2A324B'
+                    color: '#2A324B'
                   }}>
                     <img src={leaf}
                       width="30"
@@ -188,7 +188,7 @@ const Profile = () => {
                     Recensioner
                   </Card.Title>
                   <Card.Text style={{
-                    color: '##2A324B'
+                    color: '#2A324B'
                   }}>
                     Klicka på länken för att se dina recensioner
                   </Card.Text>
@@ -201,7 +201,7 @@ const Profile = () => {
               <Card style={{ backgroundColor: '#E7BAC0' }}>
                 <Card.Body>
                   <Card.Title style={{
-                    color: '##2A324B'
+                    color: '#2A324B'
                   }}>
                     <img src={leaf}
                       width="30"
@@ -211,7 +211,7 @@ const Profile = () => {
                     Kommentarer
                   </Card.Title>
                   <Card.Text style={{
-                    color: '##2A324B'
+                    color: '#2A324B'
                   }}>
                     Klicka på länken för att se dina kommentarer
                   </Card.Text>
