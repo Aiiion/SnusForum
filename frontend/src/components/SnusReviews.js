@@ -72,6 +72,8 @@ const SnusReviews = () => {
         return data;
     }
 
+    console.log(snusData);
+
     return snusData ?
         <>
             <div>
@@ -131,7 +133,7 @@ const SnusReviews = () => {
                                 <ListGroup className="list-group-flush">
                                     <ListGroupItem>Styrka: {snusData.snus.strength}</ListGroupItem>
                                     <ListGroupItem>Typ: {snusData.snus.type}</ListGroupItem>
-                                    <ListGroupItem>Smak: {snusData.snus.flavour_id}</ListGroupItem>
+                                    <ListGroupItem>Smak: {snusData.snus.flavour_name}</ListGroupItem>
                                     {/* <ListGroupItem>Genomsnittligt Betyg: {Math.round(snusData.avgRating)}</ListGroupItem> */}
                                     <Card.Title style={{ marginTop: '30px' }}>Reviews</Card.Title>
                                     {review ? RenderData(review) :

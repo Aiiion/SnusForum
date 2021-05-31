@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Container, CardGroup, Col, Row, Button, Card } from "react-bootstrap";
-import { App } from "react-bootstrap-icons";
+import { CardGroup, Col, Row, Button, Card } from "react-bootstrap";
 import Carousel from 'react-bootstrap/Carousel'
 import "../App.css";
 
-import UserService from "../services/user.service";
-
 const News = () => {
-
     
     return (
         <>

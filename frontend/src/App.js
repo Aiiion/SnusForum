@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import './App.css';
 
-import { Image, Nav, Navbar } from "react-bootstrap";
-// import { ReactComponent as Logo } from "./logo.svg";
+import { Nav, Navbar } from "react-bootstrap";
 import leaf from "./image/leaf.png";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
 import {
-  register,
-  login,
   logout,
   getCurrentUser,
 } from "./services/auth.service";
@@ -21,9 +18,9 @@ import Home from "./components/Home";
 import SnusForum from "./components/SnusForum";
 import News from "./components/News";
 
-import BoardUser from "./components/BoardUser";
-import BoardModerator from "./components/BoardModerator";
-import BoardAdmin from "./components/BoardAdmin";
+// import BoardUser from "./components/BoardUser";
+// import BoardModerator from "./components/BoardModerator";
+// import BoardAdmin from "./components/BoardAdmin";
 import Snus from "./components/Snus";
 import SnusReviews from "./components/SnusReviews";
 import SnusForumCategory from "./components/SnusForumCategory";
@@ -32,9 +29,12 @@ import Favourites from "./components/Favourites";
 
 
 const App = () => {
-  const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
+
+  // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
+  // const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
+
+  const textColor = { color: "#2A324B"}
 
   useEffect(() => {
     const user = getCurrentUser();
@@ -59,67 +59,59 @@ const App = () => {
             height="30"
             className="d-inline-block align-top"
             alt="logo"
+            style={textColor}
           />
-          {/* <Logo
-            alt=""
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          /> */}
           Snus
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
 
-            <Nav.Link href={"/"} className="navbar-brand">
+            <Nav.Link href={"/"} style={textColor} className="navbar-brand">
               Hem
               </Nav.Link>
 
-            {showModeratorBoard && (
-              <Nav.Link href={"/mod"} className="nav-link">
+            {/* {showModeratorBoard && (
+              <Nav.Link href={"/mod"} style={textColor} className="nav-link">
                 Moderator Board
               </Nav.Link>
             )}
 
             {showAdminBoard && (
-              <Nav.Link href={"/admin"} className="nav-link">
+              <Nav.Link href={"/admin"} style={textColor} className="nav-link">
                 Admin Board
               </Nav.Link>
-            )}
+            )} */}
 
             {currentUser && (
-              <Nav.Link href={"/profile"} className="nav-link">
+              <Nav.Link href={"/profile"} style={textColor} className="nav-link">
                 Profil
               </Nav.Link>
             )}
 
             {currentUser ? (
               <>
-                {/* <Nav.Link href={"/profile"} className="nav-link">
-                  {currentUser.username}
-                </Nav.Link> */}
-                <Nav.Link href={"/news"} className="nav-link">
+                <Nav.Link href={"/news"} style={textColor} className="nav-link">
                   Nyheter
                   </Nav.Link>
-                <Nav.Link href={"/snus-forum"} className="nav-link">
+                <Nav.Link href={"/snus-forum"} style={textColor} className="nav-link">
                   Snusforum
                   </Nav.Link>
-                <Nav.Link href={"/snus"} className="nav-link">
+                <Nav.Link href={"/snus"} style={textColor} className="nav-link">
                   Snus
                   </Nav.Link>
-                <Nav.Link href="/login" className="nav-link" onClick={logOut}>
+                <Nav.Link href="/login" style={textColor} className="nav-link" onClick={logOut}>
                   Logga ut
                   </Nav.Link>
 
               </>
             ) : (
               <>
-                <Nav.Link href={"/login"} className="nav-link">
+                <Nav.Link href={"/login"} style={textColor} className="nav-link">
                   Logga in
                   </Nav.Link>
 
-                <Nav.Link href={"/register"} className="nav-link">
+                <Nav.Link href={"/register"} style={textColor} className="nav-link">
                   Registrera dig
                   </Nav.Link>
               </>
