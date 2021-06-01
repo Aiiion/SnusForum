@@ -147,7 +147,7 @@ const App = () => {
                 Om oss
             </h5>
               <p>
-                Välkommen!
+                Välkommen! 
                 Med denna webbapplikation vill vi bidra med en plattform och ett forum för alla snusentusiaster runt om i världen - en plats där man kan dela snusrecept, ge tips om sina favoritsnus, diskutera nya snussorter och mycket mer.
             </p>
               <p>
