@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import authHeader from "../services/auth-header";
 import { useParams } from "react-router-dom";
-import { Button, Card, Container, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import addComment from "../services/snus-comments.service";
@@ -14,7 +14,6 @@ const SnusForumPost = () => {
 
     let { id } = useParams();
     const form = useRef();
-    console.log(id);
 
     const forum = {
         allcomments: [],
@@ -29,7 +28,6 @@ const SnusForumPost = () => {
     }
 
     const [comment, setComment] = useState("");
-    const [commentBody, setCommentBody] = useState("");
     const [request, setRequest] = useState(req)
     const [response, setResponse] = useState()
     const { body } = request;
@@ -37,42 +35,33 @@ const SnusForumPost = () => {
     useEffect(() => {
         axios.get(`${API_URL}posts/${id}`, { headers: authHeader() })
             .then(response => {
-                // JSON responses are automatically parsed.
+
                 const data = response.data.comments
                 setResponse(response.data)
-                console.log(response);
                 setComment(data);
             })
-        // .catch(e => {
-        //     this.errors.push(e)
-        // })
     }, []);
-
-    console.log(response);
-    console.log(comment);
-
+   
     const updateComment = async () => {
         await addComment(body, id)
         axios.get(`${API_URL}posts/${id}`, { headers: authHeader() })
             .then(response => {
                 const data = response.data.comments
-
                 setComment(data)
             })
     }
-    console.log(comment);
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(request);
-        updateComment()
+        updateComment();
+        setRequest(req);
     };
 
     const RenderData = (array) => {
-        const data = array.map((comment) => {
-            const { body, username, created_at } = comment
+        const data = array.slice(0).reverse().map((comment) => {
+            const { body, username, created_at, id } = comment
             return (
-                <Card style={{ backgroundColor: '#F2F3F8' }}>
+                <Card key={id} style={{ backgroundColor: '#F2F3F8' }}>
                     <Card.Body>
                         {/* <Card.Body className="text-uppercase">{body}</Card.Link> */}
                         <p>{body}</p>
@@ -87,7 +76,7 @@ const SnusForumPost = () => {
     return comment ?
         <>
             <div>
-                <h5 className="container-fluid text-center text-uppercase">{response.post.title}</h5>
+                <h1 className="container-fluid text-center text-uppercase mt-5">{response.post.title}</h1>
             </div>
             <Card style={{ backgroundColor: '#D1E0DD' }}>
                 <Card.Body >
@@ -96,7 +85,7 @@ const SnusForumPost = () => {
                 </Card.Body>
             </Card>
 
-            <Form className="mt-3" onSubmit={submitHandler} ref={form}>
+            <Form className="mt-5" onSubmit={submitHandler} ref={form}>
                 <Input
                     type="text"
                     className="form-control"
@@ -109,7 +98,7 @@ const SnusForumPost = () => {
                     placeholder="Svara på inlägg"
                 />
                 <div className="form-group">
-                    <Button type="submit" className="mt-3 mb-3" style={{ backgroundColor: '#2A324B' }}>Lägg till</Button>
+                    <Button type="submit" className="mt-3 mb-3" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>Lägg till</Button>
                 </div>
             </Form>
             <Container>

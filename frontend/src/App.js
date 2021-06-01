@@ -2,39 +2,42 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import './App.css';
 
-import { Nav, Navbar } from "react-bootstrap";
-import { ReactComponent as Logo } from "./logo.svg";
+import { Nav, Navbar, Button } from "react-bootstrap";
+import leaf from "./image/leaf.png";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
-
-import AuthService from "./services/auth.service";
+import {
+  logout,
+  getCurrentUser,
+} from "./services/auth.service";
 
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Home from "./components/Home";
-
 import SnusForum from "./components/SnusForum";
-
 import News from "./components/News";
 
-import BoardUser from "./components/BoardUser";
-import BoardModerator from "./components/BoardModerator";
-import BoardAdmin from "./components/BoardAdmin";
+// import BoardUser from "./components/BoardUser";
+// import BoardModerator from "./components/BoardModerator";
+// import BoardAdmin from "./components/BoardAdmin";
 import Snus from "./components/Snus";
 import SnusReviews from "./components/SnusReviews";
 import SnusForumCategory from "./components/SnusForumCategory";
 import SnusForumPost from "./components/SnusForumPost";
-
+import Favourites from "./components/Favourites";
 
 
 const App = () => {
-  const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
+
+  // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
+  // const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
 
+  const textColor = { color: "#2A324B" }
+
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
+    const user = getCurrentUser();
 
     if (user) {
       setCurrentUser(user);
@@ -44,72 +47,71 @@ const App = () => {
   }, []);
 
   const logOut = () => {
-    AuthService.logout();
+    logout();
   };
 
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
         <Navbar.Brand href={"/"}>
-          <Logo
-            alt=""
+          <img src={leaf}
             width="30"
             height="30"
             className="d-inline-block align-top"
+            alt="logo"
+            style={textColor}
           />
           Snus
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href={"/"} className="navbar-brand">
+
+            <Nav.Link href={"/"} style={textColor} className="navbar-brand">
               Hem
               </Nav.Link>
 
-            {showModeratorBoard && (
-              <Nav.Link href={"/mod"} className="nav-link">
+            {/* {showModeratorBoard && (
+              <Nav.Link href={"/mod"} style={textColor} className="nav-link">
                 Moderator Board
               </Nav.Link>
             )}
 
             {showAdminBoard && (
-              <Nav.Link href={"/admin"} className="nav-link">
+              <Nav.Link href={"/admin"} style={textColor} className="nav-link">
                 Admin Board
               </Nav.Link>
-            )}
+            )} */}
 
             {currentUser && (
-              <Nav.Link href={"/profile"} className="nav-link">
+              <Nav.Link href={"/profile"} style={textColor} className="nav-link">
                 Profil
               </Nav.Link>
             )}
 
             {currentUser ? (
               <>
-                <Nav.Link href={"/profile"} className="nav-link">
-                  {currentUser.username}
-                </Nav.Link>
-                <Nav.Link href={"/news"} className="nav-link">
+                <Nav.Link href={"/news"} style={textColor} className="nav-link">
                   Nyheter
                   </Nav.Link>
-                <Nav.Link href={"/snus-forum"} className="nav-link">
-                  Snus Forum
+                <Nav.Link href={"/snus-forum"} style={textColor} className="nav-link">
+                  Snusforum
                   </Nav.Link>
-                <Nav.Link href={"/snus"} className="nav-link">
+                <Nav.Link href={"/snus"} style={textColor} className="nav-link">
                   Snus
                   </Nav.Link>
-                <Nav.Link href="/login" className="nav-link" onClick={logOut}>
+                <Nav.Link href="/login" style={textColor} className="nav-link" onClick={logOut}>
                   Logga ut
                   </Nav.Link>
-                  
+
               </>
             ) : (
               <>
-                <Nav.Link href={"/login"} className="nav-link">
+                <Nav.Link href={"/login"} style={textColor} className="nav-link">
                   Logga in
                   </Nav.Link>
 
-                <Nav.Link href={"/register"} className="nav-link">
+                <Nav.Link href={"/register"} style={textColor} className="nav-link">
                   Registrera dig
                   </Nav.Link>
               </>
@@ -122,14 +124,15 @@ const App = () => {
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
           <Route exact path="/snus-forum" component={SnusForum} />
-          <Route path="/snus-forum/:id" component={SnusForumCategory}/>
-          <Route path="/snus-post/:id" component={SnusForumPost}/>
+          <Route path="/snus-forum/:id" component={SnusForumCategory} />
+          <Route path="/snus-post/:id" component={SnusForumPost} />
           <Route exact path="/snus" component={Snus} />
-          <Route path="/snus-review/:id" component={SnusReviews}/>
+          <Route path="/snus-review/:id" component={SnusReviews} />
           <Route exact path="/news" component={News} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/favourites/:id" component={Favourites} />
           {/* <Route path="/user" component={BoardUser} />
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} /> */}
@@ -185,11 +188,7 @@ const App = () => {
                 Följ oss
             </h5>
               <div className="mt-2 ">
-                <ul className="list-unstyled">
-                  <p>
-                    <a href={"https://github.com/chas-academy/u10-business-idea-snusmumriken-barn"}>Github</a>
-                  </p>
-                </ul>
+                <Button variant="" size="sm" href="https://github.com/chas-academy/u10-business-idea-snusmumriken-barn">Github</Button>
               </div>
             </MDBCol>
             <hr className="clearfix w-100 d-md-none" />

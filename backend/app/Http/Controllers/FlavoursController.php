@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Flavours;
-use App\Models\Snus;
+use App\Models\Snuses;
 
 class FlavoursController extends Controller
 {
@@ -15,7 +15,7 @@ class FlavoursController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //sends back all flavours
     {
         if (Auth::check()) {
             $flavours = Flavours::all();
@@ -33,11 +33,11 @@ class FlavoursController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) //sends back a specific falvours based on id along with all snuses with that flavour
     {
         if (Auth::check()) {
             $flavour = Flavours::where('id', $id)->first();
-            $snuses = Snus::where('flavours_id', $id)->get();
+            $snuses = Snuses::where('flavours_id', $id)->get();
 
             return ['flavour' => $flavour, 'snuses' => $snuses];
         } else {
