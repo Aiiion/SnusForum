@@ -33,10 +33,9 @@ const Snus = (notis) => {
 
             <Form inline className="m-auto">
                 <FormControl type="text" placeholder="Search" className="mr-sm-2 p-2 w-75" />
-
                 <Button className="mb-3 mt-3 " variant="#2A324B" style={btnStyle} >Sök snus</Button>
-
             </Form>
+            
             <Button variant="#2A324B" style={btnStyle} onClick={() => setModalShow(true)}>
                 Lägg till snus
             </Button>

@@ -113,7 +113,7 @@ const Reg = (props) => {
       );
     }
   };
-  
+
   return (
     <div className="col-md-12">
       <div className="card card-container">
@@ -172,7 +172,7 @@ const Reg = (props) => {
                 <label className="ml-1" for="scales">Jag intygar jag att jag är över 18 år!</label>
               </div>
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Registrera dig</button>
+                <button className="btn" style={{ color: 'white', backgroundColor: "#2A324B" }}>Registrera dig</button>
               </div>
             </div>
           )}
