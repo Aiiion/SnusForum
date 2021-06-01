@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Favourites;
 use App\Models\User;
 use App\Models\Flavours;
-use App\Models\Snus;
+use App\Models\Snuses;
 
 class FavouritesController extends Controller
 {

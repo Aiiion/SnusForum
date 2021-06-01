@@ -37,7 +37,7 @@ class FlavoursController extends Controller
     {
         if (Auth::check()) {
             $flavour = Flavours::where('id', $id)->first();
-            $snuses = Snus::where('flavours_id', $id)->get();
+            $snuses = Snuses::where('flavours_id', $id)->get();
 
             return ['flavour' => $flavour, 'snuses' => $snuses];
         } else {
