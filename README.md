@@ -14,6 +14,7 @@
         <li><a href="#code-standards">Code Standards</a></li>
         <li><a href="#api-sample">API Sample</a></li>
         <li><a href="#economic-calculation">Economic Calculation</a></li>
+        <li><a href="#deployed-website">Deployed Website</a></li>
     </ul>
 </li>
 <li><a href="#setting-up-the-application">Setting up the application</a>
@@ -26,6 +27,7 @@
     <li><a href="#page-and-route-descriptions">Page and Route Descriptions</a></li>
     <li><a href="#developers">Developers</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#future-development-ideas">Future Development Ideas</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
@@ -66,6 +68,10 @@ This application was built with:
 
 ### Economic Calculation
 [Budget](https://docs.google.com/document/d/13KDwhIvNXFuv98ILRNuPZxMr4k6nqL9afMC050u6EV0/edit)
+
+### Deployed Website
+- [snusare.surge.sh](http://snusare.surge.sh/) Frontend
+- [backend](https://snusare-backend.herokuapp.com/) Backend
 
 
 ## Setting up the application
@@ -192,6 +198,12 @@ FLUSH PRIVILEGES;
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+## Future Development Ideas
+* A admin panel for strict CRUD operations such as adding/deleting snuses to the database, removing users posts and comments if vaiolation occurs. Right now all users can use CRUD wich is not safe! 
+* Match favourite snus flavours and get recommendations on other snus brands that fits the users taste.
+* Rating on stores that sells snus and if it's not an online store, where they are located.
+* Ability for companys to market on the site.
 
 ## Developers
 * [Adebayo Ajayi](https://github.com/Braggedtooth)
