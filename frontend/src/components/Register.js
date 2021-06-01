@@ -107,13 +107,13 @@ const Reg = (props) => {
               error.response.data.message) ||
             error.message ||
             error.toString();
-
           setMessage(resMessage);
           setSuccessful(false);
         }
       );
     }
   };
+  
   return (
     <div className="col-md-12">
       <div className="card card-container">
@@ -169,7 +169,7 @@ const Reg = (props) => {
               <div>
                 <input type="checkbox" id="scales" name="scales"
                 />
-                <label for="scales">Här intygar jag att jag är över 18 år!</label>
+                <label className="ml-1" for="scales">Jag intygar jag att jag är över 18 år!</label>
               </div>
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Registrera dig</button>
