@@ -9,8 +9,8 @@ import authHeader from "../services/auth-header";
 const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 
 const Profile = () => {
+
   const currentUser = getCurrentUser();
-  console.log(currentUser)
   const userId = currentUser.user.id;
 
   const [getPosts, setGetPosts] = useState()
@@ -58,7 +58,6 @@ const Profile = () => {
     })
     return data;
   }
-
 
   const renderReviewsData = (array) => {
     const data = array.reviews.map(id => {
@@ -108,6 +107,7 @@ const Profile = () => {
     e.preventDefault();
     getCommentsData()
   }
+
   const bgcolors = {
     yellow: '#F4DA9D',
     green: '#73f952',
@@ -116,8 +116,8 @@ const Profile = () => {
     textColor: '#2A324B',
     headerColor: ' #73939C',
     borderRadius: '5px'
-
   }
+
   const Logo = () => {
     return (
       <img src={leaf}
@@ -127,7 +127,9 @@ const Profile = () => {
         alt="LOGO"
       />)
   }
+
   let color = "#";
+
   function randomColor() {
     const letters = "0123456789ABCDEF";
     for (let i = 0; i < 6; i++) {
@@ -135,6 +137,7 @@ const Profile = () => {
     }
     return color;
   }
+
   randomColor()
 
   const ProfileImg = {
@@ -146,16 +149,11 @@ const Profile = () => {
     borderRadius: '50%',
     display: 'inlineblock',
   }
-
-
+  
   return (
     <>
-
-
       <>
-
         <div className="d-flex justify-content-between">
-
 
           <Container>
             <ListGroup horizontal>
@@ -168,14 +166,7 @@ const Profile = () => {
               <ListGroup.Item> <p >Välkommen till din profil här hittar du länkar till forum, dina sparade favoriter med mera</p></ListGroup.Item>
             </ListGroup>
           </Container>
-
-
         </div>
-
-
-
-
-
       </>
 
       <Container>
@@ -190,14 +181,14 @@ const Profile = () => {
                       color: bgcolors.textColor
                     }}>
                       <Logo />
-                   Forum
+                   Forumtrådar
                   </Card.Title>
                     <Card.Text style={{
                       color: bgcolors.textColor
                     }}>
-                      Klicka här för att Komma till Forumet
+                      Klicka här för att se dina forumtrådar
                   </Card.Text>
-                    <Button className="mt-3 mb-3 p-2" variant="outline-dark" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerReviews}>Se Forum</Button>
+                    <Button className="mt-3 mb-3 p-2" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerPosts}>Se Forumtrådar</Button>
                   </Card.Body>
                 </Card>
               </Card.Link>
@@ -219,14 +210,14 @@ const Profile = () => {
                     }}>
                       Klicka här för att se dina favoriter
                   </Card.Text>
-                    <Button className="mt-3 mb-3 p-2" variant="outline-dark" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerReviews}>Se favoriter</Button>
+                    <Card.Link href={`/favourites/${userId}`}><Button className="mt-3 mb-3 p-2" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>Se favoriter</Button></Card.Link>
                   </Card.Body>
                 </Card>
               </Card.Link>
             </Col>
 
             <Col sm={12} md={12} lg={6}   >
-              <Card style={{ backgroundColor: bgcolors.green, minWidth: '100%', padding: '1em' }}>
+              <Card style={{ backgroundColor: '#F2F3F8', minWidth: '100%', padding: '1em' }}>
                 <Card.Body>
                   <Card.Title style={{
                     color: bgcolors.textColor
@@ -239,7 +230,7 @@ const Profile = () => {
                   }}>
                     Klicka här för att se dina recensioner
                   </Card.Text>
-                  <Button className="mt-3 mb-3 p-2" variant="outline-dark" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerReviews}>Se recensioner</Button>
+                  <Button className="mt-3 mb-3 p-2" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerReviews}>Se recensioner</Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -258,7 +249,7 @@ const Profile = () => {
                   }}>
                     Klicka på länken för att se dina kommentarer
                   </Card.Text>
-                  <Button className="mt-3 mb-3 p-2" variant="outline-dark" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerComments}>Se kommentarer</Button>
+                  <Button className="mt-3 mb-3 p-2" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerComments}>Se kommentarer</Button>
                 </Card.Body>
               </Card>
             </Col>
