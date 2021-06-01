@@ -77,7 +77,7 @@ class SnusController extends Controller
     {
         if (Auth::check()) { //sends back a snus based on its id along with its reviews
             $snus = Snuses::where('id', $id)->first();
-            $snus->avgRating = $snus->avgRating()->get(); //adds the average rating of all reviews of the snus
+            $snus->avgRating = $snus->avgRating(); //adds the average rating of all reviews of the snus
             $reviews = Reviews::where('snuses_id', $id)->get();
             
             $snus->flavour_name = Flavours::where('id', $snus->flavours_id)->first()->flavour_type; //adds the name of flavour to the snus

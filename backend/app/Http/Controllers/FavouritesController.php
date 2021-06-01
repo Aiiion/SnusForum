@@ -6,11 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favourites;
 use App\Models\User;
-<<<<<<< HEAD
 use App\Models\Flavours;
-=======
-use App\Models\Flavours; 
->>>>>>> f3bb8200228309310fbe8fc16903dd90716f9c91
 use App\Models\Snuses;
 
 class FavouritesController extends Controller
@@ -78,12 +74,12 @@ class FavouritesController extends Controller
     }
 
 
-    /**
-     * Remove the specified favourite from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // /**
+    //  * Remove the specified favourite from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
     public function destroy($id)
     {
         if(Auth::check()){
