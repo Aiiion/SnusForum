@@ -16,7 +16,6 @@ const Snus = (notis) => {
             .then(response => {
                 setSnus(response.data)
 
-
             })
     }, []);
 

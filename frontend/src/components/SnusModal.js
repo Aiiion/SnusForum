@@ -40,6 +40,7 @@ export default function SnusModal(props) {
             .then(response => {
                 const data = response.data
                 setRequest(data);
+                window.location.reload();
         })
     }
 
