@@ -13,7 +13,7 @@ class SnusFactory extends Factory
      *
      * @var string
      */
-    protected $model = Snus::class;
+    protected $model = Snuses::class;
 
     /**
      * Define the model's default state.

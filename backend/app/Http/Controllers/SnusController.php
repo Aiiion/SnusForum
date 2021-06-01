@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Snus;
+use App\Models\Snuses;
 use App\Models\User;
 use App\Models\Reviews;
 use App\Models\Flavours;
@@ -21,10 +21,10 @@ class SnusController extends Controller
     public function index() //send back all snuses in db along with relevant info
     {
         if (Auth::check()) { //checks if user is logged in
-            $snuses = Snus::all();
-            // foreach ($snuses as $snus){ //adds the average rating of all reviews related to a specific snus
-            //     $snus->avgRating = $snus->avgRating();
-            // } SAVE TO LATER!!!
+            $snuses = Snuses::all();
+            foreach ($snuses as $snus){ //adds the average rating of all reviews related to a specific snus
+                 $snus->avgRating = $snus->avgRating();
+            }
             foreach($snuses as $snus){ //adds name of flavour to each snus
                 $snus->flavour_name = Flavours::where('id', $snus->flavours_id)->first()->flavour_type;
             }
@@ -54,7 +54,7 @@ class SnusController extends Controller
     public function store(Request $request)
     {
         if(Auth::check()){ //creates a new snus based on data from request then saves it to db
-            $snus = new Snus();
+            $snus = new Snuses();
             $snus->name = $request->name;
             $snus->type = $request->type;
             $snus->strength = $request->strength;
@@ -76,8 +76,8 @@ class SnusController extends Controller
     public function show($id)
     {
         if (Auth::check()) { //sends back a snus based on its id along with its reviews
-            $snus = Snus::where('id', $id)->first();
-            // $snus->avgRating = $snus->avgRating()->get(); //adds the average rating of all reviews of the snus
+            $snus = Snuses::where('id', $id)->first();
+            $snus->avgRating = $snus->avgRating()->get(); //adds the average rating of all reviews of the snus
             $reviews = Reviews::where('snuses_id', $id)->get();
             
             $snus->flavour_name = Flavours::where('id', $snus->flavours_id)->first()->flavour_type; //adds the name of flavour to the snus
@@ -100,7 +100,7 @@ class SnusController extends Controller
     public function destroy($id)
     {
         if(Auth::check()){// removes a specific snus
-            $snus = Snus::where('id', $id)->first();
+            $snus = Snuses::where('id', $id)->first();
             $snus->delete();
             return ['message' => 'The snus ' . $snus->name . ' ' . $snus->type . ' has been deleted'];
         } else{
