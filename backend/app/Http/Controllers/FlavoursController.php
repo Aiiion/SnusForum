@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Flavours;
-use App\Models\Snus;
+use App\Models\Snuses;
 
 class FlavoursController extends Controller
 {

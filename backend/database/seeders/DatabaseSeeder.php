@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
                 'flavour_type' => $flavour
             ]);
         };
-
+        
         \App\Models\Snuses::factory(10)->create();
         \App\Models\Reviews::factory(50)->create();
         foreach($categorys as $category){

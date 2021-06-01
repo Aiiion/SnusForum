@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Snus;
+use App\Models\Snuses;
 use App\Models\User;
 use App\Models\Reviews;
 use App\Models\Flavours;
@@ -54,7 +54,7 @@ class SnusController extends Controller
     public function store(Request $request)
     {
         if(Auth::check()){ //creates a new snus based on data from request then saves it to db
-            $snus = new Snus();
+            $snus = new Snuses();
             $snus->name = $request->name;
             $snus->type = $request->type;
             $snus->strength = $request->strength;
