@@ -169,7 +169,7 @@ const Reg = (props) => {
               <div>
                 <input type="checkbox" id="scales" name="scales"
                 />
-                <label className="ml-1" for="scales">Jag intygar jag att jag är över 18 år!</label>
+                <label className="ml-1" for="scales">Här intygar jag att jag är över 18 år!</label>
               </div>
               <div className="form-group">
                 <button className="btn" style={{ color: 'white', backgroundColor: "#2A324B" }}>Registrera dig</button>
