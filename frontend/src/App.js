@@ -176,7 +176,7 @@ const App = () => {
             <MDBCol md="5" lg="3">
               <h5 className="text-uppercase mb-4 font-weight-bold">Kontakt</h5>
               <p>
-                <i className="fa fa-envelope mr-3" /> snusmumriken.kondtjanst@gmail.com
+                <i className="fa fa-envelope mr-3" /> snusmumriken.kundtjänst@gmail.com
             </p>
               <p>
                 <i className="fa fa-phone mr-3" /> + 12 123 123 12
