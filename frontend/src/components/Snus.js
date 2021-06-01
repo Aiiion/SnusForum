@@ -6,8 +6,6 @@ import RenderSnus from "./RenderSnus";
 import SnusModal from "./SnusModal";
 import { useAlert } from "react-alert";
 
-
-
 const Snus = (notis) => {
 
     const [snus, setSnus] = useState();
@@ -18,9 +16,8 @@ const Snus = (notis) => {
             .then(response => {
                 setSnus(response.data)
 
-
             })
-    }, [], [modalShow]);
+    }, []);
 
     const alert = useAlert()
 
@@ -36,10 +33,9 @@ const Snus = (notis) => {
 
             <Form inline className="m-auto">
                 <FormControl type="text" placeholder="Search" className="mr-sm-2 p-2 w-75" />
-
                 <Button className="mb-3 mt-3 " variant="#2A324B" style={btnStyle} >Sök snus</Button>
-
             </Form>
+            
             <Button variant="#2A324B" style={btnStyle} onClick={() => setModalShow(true)}>
                 Lägg till snus
             </Button>
@@ -51,7 +47,7 @@ const Snus = (notis) => {
 
             <Container>
                 <Row>
-                    {snus ? snus.snuses.map((snuses) => (RenderSnus(snuses, notis = { alert }))) : <div> LOADING SNUSES</div>}
+                    {snus ? snus.snuses.slice(0).reverse().map((snuses) => (RenderSnus(snuses, notis = { alert }))) : <div> LOADING SNUSES</div>}
                 </Row>
             </Container>
 

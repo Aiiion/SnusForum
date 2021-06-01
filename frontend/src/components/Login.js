@@ -52,6 +52,7 @@ const Login = (props) => {
             window.location.reload();
           },
           (error) => {
+            console.log(error.response.data);
             const resMessage =
               (error.response &&
                 error.response.data &&

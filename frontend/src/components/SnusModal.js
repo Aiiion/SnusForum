@@ -4,6 +4,7 @@ import axios from 'axios';
 import authHeader from '../services/auth-header';
 import Modal from 'react-bootstrap/Modal';
 import addSnus from '../services/snus-add.service';
+import { useAlert } from "react-alert";
 
 const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 
@@ -39,6 +40,7 @@ export default function SnusModal(props) {
             .then(response => {
                 const data = response.data
                 setRequest(data);
+                window.location.reload();
         })
     }
 

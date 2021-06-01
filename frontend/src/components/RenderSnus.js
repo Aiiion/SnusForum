@@ -14,7 +14,7 @@ export default function RenderSnus(obj, notis) {
 
 
     const updatefav = () => {
-        notis.alert.success('Favorit Tillagd');
+        notis.alert.success('Favorit tillagd');
         saveFavourite(flavours_id)
     }
 
