@@ -185,18 +185,11 @@ const App = () => {
                 Följ oss
             </h5>
               <div className="mt-2 ">
-                <a type="button" href="#!" className="btn-floating btn-small btn-fb">
-                  <i className="fab fa-facebook-f" />
-                </a>
-                <a type="button" href="#!" className="btn-floating btn-small btn-tw">
-                  <i className="fab fa-twitter" />
-                </a>
-                <a type="button" href="#!" className="btn-floating btn-small btn-gplus">
-                  <i className="fab fa-google-plus" />
-                </a>
-                <a type="button" href="https://github.com/chas-academy/u10-business-idea-snusmumriken-barn" className="btn-floating btn-small btn-github">
-                  <i className="fab fa-github" />
-                </a>
+                <ul className="list-unstyled">
+                  <p>
+                    <a href={"https://github.com/chas-academy/u10-business-idea-snusmumriken-barn"}>Github</a>
+                  </p>
+                </ul>
               </div>
             </MDBCol>
             <hr className="clearfix w-100 d-md-none" />
