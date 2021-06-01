@@ -6,8 +6,6 @@ import RenderSnus from "./RenderSnus";
 import SnusModal from "./SnusModal";
 import { useAlert } from "react-alert";
 
-
-
 const Snus = (notis) => {
 
     const [snus, setSnus] = useState();
@@ -20,7 +18,7 @@ const Snus = (notis) => {
 
 
             })
-    }, [], [modalShow]);
+    }, []);
 
     const alert = useAlert()
 
@@ -51,7 +49,7 @@ const Snus = (notis) => {
 
             <Container>
                 <Row>
-                    {snus ? snus.snuses.map((snuses) => (RenderSnus(snuses, notis = { alert }))) : <div> LOADING SNUSES</div>}
+                    {snus ? snus.snuses.slice(0).reverse().map((snuses) => (RenderSnus(snuses, notis = { alert }))) : <div> LOADING SNUSES</div>}
                 </Row>
             </Container>
 
