@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'MATCHA SNUS MED KÄK Å DRYCK',
             'ODLA TOBAK',
             'SNUSTIPSET',
+            'TOBAKSFRITT SNUS',
             'ÖVRIGT'
         ];
         $flavours = [
@@ -51,7 +52,7 @@ class DatabaseSeeder extends Seeder
                 'category' => $category
             ]);
         };
-        
+
         \App\Models\Posts::factory(20)->create();
         \App\Models\Comments::factory(50)->create();
         \App\Models\Favourites::factory(10)->create();

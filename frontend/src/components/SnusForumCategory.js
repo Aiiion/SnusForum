@@ -12,9 +12,9 @@ import leaf from "../image/leaf.png";
 const API_URL = "https://snusare-backend.herokuapp.com/api/auth/"
 
 const SnusForumCategory = () => {
+
     let { id } = useParams();
     const form = useRef();
-    const checkBtn = useRef()
 
     const forum = {
         allposts: [],
@@ -42,7 +42,6 @@ const SnusForumCategory = () => {
             })
 
     }, [id]);
-    console.log(response)
 
     const updatePost = async () => {
         await addPost(title, body, id)
