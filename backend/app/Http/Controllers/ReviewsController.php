@@ -53,6 +53,9 @@ class ReviewsController extends Controller
             $review->snuses_id = $request->snuses_id;
             $review->title = $request->title;
             $review->body = $request->body;
+            if($review->rating > 5){
+                $review->rating = 5;
+            }
             $review->rating = $request->rating;
             $review->save();
             $review->username = User::where('id', $review->users_id)->first()->username;
