@@ -54,7 +54,7 @@ class ReviewsController extends Controller
             $review->title = $request->title;
             $review->body = $request->body;
             if($request->rating > 5){
-                $review->rating = 5;
+                $request->rating = 5;
             }
             $review->rating = $request->rating;
             $review->save();
