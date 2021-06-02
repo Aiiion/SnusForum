@@ -92,7 +92,7 @@ If you have access to deploy frontend to surge, accept the invite first and then
 npm install --global surge
 ```
 ```sh
-npm run-script build && cd build && cp index.html 200.html && surge --domain snusare.surge.sh
+npm run-script build && cd build && cp index.html 200.html && surge --domain snusare.surge.sh .
 ```
 Next time you will deploy to surge:
 - cd into the frontend folder
