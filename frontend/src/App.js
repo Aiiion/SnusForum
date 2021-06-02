@@ -122,7 +122,6 @@ const App = () => {
 
       <div className="container mt-3">
         <Switch>
-          <Route exact path={["/", "/home"]} component={Home} />
           <Route exact path="/snus-forum" component={SnusForum} />
           <Route path="/snus-forum/:id" component={SnusForumCategory} />
           <Route path="/snus-post/:id" component={SnusForumPost} />
@@ -133,13 +132,14 @@ const App = () => {
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/favourites/:id" component={Favourites} />
+          <Route exact path={["/", "/home"]} component={Home} />
           {/* <Route path="/user" component={BoardUser} />
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} /> */}
         </Switch>
       </div>
 
-      <MDBFooter color="mdb-color" className="font-small lighten-3 pt-4 mt-4">
+      <MDBFooter color="mdb-color" className="font-small lighten-3 pt-4 mt-4" style={{ bottom: "0", width: "100%" }}>
         <MDBContainer className="text-center text-md-left">
           <MDBRow className="my-4">
             <MDBCol md="4" lg="4">
@@ -154,8 +154,8 @@ const App = () => {
                 Registera dig för att gå med i vår gemenskap och utforska vilket snus som passar dig!
             </p>
             </MDBCol>
-            <hr className="clearfix w-100 d-md-none" />
-            <MDBCol md="2" lg="2" className="ml-auto">
+            {/* <hr className="clearfix w-100 d-md-none" /> */}
+            {/* <MDBCol md="2" lg="2" className="ml-auto">
               <h5 className="text-uppercase mb-4 font-weight-bold">Utforska</h5>
               <ul className="list-unstyled">
                 <p>
@@ -171,7 +171,7 @@ const App = () => {
                   <a href="#!">SNUSRECENSIONER</a>
                 </p>
               </ul>
-            </MDBCol>
+            </MDBCol> */}
             <hr className="clearfix w-100 d-md-none" />
             <MDBCol md="5" lg="3">
               <h5 className="text-uppercase mb-4 font-weight-bold">Kontakt</h5>

@@ -30,13 +30,11 @@ const Favourites = (notis) => {
             <div>
                 <h1 className="container-fluid text-center" style={{ color: '#2A324B' }}>Dina Favorit Smaker</h1>
             </div>
-            <Container id="board">
-
+            <Container id="board" style={{ minHeight: "60vh"}}>
                 <Row>
                     {myFav ? myFav.favourites.map((snuses) => (RenderFav(snuses, notis = { alert }))) : <div> LADDDAR IN  SNUS</div>}
                 </Row>
             </Container>
-
         </>
     )
 

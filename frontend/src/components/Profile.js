@@ -173,47 +173,41 @@ const Profile = () => {
         <CardGroup  >
           <Row>
             <Col sm={12} md={12} lg={6}>
-
-              <Card.Link href={`/snus-forum`}>
-                <Card style={{ backgroundColor: bgcolors.yellow, minWidth: '100%', padding: '1em' }}>
-                  <Card.Body>
-                    <Card.Title style={{
-                      color: bgcolors.textColor
-                    }}>
-                      <Logo />
-                   Forumtrådar
-                  </Card.Title>
-                    <Card.Text style={{
-                      color: bgcolors.textColor
-                    }}>
-                      Klicka här för att se dina forumtrådar
-                  </Card.Text>
-                    <Button className="mt-3 mb-3 p-2" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerPosts}>Se Forumtrådar</Button>
-                  </Card.Body>
-                </Card>
-              </Card.Link>
+              <Card style={{ backgroundColor: bgcolors.yellow, minWidth: '100%', padding: '1em' }}>
+                <Card.Body>
+                  <Card.Title style={{
+                    color: bgcolors.textColor
+                  }}>
+                    <Logo />
+                  Forumtrådar
+                </Card.Title>
+                  <Card.Text style={{
+                    color: bgcolors.textColor
+                  }}>
+                    Klicka här för att se dina forumtrådar
+                </Card.Text>
+                  <Button className="mt-3 mb-3 p-2" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }} onClick={submitHandlerPosts}>Se Forumtrådar</Button>
+                </Card.Body>
+              </Card>
             </Col>
 
             <Col sm={12} md={12} lg={6}>
-
-              <Card.Link href={`/favourites/${userId}`}>
-                <Card style={{ backgroundColor: bgcolors.blue, minWidth: '100%', padding: '1em' }}>
-                  <Card.Body>
-                    <Card.Title style={{
-                      color: bgcolors.textColor
-                    }}>
-                      <Logo />
-                    Dina Favoriter
-                  </Card.Title>
-                    <Card.Text style={{
-                      color: bgcolors.textColor
-                    }}>
-                      Klicka här för att se dina favoriter
-                  </Card.Text>
-                    <Card.Link href={`/favourites/${userId}`}><Button className="mt-3 mb-3 p-2" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>Se favoriter</Button></Card.Link>
-                  </Card.Body>
-                </Card>
-              </Card.Link>
+              <Card style={{ backgroundColor: bgcolors.blue, minWidth: '100%', padding: '1em' }}>
+                <Card.Body>
+                  <Card.Title style={{
+                    color: bgcolors.textColor
+                  }}>
+                    <Logo />
+                  Dina Favoritsmaker
+                </Card.Title>
+                  <Card.Text style={{
+                    color: bgcolors.textColor
+                  }}>
+                    Klicka här för att se dina favoritsmaker
+                </Card.Text>
+                  <Card.Link href={`/favourites/${userId}`}><Button className="mt-3 mb-3 p-2" variant="#2A324B" style={{ color: 'white', background: "#2A324B" }}>Se favoriter</Button></Card.Link>
+                </Card.Body>
+              </Card>
             </Col>
 
             <Col sm={12} md={12} lg={6}   >
