@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import './App.css';
 
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Button } from "react-bootstrap";
 import leaf from "./image/leaf.png";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
@@ -147,14 +147,14 @@ const App = () => {
                 Om oss
             </h5>
               <p>
-                Välkommen!
+                Välkommen! 
                 Med denna webbapplikation vill vi bidra med en plattform och ett forum för alla snusentusiaster runt om i världen - en plats där man kan dela snusrecept, ge tips om sina favoritsnus, diskutera nya snussorter och mycket mer.
             </p>
               <p>
                 Registera dig för att gå med i vår gemenskap och utforska vilket snus som passar dig!
             </p>
             </MDBCol>
-            <hr className="clearfix w-100 d-md" />
+            <hr className="clearfix w-100 d-md-none" />
             <MDBCol md="2" lg="2" className="ml-auto">
               <h5 className="text-uppercase mb-4 font-weight-bold">Utforska</h5>
               <ul className="list-unstyled">
@@ -172,34 +172,32 @@ const App = () => {
                 </p>
               </ul>
             </MDBCol>
-            <hr className="clearfix w-100 d-md" />
+            <hr className="clearfix w-100 d-md-none" />
             <MDBCol md="5" lg="3">
               <h5 className="text-uppercase mb-4 font-weight-bold">Kontakt</h5>
               <p>
-                <i className="fa fa-envelope mr-3" /> snusmumriken.kondtjanst@gmail.com
+                <i className="fa fa-envelope mr-3" /> snusmumriken.kundtjänst@gmail.com
             </p>
               <p>
                 <i className="fa fa-phone mr-3" /> + 12 123 123 12
             </p>
             </MDBCol>
-            <hr className="clearfix w-100 d-md" />
+            <hr className="clearfix w-100 d-md-none" />
             <MDBCol md="2" lg="2" className="text-center">
               <h5 className="text-uppercase mb-4 font-weight-bold">
                 Följ oss
             </h5>
-              <div className="mt-2">
-                <a type="button" href="https://github.com/chas-academy/u10-business-idea-snusmumriken-barn" className="btn-floating btn-small btn-github">
-                  <i className="fab fa-github" />
-                </a>
+              <div className="mt-2 ">
+                <Button variant="" size="sm" href="https://github.com/chas-academy/u10-business-idea-snusmumriken-barn">Github</Button>
               </div>
             </MDBCol>
-            <hr className="clearfix w-100 d-md" />
+            <hr className="clearfix w-100 d-md-none" />
           </MDBRow>
         </MDBContainer>
         <div className="footer-copyright text-center py-3">
           <MDBContainer fluid>
             &copy; {new Date().getFullYear()} Copyright:{" "}
-            <p>Snusmumrikens-barn</p>
+            <p>Snus</p>
           </MDBContainer>
         </div>
       </MDBFooter>
