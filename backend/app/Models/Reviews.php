@@ -10,7 +10,7 @@ class Reviews extends Model
     use HasFactory;
 
     public function snuses(){
-        $this->belongsTo('\App\Models\Snus')->first();
+        $this->belongsTo('\App\Models\Snuses')->first();
     }
 
     public function users(){

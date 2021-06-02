@@ -3,20 +3,18 @@ import authHeader from "./auth-header";
 
 const API_URL = "https://snusare-backend.herokuapp.com/api/auth/";
 
-export default function addPost(title, body, id) {
+export default function addComment(body, id) {
     let bodyFormData = new FormData();
-    bodyFormData.append('title', title);
     bodyFormData.append('body', body);
-    bodyFormData.append('categorys_id', id);
+    bodyFormData.append('posts_id', id);
 
     return axios({
         method: "post",
-        url: `${API_URL}store-posts`,
+        url: `${API_URL}store-comments`,
         data: bodyFormData,
         headers: {
             "Content-Type": "multipart/form-data",
             ...authHeader()
         }
-    })
+    })    
 }
-

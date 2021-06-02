@@ -3,8 +3,8 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import { register } from "../services/auth.service";
 
-import AuthService from "../services/auth.service";
 
 const required = (value) => {
   if (!value) {
@@ -47,14 +47,14 @@ const vpassword = (value) => {
 };
 // Password confirmation fungerar ej vi återkommer till detta
 const vpasswordConfirmation = (event) => {
-  if(event.onPasswordConfirmation !== event.onChangePassword) {
-    return ( 
+  if (event.onPasswordConfirmation !== event.onChangePassword) {
+    return (
       <p>Password does not match!</p>
     );
   }
 };
 
-const Register = (props) => {
+const Reg = (props) => {
   const form = useRef();
   const checkBtn = useRef();
 
@@ -80,7 +80,6 @@ const Register = (props) => {
     setPassword(password);
   };
 
-  // FUNKAR EJ!! 
   const onPasswordConfirmation = (e) => {
     const confirm_password = e.target.value;
     setConfirmPassword(confirm_password);
@@ -91,11 +90,10 @@ const Register = (props) => {
 
     setMessage("");
     setSuccessful(false);
-// Object.values(bar)[0][0] ta errorresponsen o fiska upp meddelandet
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+      register(username, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -107,7 +105,6 @@ const Register = (props) => {
               error.response.data.message) ||
             error.message ||
             error.toString();
-
           setMessage(resMessage);
           setSuccessful(false);
         }
@@ -122,7 +119,7 @@ const Register = (props) => {
           {!successful && (
             <div>
               <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">Användarnamn</label>
                 <Input
                   type="text"
                   className="form-control"
@@ -146,7 +143,7 @@ const Register = (props) => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Lösenord</label>
                 <Input
                   type="password"
                   className="form-control"
@@ -157,7 +154,7 @@ const Register = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="password">Confirm Password</label>
+                <label htmlFor="password">Verifiera Lösenord</label>
                 <Input
                   type="password"
                   className="form-control"
@@ -167,9 +164,13 @@ const Register = (props) => {
                   validations={[required, vpasswordConfirmation]}
                 />
               </div>
-
+              <div>
+                <input type="checkbox" id="scales" name="scales"
+                />
+                <label className="ml-1" for="scales">Jag intygar att jag är över 18 år!</label>
+              </div>
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
+                <button className="btn" style={{ color: 'white', backgroundColor: "#2A324B" }}>Registrera dig</button>
               </div>
             </div>
           )}
@@ -177,7 +178,7 @@ const Register = (props) => {
           {message && (
             <div className="form-group">
               <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
+                className={successful ? "alert alert-success" : "alert alert-danger"}
                 role="alert"
               >
                 {message}
@@ -187,8 +188,9 @@ const Register = (props) => {
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
       </div>
+
     </div>
   );
 };
 
-export default Register;
+export default Reg;

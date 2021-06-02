@@ -17,10 +17,10 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
+        if (Auth::check()) { //sends all reviews
             $reviews = Reviews::all();
             foreach($reviews as $review){
-                $review->username = User::where('id', $review->users_id)->first()->username;
+                $review->username = User::where('id', $review->users_id)->first()->username;// adds creators username to review
             }
             return ['reviews' => $reviews];
         } else {
@@ -47,7 +47,7 @@ class ReviewsController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::check()){
+        if(Auth::check()){ // saves a review based on request sent, then returns it along with creators username
             $review = new Reviews();
             $review->users_id = Auth::id();
             $review->snuses_id = $request->snuses_id;
@@ -71,7 +71,7 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-        if (Auth::check()) {
+        if (Auth::check()) { //sends a specific review and its creators username
             $review = Reviews::where('id', $id)->first();
             $review->username = User::where('id', $review->users_id)->first()->username;
 
@@ -83,35 +83,12 @@ class ReviewsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) //deletes a review based on id
     {
         if(Auth::check()){
             $review = Reviews::where('id', $id)->first();

@@ -18,7 +18,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        if(Auth::check()) {
+        if(Auth::check()) { // sends all posts along with creators username
             $posts = Posts::all();
             foreach($posts as $post){
                 $post->username = User::where('id', $post->users_id)->first()->username;
@@ -48,7 +48,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::check()){
+        if(Auth::check()){ //stores post based on request and sends it back with creators username
             $post = new Posts();
             $post->users_id = Auth::id();
             $post->title = $request->title;
@@ -70,15 +70,15 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) //sends back a specific post with its comments and its category
     {
         if(Auth::check()){
             $post = Posts::where('id', $id)->first();
-            $post->username = User::where('id', $post->users_id)->first()->username;
-            $categorys = $post->categorys();
+            $post->username = User::where('id', $post->users_id)->first()->username; //adds creators username to post
+            $categorys = $post->categorys(); 
             $comments = $post->comments();
             foreach($comments as $comment){
-                $comment->username = User::where('id', $comment->users_id)->first()->username;
+                $comment->username = User::where('id', $comment->users_id)->first()->username; //adds username of creator to comment
             }
             return ['post' => $post, 'categorys' => $categorys, 'comments' => $comments];
         }else{
@@ -87,35 +87,12 @@ class PostsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) //deletes a post based on id
     {
         if(Auth::check()){
             $post = Posts::where('id', $id)->first();

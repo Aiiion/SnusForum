@@ -28,7 +28,7 @@ class ReviewsFactory extends Factory
             'body' => $this->faker->text($maxNbChars = 200),
             'rating' => $this->faker->numberBetween($min = 0, $max = 5),
             'users_id' => \App\Models\User::inRandomOrder()->value('id'),
-            'snuses_id' => \App\Models\Snus::inRandomOrder()->value('id'),
+            'snuses_id' => \App\Models\Snuses::inRandomOrder()->value('id'),
         ];
     }
 }
